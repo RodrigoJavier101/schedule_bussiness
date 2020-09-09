@@ -12,14 +12,27 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_ingresos"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ingresos.IngresosFragment"
+        android:label="@string/menu_ingresos"
+        tools:layout="@layout/fragment_ingresos" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_gastos"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.gastos.GastosFragment"
+        android:label="@string/menu_gastos"
+        tools:layout="@layout/fragment_gastos" />
+
+    <fragment
+        android:id="@+id/nav_agenda"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.agenda.AgendaFragment"
+        android:label="@string/menu_agenda"
+        tools:layout="@layout/fragment_agenda" />
+
+    <fragment
+        android:id="@+id/nav_admin"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.AdminFragment"
+        android:label="@string/menu_admin"
+        tools:layout="@layout/fragment_admin" />
+
 </navigation>

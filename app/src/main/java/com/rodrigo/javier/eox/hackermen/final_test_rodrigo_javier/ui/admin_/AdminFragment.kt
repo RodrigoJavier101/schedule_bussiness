@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.gallery
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
-class GalleryFragment : Fragment() {
+class AdminFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var slideshowViewModel: AdminViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        slideshowViewModel =
+                ViewModelProviders.of(this).get(AdminViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_admin, container, false)
+        val textView: TextView = root.findViewById(R.id.text_admin)
+        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

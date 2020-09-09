@@ -1,13 +1,50 @@
 <resources>
-    <string name="app_name">Final_Test_Rodrigo_Javier</string>
+    <string name="app_name">Gestión/Negocios</string>
+    <string name="text_btn_verde">ingresos</string>
+    <string name="text_btn_rojo">gastos</string>
+    <string name="text_titulo_home">Home</string>
+    <string name="text_btn_ventas">Agregar</string>
+    <string name="text_titulo_ingresos">Ingresos</string>
+    <string name="text_titulo_login">Login</string>
+    <string name="text_edit_hint_valor">$ ---></string>
+    <string name="text_edit_hint_fecha">Fecha</string>
+
+    <!--FINALMENTE ESTE DEBE DESAPARECER Y CARGARSE DESDE PERSISTENCIA-->
+    <!--entradas del spinner de FECHA-->
+    <string name="encabezado_spinner_ingresos">Selecciona</string>
+    <string-array name="spinner_fecha_ingresos">
+        <item>Calcetines</item>
+        <item>Poleras</item>
+        <item>Pantalones</item>
+        <item>Ropa interior</item>
+    </string-array>
+
+    <!--entradas del spinner de userlogin-->
+    <string name="encabezado_spinner_login">Selecciona</string>
+    <string-array name="spinner_login">
+        <item>Fabiola</item>
+        <item>Michelle</item>
+        <item>Kathy</item>
+        <item>Otras personas agregadas</item>
+    </string-array>
+
+    <!--BOILERPLATE DRAWER NAV-->
+    <string name="title_activity_login">Login</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_apoyo_main">ApoyoMain</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Gestion de Negocios</string>
+    <string name="nav_header_subtitle">Apoyo en la administración \ny gestión de tus negocios.</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_fab">Sincronizando con base de Datos en la Nube</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_ingresos">Ingresos</string>
+    <string name="menu_gastos">Gastos</string>
+    <string name="menu_agenda">Agenda</string>
+    <string name="menu_admin">Admin</string>
+
 </resources>

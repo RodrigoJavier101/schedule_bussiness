@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.slideshow
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ingresos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
-class SlideshowFragment : Fragment() {
+class IngresosFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var galleryViewModel: IngresosViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
+        galleryViewModel =
+                ViewModelProviders.of(this).get(IngresosViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_ingresos, container, false)
+        val textView: TextView = root.findViewById(R.id.text_ingresos)
+        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
