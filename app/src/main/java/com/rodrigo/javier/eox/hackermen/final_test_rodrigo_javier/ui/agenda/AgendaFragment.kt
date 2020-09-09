@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.AdminFragment
 
 class AgendaFragment : Fragment() {
 
@@ -27,5 +28,12 @@ class AgendaFragment : Fragment() {
             textView.text = it
         })
         return root
+    }
+
+    companion object {
+        fun newInstance(): AgendaFragment {
+            var newAgendaFragment = AgendaFragment()
+            return newAgendaFragment
+        }
     }
 }

@@ -15,17 +15,24 @@ class AdminFragment : Fragment() {
     private lateinit var slideshowViewModel: AdminViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         slideshowViewModel =
-                ViewModelProviders.of(this).get(AdminViewModel::class.java)
+            ViewModelProviders.of(this).get(AdminViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_admin, container, false)
         val textView: TextView = root.findViewById(R.id.text_admin)
         slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
+    }
+
+    companion object {
+        fun newInstance(): AdminFragment {
+            var newAdminFragment = AdminFragment()
+            return newAdminFragment
+        }
     }
 }

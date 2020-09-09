@@ -2,6 +2,7 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-           Toast.makeText(this, R.string.action_fab, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.action_fab, Toast.LENGTH_SHORT).show()
         }
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -34,8 +35,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_ingresos, R.id.nav_gastos, R.id.nav_agenda, R.id.nav_admin), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home, R.id.nav_ingresos, R.id.nav_gastos, R.id.nav_agenda, R.id.nav_admin
+            ), drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -50,4 +54,10 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    fun inItemClick(item: MenuItem) {
+        Toast.makeText(this, "LogginOut", Toast.LENGTH_SHORT).show()
+    }
+
+
 }
