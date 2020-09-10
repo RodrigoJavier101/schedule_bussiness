@@ -1,4 +1,5 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.retrofit.objects
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.objects.api_web_ebjects
+
 
 import com.google.gson.annotations.SerializedName
 
@@ -14,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Tasa_desempleo (
+data class Libra_cobre (
 
 	@SerializedName("codigo") val codigo : String,
 	@SerializedName("nombre") val nombre : String,

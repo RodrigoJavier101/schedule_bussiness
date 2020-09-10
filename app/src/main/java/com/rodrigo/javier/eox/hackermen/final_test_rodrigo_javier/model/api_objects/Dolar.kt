@@ -1,9 +1,5 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.retrofit.objects
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.objects.api_web_ebjects
 
-import Bitcoin
-import Dolar
-import Dolar_intercambio
-import Ivp
 import com.google.gson.annotations.SerializedName
 
 /*
@@ -18,21 +14,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Json4Kotlin_Base (
+data class Dolar (
 
-	@SerializedName("version") val version : String,
-	@SerializedName("autor") val autor : String,
+	@SerializedName("codigo") val codigo : String,
+	@SerializedName("nombre") val nombre : String,
+	@SerializedName("unidad_medida") val unidad_medida : String,
 	@SerializedName("fecha") val fecha : String,
-	@SerializedName("uf") val uf : Uf,
-	@SerializedName("ivp") val ivp : Ivp,
-	@SerializedName("dolar") val dolar : Dolar,
-	@SerializedName("dolar_intercambio") val dolar_intercambio : Dolar_intercambio,
-	@SerializedName("euro") val euro : Euro,
-	@SerializedName("ipc") val ipc : Ipc,
-	@SerializedName("utm") val utm : Utm,
-	@SerializedName("imacec") val imacec : Imacec,
-	@SerializedName("tpm") val tpm : Tpm,
-	@SerializedName("libra_cobre") val libra_cobre : Libra_cobre,
-	@SerializedName("tasa_desempleo") val tasa_desempleo : Tasa_desempleo,
-	@SerializedName("bitcoin") val bitcoin : Bitcoin
+	@SerializedName("valor") val valor : Double
 )
