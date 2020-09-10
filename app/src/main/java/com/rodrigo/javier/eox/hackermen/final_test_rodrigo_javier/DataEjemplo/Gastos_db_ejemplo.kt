@@ -8,7 +8,7 @@ var gasto_1 = Gastos(
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     /*DD-MM-YY*/
     "07/10/20",
-    producto_1
+    0
 )
 
 
@@ -18,7 +18,7 @@ var gasto_2 = Gastos(
     0,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "07/10/20",
-    producto_2
+  0
 )
 
 
@@ -28,7 +28,7 @@ var gasto_3 = Gastos(
     0,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "06/10/20",
-    producto_3
+   1
 )
 
 
@@ -38,7 +38,7 @@ var gasto_4 = Gastos(
     1,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "05/10/20",
-    producto_4
+    1
 )
 
 
@@ -48,7 +48,7 @@ var gasto_5 = Gastos(
     1,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "05/10/20",
-    producto_5
+    3
 )
 
 
@@ -58,7 +58,7 @@ var gasto_6 = Gastos(
     2,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "04/10/20",
-    producto_3
+    2
 )
 
 
@@ -68,7 +68,7 @@ var gasto_7 = Gastos(
     2,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "03/10/20",
-    producto_2
+    4
 )
 
 
@@ -78,7 +78,7 @@ var gasto_8 = Gastos(
     2,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "03/10/20",
-    producto_2
+    3
 )
 
 
@@ -88,7 +88,7 @@ var gasto_9 = Gastos(
     0,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "02/10/20",
-    producto_1
+    4
 )
 
 
@@ -98,6 +98,6 @@ var gasto_10 = Gastos(
     3,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "02/10/20",
-    producto_1
+    4
 )
 

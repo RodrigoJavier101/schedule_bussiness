@@ -5,10 +5,10 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.DataEjemplo
 /*los ítems no debes repetirse ----> evitar la duplicación de nombre de producto (relacionando por
 ejemplo id -> nombre del producto)*/
 var producto_1 = Productos(
-    0,
-    /*el txt debe ser tratado para quedar en minúsculas al entrar a la db*/
-    "calcetines",
-    5000
+0,
+/*el txt debe ser tratado para quedar en minúsculas al entrar a la db*/
+"calcetines",
+5000
 )
 
 var producto_2 = Productos(

@@ -9,7 +9,7 @@ var venta_1 = Ventas(
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     /*DD-MM-YY*/
     "07/10/20",
-    producto_1
+    0
 )
 
 var venta_2 = Ventas(
@@ -18,7 +18,7 @@ var venta_2 = Ventas(
     0,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "07/10/20",
-    producto_2
+    1
 )
 
 
@@ -28,7 +28,7 @@ var venta_3 = Ventas(
     0,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "06/10/20",
-    producto_3
+    2
 )
 
 
@@ -38,7 +38,7 @@ var venta_4 = Ventas(
     1,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "05/10/20",
-    producto_4
+    3
 )
 
 
@@ -48,7 +48,7 @@ var venta_5 = Ventas(
     1,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "05/10/20",
-    producto_5
+    4
 )
 
 
@@ -58,7 +58,7 @@ var venta_6 = Ventas(
     2,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "04/10/20",
-    producto_3
+    2
 )
 
 
@@ -68,7 +68,7 @@ var venta_7 = Ventas(
     2,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "03/10/20",
-    producto_2
+    1
 )
 
 
@@ -78,7 +78,7 @@ var venta_8 = Ventas(
     2,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "03/10/20",
-    producto_2
+    3
 )
 
 
@@ -88,7 +88,7 @@ var venta_9 = Ventas(
     0,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "02/10/20",
-    producto_1
+    3
 )
 
 
@@ -98,7 +98,7 @@ var venta_10 = Ventas(
     3,
     /*la fecha debe tener un proceso de typeconverter date a long*String para entran sqlite*/
     "02/10/20",
-    producto_1
+    4
 )
 
 
