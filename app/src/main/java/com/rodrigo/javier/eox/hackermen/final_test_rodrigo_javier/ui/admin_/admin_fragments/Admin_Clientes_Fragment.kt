@@ -29,7 +29,7 @@ class Admin_Clientes_Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
-            lbl_admin_clientes.text = "desde 'onViewCreated admin clientes"
+
     }
 
 }

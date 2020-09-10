@@ -1,16 +1,28 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments
 
 import android.os.Bundle
+import android.renderscript.AllocationAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_1
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_2
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_3
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_4
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AdminProveedoresRecyclerAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Proveedores
 import kotlinx.android.synthetic.main.fragment_admin_clientes.*
 import kotlinx.android.synthetic.main.fragment_admin_proveedores.*
 
 
 class Admin_Proveedores_Fragment : Fragment() {
+
+    //    private lateinit var list_recyclerview: RecyclerView
+    private lateinit var adapterAdminProveedoresRecyclerAdapter: AdminProveedoresRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +43,18 @@ class Admin_Proveedores_Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
-        lbl_admin_proveedores.text = "desde 'onViewCreated admin proveedores"
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setViewsOnScreen()
+    }
+
+    private fun setViewsOnScreen() {
+        recycler_item_proveedores.layoutManager = LinearLayoutManager(requireContext())
+        adapterAdminProveedoresRecyclerAdapter =
+            AdminProveedoresRecyclerAdapter(mutableListOf(), requireContext())
+        recycler_item_proveedores.adapter = adapterAdminProveedoresRecyclerAdapter
     }
 }

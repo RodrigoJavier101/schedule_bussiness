@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/design_default_color_error"
     android:orientation="vertical"
     tools:context=".ui.admin_.AdminFragment">
 
@@ -14,11 +15,20 @@
         app:tabGravity="fill"
         app:tabMode="fixed" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lbl_frag_adm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="NONE"
+        android:textAlignment="center" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager_admin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
+        android:layout_height="match_parent"
+        android:soundEffectsEnabled="true"
+        android:textAlignment="center">
 
     </androidx.viewpager.widget.ViewPager>
 

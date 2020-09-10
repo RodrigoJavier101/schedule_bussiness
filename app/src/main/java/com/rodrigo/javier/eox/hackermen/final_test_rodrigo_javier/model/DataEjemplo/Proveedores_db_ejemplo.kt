@@ -1,4 +1,6 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.DataEjemplo
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
+
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Proveedores
 
 /*Ejemplo de 5 proveedores para pruebas*/
 var proveedor_1 = Proveedores(

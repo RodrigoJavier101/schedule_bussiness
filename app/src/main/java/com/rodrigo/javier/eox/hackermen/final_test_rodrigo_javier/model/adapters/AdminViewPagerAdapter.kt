@@ -1,10 +1,10 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.adapters
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class ViewPagerAdapter(fragment_manager: FragmentManager) : FragmentPagerAdapter(fragment_manager) {
+class AdminViewPagerAdapter(fragment_manager: FragmentManager) : FragmentPagerAdapter(fragment_manager) {
 
     private val fragment_list: MutableList<Fragment> = ArrayList()
     private val title_list: MutableList<String> = ArrayList()

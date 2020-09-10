@@ -8,12 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.adapters.ViewPagerAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AdminViewPagerAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Clientes_Fragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Proveedores_Fragment
 import kotlinx.android.synthetic.main.fragment_admin.*
-import kotlinx.android.synthetic.main.fragment_admin_clientes.*
-import kotlinx.android.synthetic.main.fragment_admin_proveedores.*
 
 class AdminFragment : Fragment() {
 
@@ -31,23 +29,11 @@ class AdminFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_admin, container, false)
 //        val textView: TextView = root.findViewById(R.id.text_admin)
 
-        return view
-    }
 
-    companion object {
-        fun newInstance(): AdminFragment {
-            var newAdminFragment = AdminFragment()
-            return newAdminFragment
-        }
-    }
+        val view_pager_adapter = AdminViewPagerAdapter(requireActivity().supportFragmentManager)
+        adminViewModel.liveData.observe(viewLifecycleOwner, Observer {
+            lbl_frag_adm.text = it
 
-    override fun onResume() {
-        super.onResume()
-
-
-        adminViewModel.text.observe(viewLifecycleOwner, Observer {
-//            lbl_admin_clientes.text = it
-            val view_pager_adapter = ViewPagerAdapter(requireActivity().supportFragmentManager)
 
             view_pager_adapter.addFragment(
                 Admin_Clientes_Fragment.newInstance(),
@@ -62,5 +48,20 @@ class AdminFragment : Fragment() {
             tab_layout_admin.setupWithViewPager(view_pager_admin)
 
         })
+
+
+        return view
+    }
+
+    companion object {
+        fun newInstance(): AdminFragment {
+            var newAdminFragment = AdminFragment()
+            return newAdminFragment
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 }

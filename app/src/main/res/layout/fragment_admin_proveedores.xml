@@ -6,19 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lbl_admin_proveedores"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_item_proveedores"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="35sp"
-        android:gravity="center_horizontal"
-        android:text="ADMIN PROVEEDORES"
-        android:textAlignment="center"
-        android:textSize="35sp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:textAlignment="center"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
