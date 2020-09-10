@@ -12,12 +12,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Powerstats (
+data class Bitcoin (
 
-	@SerializedName("intelligence") val intelligence : Int,
-	@SerializedName("strength") val strength : Int,
-	@SerializedName("speed") val speed : Int,
-	@SerializedName("durability") val durability : Int,
-	@SerializedName("power") val power : Int,
-	@SerializedName("combat") val combat : Int
+	@SerializedName("codigo") val codigo : String,
+	@SerializedName("nombre") val nombre : String,
+	@SerializedName("unidad_medida") val unidad_medida : String,
+	@SerializedName("fecha") val fecha : String,
+	@SerializedName("valor") val valor : Double
 )

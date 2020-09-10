@@ -12,12 +12,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Appearance (
+data class Dolar (
 
-	@SerializedName("gender") val gender : String,
-	@SerializedName("race") val race : String,
-	@SerializedName("height") val height : List<String>,
-	@SerializedName("weight") val weight : List<String>,
-	@SerializedName("eyeColor") val eyeColor : String,
-	@SerializedName("hairColor") val hairColor : String
+	@SerializedName("codigo") val codigo : String,
+	@SerializedName("nombre") val nombre : String,
+	@SerializedName("unidad_medida") val unidad_medida : String,
+	@SerializedName("fecha") val fecha : String,
+	@SerializedName("valor") val valor : Double
 )

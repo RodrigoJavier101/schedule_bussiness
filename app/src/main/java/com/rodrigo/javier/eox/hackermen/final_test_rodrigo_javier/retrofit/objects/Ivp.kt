@@ -1,3 +1,5 @@
+
+
 import com.google.gson.annotations.SerializedName
 
 /*
@@ -12,8 +14,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Connections (
+data class Ivp (
 
-	@SerializedName("groupAffiliation") val groupAffiliation : String,
-	@SerializedName("relatives") val relatives : String
+	@SerializedName("codigo") val codigo : String,
+	@SerializedName("nombre") val nombre : String,
+	@SerializedName("unidad_medida") val unidad_medida : String,
+	@SerializedName("fecha") val fecha : String,
+	@SerializedName("valor") val valor : Double
 )

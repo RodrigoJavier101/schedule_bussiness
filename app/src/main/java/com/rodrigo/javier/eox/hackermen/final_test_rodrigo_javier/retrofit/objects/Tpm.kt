@@ -1,3 +1,5 @@
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.retrofit.objects
+
 import com.google.gson.annotations.SerializedName
 
 /*
@@ -12,13 +14,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Biography (
+data class Tpm (
 
-	@SerializedName("fullName") val fullName : String,
-	@SerializedName("alterEgos") val alterEgos : String,
-	@SerializedName("aliases") val aliases : List<String>,
-	@SerializedName("placeOfBirth") val placeOfBirth : String,
-	@SerializedName("firstAppearance") val firstAppearance : String,
-	@SerializedName("publisher") val publisher : String,
-	@SerializedName("alignment") val alignment : String
+	@SerializedName("codigo") val codigo : String,
+	@SerializedName("nombre") val nombre : String,
+	@SerializedName("unidad_medida") val unidad_medida : String,
+	@SerializedName("fecha") val fecha : String,
+	@SerializedName("valor") val valor : Double
 )
