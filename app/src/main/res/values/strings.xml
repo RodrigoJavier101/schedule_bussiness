@@ -39,7 +39,7 @@
     <string name="nav_header_subtitle">Apoyo en la administración \ny gestión de tus negocios.</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Logout</string>
-    <string name="action_fab">Sincronizando con base de Datos en la Nube</string>
+    <string name="action_fab">Sincronizando con la Nube</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_ingresos">Ingresos</string>

@@ -4,29 +4,34 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.adapters.ViewPagerAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Clientes_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Proveedores_Fragment
+import kotlinx.android.synthetic.main.fragment_admin.*
+import kotlinx.android.synthetic.main.fragment_admin_clientes.*
+import kotlinx.android.synthetic.main.fragment_admin_proveedores.*
 
 class AdminFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: AdminViewModel
+    private lateinit var adminViewModel: AdminViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
+        adminViewModel =
             ViewModelProviders.of(this).get(AdminViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_admin, container, false)
-        val textView: TextView = root.findViewById(R.id.text_admin)
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+
+        val view = inflater.inflate(R.layout.fragment_admin, container, false)
+//        val textView: TextView = root.findViewById(R.id.text_admin)
+
+        return view
     }
 
     companion object {
@@ -34,5 +39,28 @@ class AdminFragment : Fragment() {
             var newAdminFragment = AdminFragment()
             return newAdminFragment
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+        adminViewModel.text.observe(viewLifecycleOwner, Observer {
+//            lbl_admin_clientes.text = it
+            val view_pager_adapter = ViewPagerAdapter(requireActivity().supportFragmentManager)
+
+            view_pager_adapter.addFragment(
+                Admin_Clientes_Fragment.newInstance(),
+                "Gestion Clientes"
+            )
+            view_pager_adapter.addFragment(
+                Admin_Proveedores_Fragment.newInstance(),
+                "Gestion Proveedores"
+            )
+
+            view_pager_admin.adapter = view_pager_adapter
+            tab_layout_admin.setupWithViewPager(view_pager_admin)
+
+        })
     }
 }
