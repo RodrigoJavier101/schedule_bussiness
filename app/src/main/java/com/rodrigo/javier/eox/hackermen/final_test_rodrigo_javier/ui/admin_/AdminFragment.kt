@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AdminViewPagerAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Clientes_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Estadisticas_Fragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Proveedores_Fragment
 import kotlinx.android.synthetic.main.fragment_admin.*
 
@@ -43,12 +44,15 @@ class AdminFragment : Fragment() {
                 Admin_Proveedores_Fragment.newInstance(),
                 "Gestion Proveedores"
             )
+            view_pager_adapter.addFragment(
+                Admin_Estadisticas_Fragment.newInstance(),
+                "Estadísticas"
+            )
 
             view_pager_admin.adapter = view_pager_adapter
             tab_layout_admin.setupWithViewPager(view_pager_admin)
 
         })
-
 
         return view
     }
@@ -58,10 +62,5 @@ class AdminFragment : Fragment() {
             var newAdminFragment = AdminFragment()
             return newAdminFragment
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 }
