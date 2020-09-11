@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Proveedores
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Proveedores_Entity
 import kotlinx.android.synthetic.main.item_admin_proveedores.view.*
 
 class AdminProveedoresRecyclerAdapter(
-    private var lista_proveeodres: MutableList<Proveedores>,
+    private var lista_proveeodres: MutableList<Proveedores_Entity>,
     context: Context
 ) :
     RecyclerView.Adapter<ProveedoresViewHolder>() {

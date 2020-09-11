@@ -14,7 +14,6 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjem
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_3
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_4
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AdminProveedoresRecyclerAdapter
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Proveedores
 import kotlinx.android.synthetic.main.fragment_admin_clientes.*
 import kotlinx.android.synthetic.main.fragment_admin_proveedores.*
 

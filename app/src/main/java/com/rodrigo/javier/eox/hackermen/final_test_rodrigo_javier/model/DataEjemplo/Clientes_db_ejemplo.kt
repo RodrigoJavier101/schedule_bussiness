@@ -1,10 +1,10 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
 
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Clientes
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Clientes_Entity
 
 
 /*Ejemplo de 10 clientes para pruebas*/
-var cliente_1 = Clientes(
+var cliente_1 = Clientes_Entity(
     0,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -18,7 +18,7 @@ var cliente_1 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_2 = Clientes(
+var cliente_2 = Clientes_Entity(
     1,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -32,7 +32,7 @@ var cliente_2 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_3 = Clientes(
+var cliente_3 = Clientes_Entity(
     2,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -46,7 +46,7 @@ var cliente_3 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_4 = Clientes(
+var cliente_4 = Clientes_Entity(
     3,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -60,7 +60,7 @@ var cliente_4 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_5 = Clientes(
+var cliente_5 = Clientes_Entity(
     4,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -74,7 +74,7 @@ var cliente_5 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_6 = Clientes(
+var cliente_6 = Clientes_Entity(
     5,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -88,7 +88,7 @@ var cliente_6 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_7 = Clientes(
+var cliente_7 = Clientes_Entity(
     6,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -102,7 +102,7 @@ var cliente_7 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_8 = Clientes(
+var cliente_8 = Clientes_Entity(
     7,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -116,7 +116,7 @@ var cliente_8 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_9 = Clientes(
+var cliente_9 = Clientes_Entity(
     8,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -130,7 +130,7 @@ var cliente_9 = Clientes(
     "recoleta 3000, recoleta"
 )
 
-var cliente_10 = Clientes(
+var cliente_10 = Clientes_Entity(
     9,
     "Maria",
     /*verificar si es correcto en la sintaxis*/

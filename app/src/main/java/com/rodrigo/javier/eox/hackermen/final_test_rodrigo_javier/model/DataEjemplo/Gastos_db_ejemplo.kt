@@ -1,9 +1,10 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
 
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Gastos
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Gastos_Entity
+
 
 /*Creacion de 10 gastos ficticios para pruebas*/
-var gasto_1 = Gastos(
+var gasto_1 = Gastos_Entity(
     0,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -14,7 +15,7 @@ var gasto_1 = Gastos(
 )
 
 
-var gasto_2 = Gastos(
+var gasto_2 = Gastos_Entity(
     1,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -24,7 +25,7 @@ var gasto_2 = Gastos(
 )
 
 
-var gasto_3 = Gastos(
+var gasto_3 = Gastos_Entity(
     2,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -34,7 +35,7 @@ var gasto_3 = Gastos(
 )
 
 
-var gasto_4 = Gastos(
+var gasto_4 = Gastos_Entity(
     3,
     /*id user debe estar entre 0 y 3*/
     1,
@@ -44,7 +45,7 @@ var gasto_4 = Gastos(
 )
 
 
-var gasto_5 = Gastos(
+var gasto_5 = Gastos_Entity(
     4,
     /*id user debe estar entre 0 y 3*/
     1,
@@ -54,7 +55,7 @@ var gasto_5 = Gastos(
 )
 
 
-var gasto_6 = Gastos(
+var gasto_6 = Gastos_Entity(
     5,
     /*id user debe estar entre 0 y 3*/
     2,
@@ -64,7 +65,7 @@ var gasto_6 = Gastos(
 )
 
 
-var gasto_7 = Gastos(
+var gasto_7 = Gastos_Entity(
     6,
     /*id user debe estar entre 0 y 3*/
     2,
@@ -74,7 +75,7 @@ var gasto_7 = Gastos(
 )
 
 
-var gasto_8 = Gastos(
+var gasto_8 = Gastos_Entity(
     7,
     /*id user debe estar entre 0 y 3*/
     2,
@@ -84,7 +85,7 @@ var gasto_8 = Gastos(
 )
 
 
-var gasto_9 = Gastos(
+var gasto_9 = Gastos_Entity(
     8,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -94,7 +95,7 @@ var gasto_9 = Gastos(
 )
 
 
-var gasto_10 = Gastos(
+var gasto_10 = Gastos_Entity(
     9,
     /*id user debe estar entre 0 y 3*/
     3,

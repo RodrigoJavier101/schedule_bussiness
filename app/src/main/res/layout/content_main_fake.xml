@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_recommendations_list"
+        android:id="@+id/rv_asunto_agenda_list"
         android:layout_width="match_parent"
         android:layout_height="711dp"
         app:layout_constraintBottom_toBottomOf="parent"

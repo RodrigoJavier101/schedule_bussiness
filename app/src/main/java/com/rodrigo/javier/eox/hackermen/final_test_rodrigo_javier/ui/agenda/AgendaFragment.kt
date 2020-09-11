@@ -15,10 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.PRUEBA_ROOM_EJERCICIO.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import kotlinx.android.synthetic.main.add_recommendation_layout_fake.view.*
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.gestion_data_view.Agenda_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AgendaRecyclerAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDatabase
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Agenda_Entity
+import kotlinx.android.synthetic.main.add_asundo_agenda_layout_fake.view.*
 
 
 class AgendaFragment : Fragment() {
@@ -27,9 +31,9 @@ class AgendaFragment : Fragment() {
 
     /*FAKE+++++++++++++++++++++++++++++++++++++++++++*/
     private lateinit var list: RecyclerView
-    private lateinit var adapter: RecommendationsAdapter
-    private lateinit var dataBase: RecommendationsDatabase
-    private lateinit var dao: RecommendationsDAO
+    private lateinit var adapter: AgendaRecyclerAdapter
+    private lateinit var dataBase: GestionDatabase
+    private lateinit var dao: GestionDao
     private lateinit var floatingActionButton: FloatingActionButton
 
     /*+++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -51,8 +55,8 @@ class AgendaFragment : Fragment() {
 //        setSupportActionBar(toolbar)
 
 
-        dataBase = RoomApplicationFAKE.recommendationsDatabase!!
-        dao = dataBase.getRecommendationsDAO()
+        dataBase = RoomApplication.gestionDatabase!!
+        dao = dataBase.getGestionDao()
         setUpViews(view)
         setUpAddButton()
 
@@ -61,10 +65,10 @@ class AgendaFragment : Fragment() {
 
 
     private fun setUpViews(view: View) {
-        list = view.findViewById(R.id.rv_recommendations_list)
+        list = view.findViewById(R.id.rv_asunto_agenda_list)
         list.layoutManager = LinearLayoutManager(context)
         floatingActionButton = view.findViewById(R.id.fab)
-        adapter = RecommendationsAdapter(mutableListOf(), requireContext())
+        adapter = AgendaRecyclerAdapter(mutableListOf(), requireContext())
         list.adapter = adapter
     }
 
@@ -73,8 +77,8 @@ class AgendaFragment : Fragment() {
         floatingActionButton.setOnClickListener {
 
             val dialogView = layoutInflater
-                .inflate(R.layout.add_recommendation_layout_fake, null)
-            val recommendationText = dialogView.recommendation_input
+                .inflate(R.layout.add_asundo_agenda_layout_fake, null)
+            val agendaAsundoInput = dialogView.agenda_asunto_input
             val dialogBuilder = AlertDialog
                 .Builder(requireContext())
                 .setTitle("Agrega una recomendación")
@@ -82,17 +86,17 @@ class AgendaFragment : Fragment() {
                 .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
 
-                    if (recommendationText.text?.isNotEmpty()!!) {
+                    if (agendaAsundoInput.text?.isNotEmpty()!!) {
 
                         AsyncTask.execute {
 //                            var recomm =
 //                                view?.findViewById<TextInputEditText>(R.id.recommendation_input)
 
-                            if (recommendationText != null) {
-                                dao.insertRecommendations(createEntity(recommendationText.text.toString()))
+                            if (agendaAsundoInput != null) {
+                                dao.insertAgenda(createEntity(agendaAsundoInput.text.toString()))
 
                             }
-                            val newItems = createEntityListFromDatabase(dao.getAllRecommendations())
+                            val newItems = createEntityListFromDatabase(dao.getAllFromAgendaTable())
                             Log.d(":X:X:X:X:X:X:XX:X:.....", newItems.toString())
 
                             var thread = Thread() {
@@ -126,19 +130,19 @@ class AgendaFragment : Fragment() {
     }
 
 
-    private fun createEntity(text: String): RecommendationEntity {
-        return RecommendationEntity(recommendation = text, isCheck = false, id = 0)
+    private fun createEntity( a_a: String): Agenda_Entity {
+        return Agenda_Entity( asunto_agenda = a_a)
     }
 
-    private fun createEntityListFromDatabase(entities: List<RecommendationEntity>):
-            MutableList<RecommendationEntity> {
-        val dataList = mutableListOf<RecommendationEntity>()
+    private fun createEntityListFromDatabase(entities: List<Agenda_Entity>):
+            MutableList<Agenda_DataView> {
+        val dataList = mutableListOf<Agenda_DataView>()
         if (entities.isNotEmpty()) {
             for (entity in entities) {
-                val dataView = RecommendationEntity(
-                    entity.id,
-                    entity.recommendation.toString(),
-                    entity.isCheck
+                val dataView = Agenda_DataView(
+                    entity.id_agenda,
+                    entity.fecha_programada.toString(),
+                    entity.asunto_agenda
                 )
                 dataList.add(dataView)
             }

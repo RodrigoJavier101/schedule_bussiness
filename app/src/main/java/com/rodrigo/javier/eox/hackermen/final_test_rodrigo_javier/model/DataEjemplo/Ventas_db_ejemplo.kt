@@ -1,10 +1,10 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
 
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Ventas
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Ventas_Entity
 
 
 /*Creacion de 10 ventas ficticias para pruebas*/
-var venta_1 = Ventas(
+var venta_1 = Ventas_Entity(
     0,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -14,7 +14,7 @@ var venta_1 = Ventas(
     0
 )
 
-var venta_2 = Ventas(
+var venta_2 = Ventas_Entity(
     1,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -24,7 +24,7 @@ var venta_2 = Ventas(
 )
 
 
-var venta_3 = Ventas(
+var venta_3 = Ventas_Entity(
     2,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -34,7 +34,7 @@ var venta_3 = Ventas(
 )
 
 
-var venta_4 = Ventas(
+var venta_4 = Ventas_Entity(
     3,
     /*id user debe estar entre 0 y 3*/
     1,
@@ -44,7 +44,7 @@ var venta_4 = Ventas(
 )
 
 
-var venta_5 = Ventas(
+var venta_5 = Ventas_Entity(
     4,
     /*id user debe estar entre 0 y 3*/
     1,
@@ -54,7 +54,7 @@ var venta_5 = Ventas(
 )
 
 
-var venta_6 = Ventas(
+var venta_6 = Ventas_Entity(
     5,
     /*id user debe estar entre 0 y 3*/
     2,
@@ -64,7 +64,7 @@ var venta_6 = Ventas(
 )
 
 
-var venta_7 = Ventas(
+var venta_7 = Ventas_Entity(
     6,
     /*id user debe estar entre 0 y 3*/
     2,
@@ -74,7 +74,7 @@ var venta_7 = Ventas(
 )
 
 
-var venta_8 = Ventas(
+var venta_8 = Ventas_Entity(
     7,
     /*id user debe estar entre 0 y 3*/
     2,
@@ -84,7 +84,7 @@ var venta_8 = Ventas(
 )
 
 
-var venta_9 = Ventas(
+var venta_9 = Ventas_Entity(
     8,
     /*id user debe estar entre 0 y 3*/
     0,
@@ -94,7 +94,7 @@ var venta_9 = Ventas(
 )
 
 
-var venta_10 = Ventas(
+var venta_10 = Ventas_Entity(
     9,
     /*id user debe estar entre 0 y 3*/
     3,

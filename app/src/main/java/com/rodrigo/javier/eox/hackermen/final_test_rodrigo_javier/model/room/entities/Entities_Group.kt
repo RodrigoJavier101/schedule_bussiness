@@ -1,13 +1,13 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 //var userSellings = UserSellings()
 
 @Entity(tableName = "user_table")
-data class User(
+data class User_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_user: Int,
     var user_name: String,
@@ -15,7 +15,7 @@ data class User(
 )
 
 @Entity(tableName = "productos_table")
-data class Productos(
+data class Productos_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_producto: Int,
     var nombre_producto: String,
@@ -40,7 +40,7 @@ data class Productos(
 //    )
 //)
 @Entity(tableName = "ventas_table")
-data class Ventas(
+data class Ventas_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_ventas: Int,
     var id_user: Int,
@@ -65,8 +65,9 @@ data class Ventas(
 //        )
 //    )
 //)
+
 @Entity(tableName = "gastos_table")
-data class Gastos(
+data class Gastos_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_gastos: Int,
     var id_user: Int,
@@ -75,7 +76,7 @@ data class Gastos(
 )
 
 @Entity(tableName = "clientes_table")
-data class Clientes(
+data class Clientes_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_clientes: Int,
     var nombre_cliente: String,
@@ -86,7 +87,7 @@ data class Clientes(
 )
 
 @Entity(tableName = "proveedores_table")
-data class Proveedores(
+data class Proveedores_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_proveedores: Int,
     var nombre_proveedor: String,
@@ -97,9 +98,10 @@ data class Proveedores(
 )
 
 @Entity(tableName = "agenda_table")
-data class Agenda(
+data class Agenda_Entity(
     @PrimaryKey(autoGenerate = true)
-    var id_agenda: Int,
-    var fecha_programada: String,
-    var asunto_agenda: String
+    var id_agenda: Int = 0,
+    var fecha_programada: String = "none",
+    @ColumnInfo(name = "asunto_agenda")
+    var asunto_agenda: String = "none"
 )

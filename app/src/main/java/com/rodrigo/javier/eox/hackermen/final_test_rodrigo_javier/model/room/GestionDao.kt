@@ -6,7 +6,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.ent
 @Dao
 interface GestionDao {
 
-    @Query("select * from user_table")
+    /*@Query("select * from user_table")
     fun getAllFromUserTable(): List<User>
 
     @Query("select * from productos_table")
@@ -22,12 +22,12 @@ interface GestionDao {
     fun getAllFromClientesTable(): List<Clientes>
 
     @Query("select * from proveedores_table")
-    fun getAllFromProveedoresTable(): List<Proveedores>
+    fun getAllFromProveedoresTable(): List<Proveedores>*/
 
     @Query("select * from agenda_table")
-    fun getAllFromAgendaTable(): List<Agenda>
+    fun getAllFromAgendaTable(): List<Agenda_Entity>
 
-    @Insert
+    /*@Insert
     fun insertUsers(user: User)
 
     @Insert
@@ -44,9 +44,10 @@ interface GestionDao {
 
     @Insert
     fun insertProveedores(proveedor: Proveedores)
-
+*/
     @Insert
-    fun insertAgenda(agenda: Agenda)
+    fun insertAgenda(agenda: Agenda_Entity)
+/*
 
     @Update
     fun updateUsers(user: User)
@@ -65,29 +66,31 @@ interface GestionDao {
 
     @Update
     fun updateProveedores(proveedor: Proveedores)
+*/
 
     @Update
-    fun updateAgenda(agenda: Agenda)
+    fun updateAgenda(agenda: Agenda_Entity)
 
-    @Delete
-    fun deleteUsers(user: User)
+    /*
+        @Delete
+        fun deleteUsers(user: User)
 
-    @Delete
-    fun deleteProductos(producto: Productos)
+        @Delete
+        fun deleteProductos(producto: Productos)
 
-    @Delete
-    fun deleteVentas(venta: Ventas)
+        @Delete
+        fun deleteVentas(venta: Ventas)
 
-    @Delete
-    fun deleteGastos(gasto: Gastos)
+        @Delete
+        fun deleteGastos(gasto: Gastos)
 
-    @Delete
-    fun deleleClientes(cliente: Clientes)
+        @Delete
+        fun deleleClientes(cliente: Clientes)
 
+        @Delete
+        fun deleteProveedores(proveedor: Proveedores)
+    */
     @Delete
-    fun deleteProveedores(proveedor: Proveedores)
-
-    @Delete
-    fun deleteAgenda(agenda: Agenda)
+    fun deleteAgenda(agenda: Agenda_Entity)
 
 }
