@@ -46,7 +46,7 @@ interface GestionDao {
     fun insertProveedores(users: List<Proveedores>)
 
     @Insert
-    fun insertAgenda(users: List<Agenda>)
+    fun insertAgenda(users: Agenda)
 
     @Update
     fun updateUsers(users: User)
