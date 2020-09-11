@@ -10,5 +10,5 @@ interface RecommendationsDAO {
     fun getAllRecommendations(): List<RecommendationEntity>
 
     @Insert
-    fun insertRecommendations(recommendations: RecommendationEntity)
+    fun insertRecommendations(recommendation: RecommendationEntity)
 }

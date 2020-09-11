@@ -3,6 +3,7 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.agenda
 import android.content.DialogInterface
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,13 +13,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.PRUEBA_ROOM_EJERCICIO.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import kotlinx.android.synthetic.main.add_recommendation_layout_fake.*
 import kotlinx.android.synthetic.main.add_recommendation_layout_fake.view.*
-import kotlinx.android.synthetic.main.content_main_fake.*
-import kotlinx.android.synthetic.main.fragment_agenda_fake.*
+
 
 class AgendaFragment : Fragment() {
 
@@ -29,7 +30,7 @@ class AgendaFragment : Fragment() {
     private lateinit var adapter: RecommendationsAdapter
     private lateinit var dataBase: RecommendationsDatabase
     private lateinit var dao: RecommendationsDAO
-    private lateinit var addButton: FloatingActionButton
+    private lateinit var floatingActionButton: FloatingActionButton
 
     /*+++++++++++++++++++++++++++++++++++++++++++++++++*/
 
@@ -40,36 +41,37 @@ class AgendaFragment : Fragment() {
     ): View? {
         agendaViewModel =
             ViewModelProviders.of(this).get(AgendaViewModel::class.java)
-        val view = inflater.inflate(R.layout.content_main_fake, container, false)
-//        val textView: TextView = view.findViewById(R.id.text_agenda)
+        val view = inflater.inflate(R.layout.fragment_agenda_fake, container, false)
+//        val textView: TextView = view.findViewById(R.id.)
         agendaViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
         })
 
 
 //        setSupportActionBar(toolbar)
-        setUpViews(view)
+
+
         dataBase = RoomApplicationFAKE.recommendationsDatabase!!
         dao = dataBase.getRecommendationsDAO()
+        setUpViews(view)
         setUpAddButton()
-
-
 
         return view
     }
 
 
-    private fun setUpViews(view:View) {
+    private fun setUpViews(view: View) {
         list = view.findViewById(R.id.rv_recommendations_list)
         list.layoutManager = LinearLayoutManager(context)
-        addButton = fab
+        floatingActionButton = view.findViewById(R.id.fab)
         adapter = RecommendationsAdapter(mutableListOf(), requireContext())
         list.adapter = adapter
     }
 
 
     private fun setUpAddButton() {
-        addButton.setOnClickListener {
+        floatingActionButton.setOnClickListener {
+
             val dialogView = layoutInflater
                 .inflate(R.layout.add_recommendation_layout_fake, null)
             val recommendationText = dialogView.recommendation_input
@@ -79,16 +81,45 @@ class AgendaFragment : Fragment() {
                 .setView(dialogView)
                 .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
+
                     if (recommendationText.text?.isNotEmpty()!!) {
+
                         AsyncTask.execute {
-                            dao.insertRecommendations(createEntity(recommendation_input.text.toString()) )
+//                            var recomm =
+//                                view?.findViewById<TextInputEditText>(R.id.recommendation_input)
+
+                            if (recommendationText != null) {
+                                dao.insertRecommendations(createEntity(recommendationText.text.toString()))
+
+                            }
                             val newItems = createEntityListFromDatabase(dao.getAllRecommendations())
-//                            runOnUiThread {
-//                                adapter.updateData(newItems)
-//                                dialog.dismiss()
-//                            }
+                            Log.d(":X:X:X:X:X:X:XX:X:.....", newItems.toString())
+
+                            var thread = Thread() {
+                                fun run() {
+                                    try {
+                                        synchronized(this) {
+                                            Thread.sleep(300)
+                                            runOnUiThread {
+                                                adapter.updateData(newItems)
+
+                                                dialog.dismiss()
+
+                                            }
+                                        }
+                                    } catch (e: InterruptedException) {
+                                        Log.d(
+                                            ":X:X:X:X:X:X:XX:X:.....",
+                                            e.printStackTrace().toString()
+                                        )
+                                    }
+                                }
+                            }
+                            thread.start()
+
                         }
                     }
+
                 }
             dialogBuilder.create().show()
         }
@@ -100,11 +131,11 @@ class AgendaFragment : Fragment() {
     }
 
     private fun createEntityListFromDatabase(entities: List<RecommendationEntity>):
-            MutableList<RecommendationDataView> {
-        val dataList = mutableListOf<RecommendationDataView>()
+            MutableList<RecommendationEntity> {
+        val dataList = mutableListOf<RecommendationEntity>()
         if (entities.isNotEmpty()) {
             for (entity in entities) {
-                val dataView = RecommendationDataView(
+                val dataView = RecommendationEntity(
                     entity.id,
                     entity.recommendation.toString(),
                     entity.isCheck

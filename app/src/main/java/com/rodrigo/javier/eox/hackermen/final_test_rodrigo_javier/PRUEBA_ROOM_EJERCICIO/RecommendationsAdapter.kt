@@ -1,6 +1,7 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.PRUEBA_ROOM_EJERCICIO
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
 class RecommendationsAdapter(
-    private var recommendationsList: MutableList<RecommendationDataView>,
+    private var recommendationsList: MutableList<RecommendationEntity>,
     var context: Context
-) : RecyclerView.Adapter<RecommendationViewHolder>() {
+) : RecyclerView.Adapter<RecommendationsAdapter.RecommendationViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             : RecommendationViewHolder {
         return RecommendationViewHolder(
@@ -21,6 +22,7 @@ class RecommendationsAdapter(
     }
 
     override fun getItemCount(): Int = recommendationsList.size
+
     override fun onBindViewHolder(
         holder: RecommendationViewHolder, position:
         Int
@@ -29,14 +31,14 @@ class RecommendationsAdapter(
         holder.recommendationCheck.text = data.recommendation.toString()
     }
 
-    fun updateData(items: List<RecommendationDataView>) {
-//hace update de la data cuando el usuario agrega nuevas recomendaciones
+    fun updateData(items: List<RecommendationEntity>) {
         recommendationsList.clear()
         recommendationsList.addAll(items)
         notifyDataSetChanged()
     }
+
+    class RecommendationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val recommendationCheck = view.findViewById<TextView>(R.id.agenda_Box)
+    }
 }
 
-class RecommendationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val recommendationCheck = view.findViewById<TextView>(R.id.recommendation_input)
-}
