@@ -28,66 +28,66 @@ interface GestionDao {
     fun getAllFromAgendaTable(): List<Agenda>
 
     @Insert
-    fun insertUsers(users: List<User>)
+    fun insertUsers(user: User)
 
     @Insert
-    fun insertProductos(users: List<Productos>)
+    fun insertProductos(producto: Productos)
 
     @Insert
-    fun insertVentas(users: List<Ventas>)
+    fun insertVentas(venta: Ventas)
 
     @Insert
-    fun insertGastos(users: List<Gastos>)
+    fun insertGastos(gasto: Gastos)
 
     @Insert
-    fun insertClientes(users: List<Clientes>)
+    fun insertClientes(cliente: Clientes)
 
     @Insert
-    fun insertProveedores(users: List<Proveedores>)
+    fun insertProveedores(proveedor: Proveedores)
 
     @Insert
-    fun insertAgenda(users: Agenda)
+    fun insertAgenda(agenda: Agenda)
 
     @Update
-    fun updateUsers(users: User)
+    fun updateUsers(user: User)
 
     @Update
-    fun updateProductos(users: Productos)
+    fun updateProductos(producto: Productos)
 
     @Update
-    fun updateVentas(users: Ventas)
+    fun updateVentas(venta: Ventas)
 
     @Update
-    fun updateGastos(users: Gastos)
+    fun updateGastos(gasto: Gastos)
 
     @Update
-    fun updateClientes(users: Clientes)
+    fun updateClientes(cliente: Clientes)
 
     @Update
-    fun updateProveedores(users: Proveedores)
+    fun updateProveedores(proveedor: Proveedores)
 
     @Update
-    fun updateAgenda(users: Agenda)
+    fun updateAgenda(agenda: Agenda)
 
     @Delete
-    fun deleteUsers(vararg users: User)
+    fun deleteUsers(user: User)
 
     @Delete
-    fun deleteProductos(vararg users: Productos)
+    fun deleteProductos(producto: Productos)
 
     @Delete
-    fun deleteVentas(vararg users: Ventas)
+    fun deleteVentas(venta: Ventas)
 
     @Delete
-    fun deleteGastos(vararg users: Gastos)
+    fun deleteGastos(gasto: Gastos)
 
     @Delete
-    fun deleleClientes(vararg users: Clientes)
+    fun deleleClientes(cliente: Clientes)
 
     @Delete
-    fun deleteProveedores(vararg users: Proveedores)
+    fun deleteProveedores(proveedor: Proveedores)
 
     @Delete
-    fun deleteAgenda(vararg users: Agenda)
+    fun deleteAgenda(agenda: Agenda)
 
 }

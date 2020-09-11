@@ -7,7 +7,8 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.ent
 @Database(
     entities = [(User::class), (Productos::class), (Ventas::class), (Gastos::class),
         (Clientes::class), (Proveedores::class), (Agenda::class)],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class GestionDatabase : RoomDatabase() {
     abstract fun getGestionDao(): GestionDao

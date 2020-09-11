@@ -22,24 +22,24 @@ data class Productos(
     var precio_producto: Int
 )
 
-//@Entity(tableName = "ventas_table")
-@Entity(
-    foreignKeys = arrayOf(
-        ForeignKey(
-            entity = User::class,
-            parentColumns = arrayOf("id_user"),
-            childColumns = arrayOf("id_user"),
-            onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = Productos::class,
-            parentColumns = arrayOf("id_producto"),
-            childColumns = arrayOf("id_producto"),
-            onDelete = ForeignKey.CASCADE
-        )
-    )
-)
-
+//@Entity(
+//    tableName = "ventas_table",
+//    foreignKeys = arrayOf(
+//        ForeignKey(
+//            entity = User::class,
+//            parentColumns = arrayOf("id_user"),
+//            childColumns = arrayOf("id_user"),
+//            onDelete = ForeignKey.CASCADE
+//        ),
+//        ForeignKey(
+//            entity = Productos::class,
+//            parentColumns = arrayOf("id_producto"),
+//            childColumns = arrayOf("id_producto"),
+//            onDelete = ForeignKey.CASCADE
+//        )
+//    )
+//)
+@Entity(tableName = "ventas_table")
 data class Ventas(
     @PrimaryKey(autoGenerate = true)
     var id_ventas: Int,
@@ -48,23 +48,24 @@ data class Ventas(
     var id_producto: Int,
 )
 
-//@Entity(tableName = "gastos_table")
-@Entity(
-    foreignKeys = arrayOf(
-        ForeignKey(
-            entity = User::class,
-            parentColumns = arrayOf("id_user"),
-            childColumns = arrayOf("id_user"),
-            onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = Productos::class,
-            parentColumns = arrayOf("id_producto"),
-            childColumns = arrayOf("id_producto"),
-            onDelete = ForeignKey.CASCADE
-        )
-    )
-)
+//@Entity(
+//    tableName = "gastos_table",
+//    foreignKeys = arrayOf(
+//        ForeignKey(
+//            entity = User::class,
+//            parentColumns = arrayOf("id_user"),
+//            childColumns = arrayOf("id_user"),
+//            onDelete = ForeignKey.CASCADE
+//        ),
+//        ForeignKey(
+//            entity = Productos::class,
+//            parentColumns = arrayOf("id_producto"),
+//            childColumns = arrayOf("id_producto"),
+//            onDelete = ForeignKey.CASCADE
+//        )
+//    )
+//)
+@Entity(tableName = "gastos_table")
 data class Gastos(
     @PrimaryKey(autoGenerate = true)
     var id_gastos: Int,

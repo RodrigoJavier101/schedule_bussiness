@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.gestion_data_view.Agenda
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Agenda
+
 
 class AgendaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val agendaCheck = view.findViewById<TextView>(R.id.recomendation_text)
+//    val agendaCheck = view.findViewById<TextView>(R.id.recomendation_text)
 }
 
 
@@ -30,7 +31,7 @@ class AgendaRecyclerAdapter(
 
     override fun onBindViewHolder(holder: AgendaViewHolder, position: Int) {
         val data = agendaList[position]
-        holder.agendaCheck.text = data.text
+//        holder.agendaCheck.text = data.text
     }
 
 
