@@ -78,5 +78,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
-
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 }

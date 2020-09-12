@@ -17,7 +17,7 @@ class AgendaRecyclerAdapter(
             : AgendaViewHolder {
         return AgendaViewHolder(
             LayoutInflater.from(context)
-                .inflate(R.layout.recommendation_item_fake, parent, false)
+                .inflate(R.layout.agenda_item_fake, parent, false)
         )
     }
 
@@ -38,7 +38,7 @@ class AgendaRecyclerAdapter(
     }
 
     class AgendaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val agenda_box = view.findViewById<TextView>(R.id.agenda_Box)
+        val agenda_box = view.findViewById<TextView>(R.id.agendamiento_box)
     }
 }
 

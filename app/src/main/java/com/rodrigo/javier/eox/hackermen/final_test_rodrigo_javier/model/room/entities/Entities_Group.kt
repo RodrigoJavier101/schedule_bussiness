@@ -101,7 +101,7 @@ data class Proveedores_Entity(
 data class Agenda_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_agenda: Int = 0,
-    var fecha_programada: String = "none",
+    var fecha_programada: String = "ENTITY",
     @ColumnInfo(name = "asunto_agenda")
     var asunto_agenda: String = "none"
 )

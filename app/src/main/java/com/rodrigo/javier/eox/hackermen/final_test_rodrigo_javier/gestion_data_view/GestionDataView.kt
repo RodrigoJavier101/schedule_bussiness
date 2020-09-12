@@ -1,12 +1,9 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.gestion_data_view
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
 
 //var userSellings = UserSellings()
 
-/*data class User_DataView(
+data class User_DataView(
     var id_user: Int,
     var user_name: String,
     var password: Int
@@ -49,7 +46,7 @@ data class Proveedores_DataView(
     var telefono_proveedor: String,
     var status_proveedor: String,
     var domicilio_proveedor: String,
-)*/
+)
 
 data class Agenda_DataView(
     var id_agenda: Int = 0,

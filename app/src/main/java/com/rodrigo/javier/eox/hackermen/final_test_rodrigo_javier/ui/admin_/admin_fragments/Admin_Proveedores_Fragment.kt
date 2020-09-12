@@ -7,14 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_1
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_2
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_3
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.proveedor_4
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AdminProveedoresRecyclerAdapter
-import kotlinx.android.synthetic.main.fragment_admin_clientes.*
 import kotlinx.android.synthetic.main.fragment_admin_proveedores.*
 
 
