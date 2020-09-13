@@ -16,6 +16,7 @@ class AgendaRecyclerAdapter(
 ) : RecyclerView.Adapter<AgendaRecyclerAdapter.AgendaViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             : AgendaViewHolder {
+        Log.d("VALOR DE LA lista que entra en el adapter", agenda_list.toString())
         return AgendaViewHolder(
             LayoutInflater.from(context)
                 .inflate(R.layout.agenda_item_fake, parent, false)
@@ -35,7 +36,7 @@ class AgendaRecyclerAdapter(
     }
 
     fun updateData(items: MutableList<Agenda_DataView>) {
-        agenda_list.clear()
+//        agenda_list.clear()
         agenda_list.addAll(items)
         notifyDataSetChanged()
     }

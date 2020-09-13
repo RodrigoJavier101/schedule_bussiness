@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.EJEMPLO_LIVE_CYCLE.EventLogger
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.EJEMPLO_LIVE_CYCLE.LifeCycleCustomObservation
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
@@ -59,8 +58,6 @@ class AgendaFragment : Fragment() {
         dataBase = RoomApplication.gestionDatabase!!
         dao = dataBase.getGestionDao()
         setUpViews(view)
-
-
         return view
     }
 
@@ -74,35 +71,27 @@ class AgendaFragment : Fragment() {
     }
 
     private fun setUpAddButton() {
-        floatingActionButton.setOnClickListener {
 
+        floatingActionButton.setOnClickListener {
             val dialogView = layoutInflater
                 .inflate(R.layout.add_asundo_agenda_layout_fake, null)
-            val agendaAsundoInput = dialogView.agenda_asunto_input
+            val agendaAsuntoInput = dialogView.agenda_asunto_input
             val dialogBuilder = AlertDialog
                 .Builder(requireContext())
-                .setTitle("Agrega una recomendación")
+                .setTitle("Agrega una Asunto a la Agenda")
                 .setView(dialogView)
                 .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
                 .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
 
-                    if (agendaAsundoInput.text?.isNotEmpty()!!) {
-
+                    if (agendaAsuntoInput.text?.isNotEmpty()!!) {
                         AsyncTask.execute {
-                            var recomm =
-                                view?.findViewById<TextInputEditText>(R.id.agendamiento_box)
-
-                            if (agendaAsundoInput != null) {
-                                dao.insertAgenda(createEntity(agendaAsundoInput.text.toString()))
-                            }
                             val newItems = createEntityListFromDatabase(dao.getAllFromAgendaTable())
+//                            var recomm =
+//                                view?.findViewById<TextInputEditText>(R.id.agendamiento_box)
 
-                            /* suspend {
-                                 adapter.updateData(newItems)
-                                 Log.d("UPDATE ADAPTER ---->", adapter.toString())
-                                 dialog.dismiss()
-                             }*/
-
+                            if (agendaAsuntoInput != null) {
+                                dao.insertAgenda(createEntity(agendaAsuntoInput.text.toString()))
+                            }
 
                             var thread = Thread() {
                                 fun run() {
@@ -126,6 +115,7 @@ class AgendaFragment : Fragment() {
                 }
             dialogBuilder.create().show()
         }
+
     }
 
     private fun createEntity(a_a: String): Agenda_Entity {
