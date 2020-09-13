@@ -21,10 +21,10 @@ class IngresosFragment : Fragment() {
     ): View? {
         ingresosViewModel =
             ViewModelProviders.of(this).get(IngresosViewModel::class.java)
-        val view = inflater.inflate(R.layout.fragment_ingresos, container, false)
-        val textView: TextView = view.findViewById(R.id.text_ingresos)
+        var view = inflater.inflate(R.layout.fragment_ingresos, container, false)
+//        val textView: TextView = view.findViewById(R.id.text_ingresos)
         ingresosViewModel.text_.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+//            textView.text = it
         })
 
         return view

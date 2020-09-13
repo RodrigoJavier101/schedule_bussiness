@@ -16,10 +16,10 @@
             android:id="@+id/nav_gastos"
             android:icon="@drawable/gastos"
             android:title="@string/menu_gastos" />
-        <item
-            android:id="@+id/nav_agenda"
-            android:icon="@drawable/agenda"
-            android:title="@string/menu_agenda" />
+<!--        <item-->
+        <!--            android:id="@+id/nav_agenda"-->
+        <!--            android:icon="@drawable/agenda"-->
+        <!--            android:title="@string/menu_agenda" />-->
         <item
             android:id="@+id/nav_admin"
             android:icon="@drawable/admin"
