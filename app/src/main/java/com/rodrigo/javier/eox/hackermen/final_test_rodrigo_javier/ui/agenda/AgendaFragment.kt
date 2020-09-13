@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement.runOnUiThread
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.EJEMPLO_LIVE_CYCLE.EventLogger
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.EJEMPLO_LIVE_CYCLE.LifeCycleCustomObservation
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.gestion_data_view.Agenda_DataView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AgendaRecyclerAdapter
@@ -29,7 +31,6 @@ import kotlinx.android.synthetic.main.add_asundo_agenda_layout_fake.view.*
 class AgendaFragment : Fragment() {
 
     private lateinit var agendaViewModel: AgendaViewModel
-
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: AgendaRecyclerAdapter
     private lateinit var dataBase: GestionDatabase
@@ -50,12 +51,16 @@ class AgendaFragment : Fragment() {
         agendaViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 
-            dataBase = RoomApplication.gestionDatabase!!
-            dao = dataBase.getGestionDao()
-            setUpViews(view)
-            setUpAddButton()
         })
-//        setSupportActionBar(toolbar)
+
+        val observer = LifeCycleCustomObservation(lifecycle, EventLogger())
+        lifecycle.addObserver(observer)
+
+        dataBase = RoomApplication.gestionDatabase!!
+        dao = dataBase.getGestionDao()
+        setUpViews(view)
+
+
         return view
     }
 
@@ -63,11 +68,8 @@ class AgendaFragment : Fragment() {
         recycler = view.findViewById(R.id.rv_asunto_agenda_list)
         recycler.layoutManager = LinearLayoutManager(context)
         floatingActionButton = view.findViewById(R.id.fab)
+        setUpAddButton()
         adapter = AgendaRecyclerAdapter(mutableListOf(), requireContext())
-        Log.d(
-            ":X:X:Lista desde el ADAPTER:X:XX:X:.....",
-            adapter.itemCount.toString()
-        )
         recycler.adapter = adapter
     }
 
@@ -94,10 +96,13 @@ class AgendaFragment : Fragment() {
                                 dao.insertAgenda(createEntity(agendaAsundoInput.text.toString()))
                             }
                             val newItems = createEntityListFromDatabase(dao.getAllFromAgendaTable())
-                            Log.d(
-                                ":X:X:Lista de la base de datos:X:XX:X:.....",
-                                newItems.toString()
-                            )
+
+                            /* suspend {
+                                 adapter.updateData(newItems)
+                                 Log.d("UPDATE ADAPTER ---->", adapter.toString())
+                                 dialog.dismiss()
+                             }*/
+
 
                             var thread = Thread() {
                                 fun run() {
@@ -110,10 +115,7 @@ class AgendaFragment : Fragment() {
                                             }
                                         }
                                     } catch (e: InterruptedException) {
-                                        Log.d(
-                                            ":Exception SESAMO:.....",
-                                            e.printStackTrace().toString()
-                                        )
+
                                     }
                                 }
                             }

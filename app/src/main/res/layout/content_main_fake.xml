@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:gravity="center_horizontal"
-        android:text="NONE"
+        android:text="content view fake abajo el recycler view"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

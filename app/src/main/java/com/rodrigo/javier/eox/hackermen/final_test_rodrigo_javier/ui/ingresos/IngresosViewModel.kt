@@ -9,5 +9,5 @@ class IngresosViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
         value = "This is INGRESOS Fragment"
     }
-    val text: LiveData<String> = _text
+    val text_: LiveData<String> = _text
 }

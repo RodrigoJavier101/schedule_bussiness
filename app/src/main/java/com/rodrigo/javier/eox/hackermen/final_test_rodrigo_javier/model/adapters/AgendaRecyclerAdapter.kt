@@ -1,6 +1,7 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,9 @@ class AgendaRecyclerAdapter(
         )
     }
 
-    override fun getItemCount(): Int = agenda_list.size
+    override fun getItemCount(): Int {
+        return agenda_list.size
+    }
 
     override fun onBindViewHolder(
         holder: AgendaViewHolder, position:
@@ -37,7 +40,7 @@ class AgendaRecyclerAdapter(
         notifyDataSetChanged()
     }
 
-    class AgendaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class AgendaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val agenda_box = view.findViewById<TextView>(R.id.agendamiento_box)
     }
 }

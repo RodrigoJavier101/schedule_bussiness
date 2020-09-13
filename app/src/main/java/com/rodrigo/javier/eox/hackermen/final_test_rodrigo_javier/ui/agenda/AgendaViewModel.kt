@@ -10,4 +10,8 @@ class AgendaViewModel : ViewModel() {
         value = "This is AGENDA Fragment"
     }
     val text: LiveData<String> = _text
+
+    val currentName: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
 }

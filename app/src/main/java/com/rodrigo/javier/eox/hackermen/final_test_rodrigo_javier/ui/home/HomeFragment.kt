@@ -2,6 +2,7 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.home
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,12 +63,11 @@ class HomeFragment : Fragment() {
                     json = response.body()!!
                     lbl_dolar.text = json.dolar.valor.toString()
                     lbl_euro.text = json.euro.valor.toString()
-                    lbl_euro.text = json.euro.valor.toString()
                     lbl_uf.text = json.uf.valor.toString()
                     lbl_utm.text = json.utm.valor.toString()
                     lbl_desempleo.text = json.tasa_desempleo.valor.toString() + "%"
                 } catch (t: Throwable) {
-lbl_desempleo.text = t.message
+                    Log.d("ERROR capa 8 --->", t.message.toString())
                 }
             }
 

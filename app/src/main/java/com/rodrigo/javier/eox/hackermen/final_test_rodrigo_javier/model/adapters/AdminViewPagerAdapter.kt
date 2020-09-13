@@ -3,6 +3,7 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+/*
 
 class AdminViewPagerAdapter(fragment_manager: FragmentManager) : FragmentPagerAdapter(fragment_manager) {
 
@@ -13,9 +14,11 @@ class AdminViewPagerAdapter(fragment_manager: FragmentManager) : FragmentPagerAd
         return fragment_list.size
     }
 
-    /**
+    */
+/**
      * Return the Fragment associated with a specified position.
-     */
+     *//*
+
     override fun getItem(position: Int): Fragment {
         return fragment_list[position]
     }
@@ -29,4 +32,4 @@ class AdminViewPagerAdapter(fragment_manager: FragmentManager) : FragmentPagerAd
         return title_list[position]
     }
 
-}
+}*/

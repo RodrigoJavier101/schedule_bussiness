@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_error"
+    android:background="#dddaaa"
     android:orientation="vertical"
     tools:context=".ui.admin_.AdminFragment">
 
@@ -21,15 +21,16 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="NONE"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:tabMode="scrollable"
+        app:tabTextColor="#ddd" />
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_admin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:soundEffectsEnabled="true"
         android:textAlignment="center">
 
-    </androidx.viewpager.widget.ViewPager>
+    </androidx.viewpager2.widget.ViewPager2>
 
 </LinearLayout>
