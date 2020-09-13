@@ -83,12 +83,9 @@ class AdminFragment : Fragment() {
                 when (position) {
                     0 -> tab.text = "Estadisticas_VP"
                     1 -> tab.text = "Clientes_VP"
-//                    2 -> tab.text = "Proveedores_VP"
+                    2 -> tab.text = "Proveedores_VP"
                 }
             }).attach()
-
-//        var view_pager_admin = view.findViewById<ViewPager>(R.id.view_pager_admin)
-//        view_pager_admin.adapter = view_pager_adapter
 
     }
 
@@ -101,15 +98,13 @@ class AdminFragment : Fragment() {
 
     private inner class AdminViewPagerAdapter(fm: FragmentManager?, lifecycle: Lifecycle) :
         FragmentStateAdapter(fm!!, lifecycle) {
-        private val int_items = 5
+        private val int_items = 3
         override fun createFragment(position: Int): Fragment {
             var fragment: Fragment? = null
             when (position) {
                 0 -> fragment = Admin_Estadisticas_Fragment.newInstance()//ViewPagerFragment()
                 1 -> fragment = Admin_Clientes_Fragment.newInstance()//ViewPagerFragment()
-//                2 -> fragment = Admin_Proveedores_Fragment.newInstance()//ViewPagerFragment()
-//                3 -> fragment = ViewPagerFragment()
-//                4 -> fragment = ViewPagerFragment()
+                2 -> fragment = Admin_Proveedores_Fragment.newInstance()//ViewPagerFragment()
             }
             return fragment!!
         }
