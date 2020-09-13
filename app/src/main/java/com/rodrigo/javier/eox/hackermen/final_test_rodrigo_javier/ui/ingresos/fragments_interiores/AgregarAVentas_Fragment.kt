@@ -116,25 +116,4 @@ class AgregarAVentas_Fragment : Fragment() {
 //        }
 //        return dataList
 //}
-
-
-//    private fun createEntity(a_a: String): Agenda_Entity {
-//        return Agenda_Entity(asunto_agenda = a_a)
-//    }
-
-//    private fun createEntityListFromDatabase(registros_db: List<Agenda_Entity>):
-//            MutableList<Agenda_DataView> {
-//        val dataList = mutableListOf<Agenda_DataView>()
-//        if (registros_db.isNotEmpty()) {
-//            for (entity in registros_db) {
-//                val dataView = Agenda_DataView(
-//                    entity.id_agenda,
-//                    entity.fecha_programada.toString(),
-//                    entity.asunto_agenda
-//                )
-//                dataList.add(dataView)
-//            }
-//        }
-//        return dataList
-//    }
 }

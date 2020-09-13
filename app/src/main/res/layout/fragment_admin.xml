@@ -15,16 +15,6 @@
         app:tabGravity="fill"
         app:tabMode="fixed" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lbl_frag_adm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="NONE"
-        android:textAlignment="center"
-        app:tabMode="scrollable"
-        app:tabTextColor="#ddd" />
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_admin"
         android:layout_width="match_parent"

@@ -1,4 +1,5 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.gestion_data_view
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view
+
 
 
 //var userSellings = UserSellings()
@@ -10,11 +11,10 @@ data class User_DataView(
 )
 
 data class Productos_DataView(
-    var id_producto: Int,
-    var nombre_producto: String,
-    var precio_producto: Int
+    var id_producto: Int = 0,
+    var nombre_producto: String = "NONE",
+    var precio_producto: Int = 0
 )
-
 
 data class Ventas_DataView(
     var id_ventas: Int,

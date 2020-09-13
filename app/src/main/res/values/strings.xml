@@ -42,7 +42,7 @@
     <string name="action_fab">Sincronizando con la Nube</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_ingresos">Ingresos</string>
+    <string name="menu_ingresos">Ventas</string>
     <string name="menu_gastos">Gastos</string>
     <string name="menu_agenda">Agenda</string>
     <string name="menu_admin">Admin</string>

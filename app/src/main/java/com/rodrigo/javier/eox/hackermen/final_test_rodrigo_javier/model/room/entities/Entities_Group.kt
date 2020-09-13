@@ -76,7 +76,7 @@ data class Gastos_Entity(
 )
 
 @Entity(tableName = "clientes_table")
-data class Clientes_Entity(
+data class Clientes_DataView(
     @PrimaryKey(autoGenerate = true)
     var id_clientes: Int,
     var nombre_cliente: String,

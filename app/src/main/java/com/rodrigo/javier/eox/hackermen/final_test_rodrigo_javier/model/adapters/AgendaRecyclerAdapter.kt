@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.gestion_data_view.Agenda_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Agenda_DataView
 
 class AgendaRecyclerAdapter(
     private var agenda_list: MutableList<Agenda_DataView>,

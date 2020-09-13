@@ -8,11 +8,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Productos_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.*
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.ListadoInventarioAdapter
 
 class IngresosFragment : Fragment() {
 
     private lateinit var ingresosViewModel: IngresosViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

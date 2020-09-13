@@ -1,10 +1,10 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
 
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.Proveedores_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Proveedores_DataView
 
 
 /*Ejemplo de 5 proveedores para pruebas*/
-var proveedor_1 = Proveedores_Entity(
+var proveedor_1 = Proveedores_DataView(
     0,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -18,7 +18,7 @@ var proveedor_1 = Proveedores_Entity(
     "recoleta 3000, recoleta"
 )
 
-var proveedor_2 = Proveedores_Entity(
+var proveedor_2 = Proveedores_DataView(
     1,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -32,7 +32,7 @@ var proveedor_2 = Proveedores_Entity(
     "recoleta 3000, recoleta"
 )
 
-var proveedor_3 = Proveedores_Entity(
+var proveedor_3 = Proveedores_DataView(
     2,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -46,7 +46,7 @@ var proveedor_3 = Proveedores_Entity(
     "recoleta 3000, recoleta"
 )
 
-var proveedor_4 = Proveedores_Entity(
+var proveedor_4 = Proveedores_DataView(
     3,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
@@ -60,7 +60,7 @@ var proveedor_4 = Proveedores_Entity(
     "recoleta 3000, recoleta"
 )
 
-var proveedor_5 = Proveedores_Entity(
+var proveedor_5 = Proveedores_DataView(
     4,
     "Maria",
     /*verificar si es correcto en la sintaxis*/
