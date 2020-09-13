@@ -1,18 +1,13 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ingresos.fragments_interiores
 
-import android.content.DialogInterface
-import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AgendaRecyclerAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDatabase
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
@@ -21,7 +16,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Roo
 class AgregarAVentas_Fragment : Fragment() {
 
     private lateinit var recycler: RecyclerView
-    private lateinit var adapter: AgendaRecyclerAdapter
+//    private lateinit var adapter: AgendaRecyclerAdapter
     private lateinit var dataBase: GestionDatabase
     private lateinit var dao: GestionDao
     private lateinit var floatingActionButton: FloatingActionButton

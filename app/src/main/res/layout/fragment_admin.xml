@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:tabGravity="fill"
-        app:tabMode="fixed" />
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="#ddaacc"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_admin"

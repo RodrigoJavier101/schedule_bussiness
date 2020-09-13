@@ -37,7 +37,40 @@ class Listado_Fragment : Fragment() {
     }
 
     private fun llenadoListaProductos(): ArrayList<Productos_DataView> {
-        return arrayListOf(producto_1, producto_2, producto_3, producto_4, producto_5)
+        return arrayListOf(
+            producto_1,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_2,
+            producto_3,
+            producto_4,
+            producto_5
+        )
     }
 
     companion object {

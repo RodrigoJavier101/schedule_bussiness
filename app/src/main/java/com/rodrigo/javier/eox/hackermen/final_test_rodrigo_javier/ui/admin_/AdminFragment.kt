@@ -56,30 +56,15 @@ class AdminFragment : Fragment() {
                     lifecycle
                 )
                 )
-//        view_pager_adapter = AdminViewPagerAdapter(requireActivity().supportFragmentManager)
-
-        /* (view_pager_adapter as AdminViewPagerAdapter).addFragment(
-             Admin_Estadisticas_Fragment.newInstance(),
-             "Estadísticas"
-         )
-
-         (view_pager_adapter as AdminViewPagerAdapter).addFragment(
-             Admin_Clientes_Fragment.newInstance(),
-             "Clientes"
-         )
-         (view_pager_adapter as AdminViewPagerAdapter).addFragment(
-             Admin_Proveedores_Fragment.newInstance(),
-             "Proveedores"
-         )*/
 
         TabLayoutMediator(
             tab_layout_admin!!,
             view_pager_admin!!,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
-                    0 -> tab.text = "Estadisticas_VP"
-                    1 -> tab.text = "Clientes_VP"
-                    2 -> tab.text = "Proveedores_VP"
+                    0 -> tab.text = "Estadisticas"
+                    1 -> tab.text = "Clientes"
+                    2 -> tab.text = "Proveedores"
                 }
             }).attach()
 
@@ -98,9 +83,9 @@ class AdminFragment : Fragment() {
         override fun createFragment(position: Int): Fragment {
             var fragment: Fragment? = null
             when (position) {
-                0 -> fragment = Admin_Estadisticas_Fragment.newInstance()//ViewPagerFragment()
-                1 -> fragment = Admin_Clientes_Fragment.newInstance()//ViewPagerFragment()
-                2 -> fragment = Admin_Proveedores_Fragment.newInstance()//ViewPagerFragment()
+                0 -> fragment = Admin_Estadisticas_Fragment.newInstance()
+                1 -> fragment = Admin_Clientes_Fragment.newInstance()
+                2 -> fragment = Admin_Proveedores_Fragment.newInstance()
             }
             return fragment!!
         }
