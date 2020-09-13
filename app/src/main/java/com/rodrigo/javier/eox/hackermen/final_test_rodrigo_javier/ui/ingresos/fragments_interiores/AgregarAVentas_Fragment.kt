@@ -115,12 +115,8 @@ class AgregarAVentas_Fragment : Fragment() {
 //            }
 //        }
 //        return dataList
-//
-//        val fab: FloatingActionButton = view.findViewById<FloatingActionButton>(R.id.fab_agregar)
-//        fab.setOnClickListener { view ->
-//            Toast.makeText(this, R.string.action_fab, Toast.LENGTH_SHORT).show()
-//        }
-//    }
+//}
+
 
 //    private fun createEntity(a_a: String): Agenda_Entity {
 //        return Agenda_Entity(asunto_agenda = a_a)
