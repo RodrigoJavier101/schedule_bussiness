@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.gastos
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.gastos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.AdminFragment
 
 class GastosFragment : Fragment() {
 

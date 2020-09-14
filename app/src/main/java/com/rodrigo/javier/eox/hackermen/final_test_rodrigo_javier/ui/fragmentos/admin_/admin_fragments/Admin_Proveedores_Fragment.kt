@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.admin_fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.AdminProveedoresRecyclerAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.AdminProveedoresRecyclerAdapter
 
 
 class Admin_Proveedores_Fragment : Fragment() {

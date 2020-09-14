@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,9 +15,10 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Clientes_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Estadisticas_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.admin_fragments.Admin_Proveedores_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.AdminViewPagerAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.admin_fragments.Admin_Clientes_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.admin_fragments.Admin_Estadisticas_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.admin_fragments.Admin_Proveedores_Fragment
 
 class AdminFragment : Fragment() {
 
@@ -77,8 +78,11 @@ class AdminFragment : Fragment() {
         }
     }
 
-    private inner class AdminViewPagerAdapter(fm: FragmentManager?, lifecycle: Lifecycle) :
-        FragmentStateAdapter(fm!!, lifecycle) {
+    /*private inner class AdminViewPagerAdapter(
+        fragmentManager: FragmentManager?,
+        lifecycle: Lifecycle
+    ) :
+        FragmentStateAdapter(fragmentManager!!, lifecycle) {
         private val int_items = 3
         override fun createFragment(position: Int): Fragment {
             var fragment: Fragment? = null
@@ -93,5 +97,5 @@ class AdminFragment : Fragment() {
         override fun getItemCount(): Int {
             return int_items
         }
-    }
+    }*/
 }

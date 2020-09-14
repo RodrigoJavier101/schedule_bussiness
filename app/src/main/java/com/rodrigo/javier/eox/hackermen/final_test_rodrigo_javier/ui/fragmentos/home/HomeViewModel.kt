@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.home
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,20 +1,15 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ingresos
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Productos_DataView
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.*
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.ListadoInventarioAdapter
 
-class IngresosFragment : Fragment() {
+class VentasFragment : Fragment() {
 
     private lateinit var ingresosViewModel: IngresosViewModel
 
@@ -36,8 +31,8 @@ class IngresosFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): IngresosFragment {
-            var newIngresosFragment = IngresosFragment()
+        fun newInstance(): VentasFragment {
+            var newIngresosFragment = VentasFragment()
             return newIngresosFragment
         }
     }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#dddaaa"
     android:orientation="vertical"
-    tools:context=".ui.admin_.AdminFragment">
+    tools:context=".ui.fragmentos.admin_.AdminFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_admin"

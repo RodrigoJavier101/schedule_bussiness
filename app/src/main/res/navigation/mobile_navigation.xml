@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.home.HomeFragment"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_ingresos"
-        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ingresos.IngresosFragment"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.VentasFragment"
         android:label="@string/menu_ingresos"
         tools:layout="@layout/fragment_ingresos" />
 
     <fragment
         android:id="@+id/nav_gastos"
-        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.gastos.GastosFragment"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.gastos.GastosFragment"
         android:label="@string/menu_gastos"
         tools:layout="@layout/fragment_gastos" />
 
     <fragment
         android:id="@+id/nav_admin"
-        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.admin_.AdminFragment"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.AdminFragment"
         android:label="@string/menu_admin"
         tools:layout="@layout/fragment_admin" />
 

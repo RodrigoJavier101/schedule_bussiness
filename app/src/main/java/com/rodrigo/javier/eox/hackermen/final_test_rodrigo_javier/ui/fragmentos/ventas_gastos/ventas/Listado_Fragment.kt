@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ingresos.fragments_interiores
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,13 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Productos_DataView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.*
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.adapters.ListadoInventarioAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.Ventas_Invent_Adapter
 
 class Listado_Fragment : Fragment() {
 
     private lateinit var recycler_inventario: RecyclerView
-    private lateinit var adapter: ListadoInventarioAdapter
+    private lateinit var adapter: Ventas_Invent_Adapter
     private lateinit var listado_productos: ArrayList<Productos_DataView>
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +31,7 @@ class Listado_Fragment : Fragment() {
         recycler_inventario.hasFixedSize()
 
         recycler_inventario.layoutManager = LinearLayoutManager(requireContext())
-        recycler_inventario.adapter = ListadoInventarioAdapter(llenadoListaProductos())
+        recycler_inventario.adapter = Ventas_Invent_Adapter(llenadoListaProductos())
 
 
         return view
