@@ -1,10 +1,10 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -26,19 +26,14 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-//        val fab: FloatingActionButton = findViewById(R.id.fab)
-//        fab.setOnClickListener { view ->
-//            Toast.makeText(this, R.string.action_fab, Toast.LENGTH_SHORT).show()
-//        }
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_ingresos, R.id.nav_gastos, R.id.nav_admin
+                R.id.nav_home, R.id.nav_ventas_gastos, R.id.nav_ruta, R.id.nav_admin
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -58,6 +53,8 @@ class MainActivity : AppCompatActivity() {
 
     fun inItemClick(item: MenuItem) {
         Toast.makeText(this, "LoginOut", Toast.LENGTH_SHORT).show()
+        var intent = Intent(this, LoginActivity::class.java)
+        startActivity((intent))
     }
 
 

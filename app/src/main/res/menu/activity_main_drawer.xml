@@ -9,17 +9,14 @@
             android:icon="@drawable/home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_ingresos"
+            android:id="@+id/nav_ventas_gastos"
             android:icon="@drawable/ingresos"
             android:title="@string/menu_ingresos" />
         <item
-            android:id="@+id/nav_gastos"
+            android:id="@+id/nav_ruta"
             android:icon="@drawable/gastos"
-            android:title="@string/menu_gastos" />
-<!--        <item-->
-        <!--            android:id="@+id/nav_agenda"-->
-        <!--            android:icon="@drawable/agenda"-->
-        <!--            android:title="@string/menu_agenda" />-->
+            android:title="@string/menu_ruta" />
+
         <item
             android:id="@+id/nav_admin"
             android:icon="@drawable/admin"

@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Productos_DataView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo.*
@@ -29,7 +31,9 @@ class Listado_Fragment : Fragment() {
 
         recycler_inventario = view.findViewById(R.id.recycler_listado_inventario)
         recycler_inventario.hasFixedSize()
-
+        var divider =
+            DividerItemDecoration(recycler_inventario.context, 1)
+        recycler_inventario.addItemDecoration(divider)
         recycler_inventario.layoutManager = LinearLayoutManager(requireContext())
         recycler_inventario.adapter = Ventas_Invent_Adapter(llenadoListaProductos())
 

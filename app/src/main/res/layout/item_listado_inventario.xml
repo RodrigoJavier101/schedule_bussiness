@@ -10,10 +10,10 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:padding="5dp"
+        android:layout_margin="@dimen/fab_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/lbl_item_inventario"
@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center_horizontal"
-            android:textAlignment="center" />
+            android:text="none"
+            android:textAlignment="center"
+            android:textSize="15sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/lbl_precio_item_inventario"
@@ -29,8 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center_horizontal"
-            android:textAlignment="center" />
-
+            android:text="none"
+            android:textAlignment="center"
+            android:textSize="22sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Gestión/Negocios</string>
+    <string name="login_name">LOGIN</string>
     <string name="text_btn_verde">ingresos</string>
     <string name="text_btn_rojo">gastos</string>
     <string name="text_titulo_home">Home</string>
@@ -42,8 +43,8 @@
     <string name="action_fab">Sincronizando con la Nube</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_ingresos">Ventas</string>
-    <string name="menu_gastos">Gastos</string>
+    <string name="menu_ingresos">Ventas/Gastos</string>
+    <string name="menu_ruta">Ruta</string>
     <string name="menu_agenda">Agenda</string>
     <string name="menu_admin">Admin</string>
 

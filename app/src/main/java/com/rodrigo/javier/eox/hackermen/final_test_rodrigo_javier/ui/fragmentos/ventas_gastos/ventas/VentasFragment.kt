@@ -11,7 +11,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
 class VentasFragment : Fragment() {
 
-    private lateinit var ingresosViewModel: IngresosViewModel
+    private lateinit var ingresosViewModel: VentasViewModel
 
 
     override fun onCreateView(
@@ -20,8 +20,8 @@ class VentasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         ingresosViewModel =
-            ViewModelProviders.of(this).get(IngresosViewModel::class.java)
-        var view = inflater.inflate(R.layout.fragment_ingresos, container, false)
+            ViewModelProviders.of(this).get(VentasViewModel::class.java)
+        var view = inflater.inflate(R.layout.fragment_ventas, container, false)
 //        val textView: TextView = view.findViewById(R.id.text_ingresos)
         ingresosViewModel.text_.observe(viewLifecycleOwner, Observer {
 //            textView.text = it

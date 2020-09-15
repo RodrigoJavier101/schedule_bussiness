@@ -4,10 +4,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ruta.RutaFragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.gastos.GastosFragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.Listado_Fragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.VentasFragment
 
-class VentGastAdapter(
+class VentasGastosAdapter(
     fragmentManager: FragmentManager?,
     lifecycle: Lifecycle
 ) :
