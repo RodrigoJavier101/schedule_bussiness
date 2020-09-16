@@ -1,8 +1,6 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 //var userSellings = UserSellings()
 
@@ -76,7 +74,7 @@ data class Gastos_Entity(
 )
 
 @Entity(tableName = "clientes_table")
-data class Clientes_DataView(
+data class Clientes_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_clientes: Int,
     var nombre_cliente: String,
@@ -97,11 +95,10 @@ data class Proveedores_Entity(
     var domicilio_proveedor: String,
 )
 
-@Entity(tableName = "agenda_table")
-data class Agenda_Entity(
-    @PrimaryKey(autoGenerate = true)
-    var id_agenda: Int = 0,
-    var fecha_programada: String = "ENTITY",
-    @ColumnInfo(name = "asunto_agenda")
-    var asunto_agenda: String = "none"
+@Entity(tableName = "ruta_table")
+data class Ruta_Entity(
+    var id_ruta_punto_entrega: Int,
+    @Embedded
+    @Ignore
+    var datos_cliente: Clientes_Entity
 )

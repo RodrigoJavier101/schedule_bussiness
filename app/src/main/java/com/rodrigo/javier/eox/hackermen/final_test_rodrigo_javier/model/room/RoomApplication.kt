@@ -5,7 +5,7 @@ import androidx.room.Room
 
 class RoomApplication : Application() {
     companion object {
-        var gestionDatabase: GestionDatabase? = null
+       lateinit var gestionDatabase: GestionDatabase
     }
 
     override fun onCreate() {

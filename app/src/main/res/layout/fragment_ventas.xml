@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="6"
-        android:background="#ddd000"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="5dp">
@@ -25,7 +24,7 @@
             android:textAlignment="center" />
 
         <fragment
-            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.Listado_Fragment"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores.Listado_Fragment"
             android:id="@+id/fragment_ingresos_listado_inventario"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -49,7 +48,7 @@
             android:textAlignment="center" />
 
         <fragment
-            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.AgregarAVentas_Fragment"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores.AgregarAVentas_Fragment"
             android:id="@+id/fragment_ingresos_listado_agregado"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

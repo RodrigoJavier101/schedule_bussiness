@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,12 +11,13 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDatabase
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.FromListaToAgregados_Adapter
 
 
 class AgregarAVentas_Fragment : Fragment() {
 
     private lateinit var recycler: RecyclerView
-//    private lateinit var adapter: AgendaRecyclerAdapter
+    private lateinit var adapter: FromListaToAgregados_Adapter
     private lateinit var dataBase: GestionDatabase
     private lateinit var dao: GestionDao
     private lateinit var floatingActionButton: FloatingActionButton

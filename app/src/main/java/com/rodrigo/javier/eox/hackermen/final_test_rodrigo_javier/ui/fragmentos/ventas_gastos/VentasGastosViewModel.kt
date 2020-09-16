@@ -10,4 +10,5 @@ class VentasGastosViewModel : ViewModel() {
         value = "This is ADMIN Fragment"
     }
     val liveData: LiveData<String> = mutable
+
 }
