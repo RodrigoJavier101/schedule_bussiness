@@ -1,8 +1,18 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room
 
 import androidx.room.*
 
 //var userSellings = UserSellings()
+
+@Entity(tableName = "ruta_table")
+data class Ruta_Entity(
+    @PrimaryKey(autoGenerate = true)
+    var id_ruta_punto_entrega: Int,
+
+    @Embedded
+    var datos_cliente: Clientes_Entity
+)
+
 
 @Entity(tableName = "user_table")
 data class User_Entity(
@@ -15,9 +25,9 @@ data class User_Entity(
 @Entity(tableName = "productos_table")
 data class Productos_Entity(
     @PrimaryKey(autoGenerate = true)
-    var id_producto: Int,
-    var nombre_producto: String,
-    var precio_producto: Int
+    var id_producto: Int = 0,
+    var nombre_producto: String = "default",
+    var precio_producto: Int = 0
 )
 
 //@Entity(
@@ -95,10 +105,3 @@ data class Proveedores_Entity(
     var domicilio_proveedor: String,
 )
 
-@Entity(tableName = "ruta_table")
-data class Ruta_Entity(
-    var id_ruta_punto_entrega: Int,
-    @Embedded
-    @Ignore
-    var datos_cliente: Clientes_Entity
-)

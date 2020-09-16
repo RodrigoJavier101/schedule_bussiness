@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
 
         btn_login.setOnClickListener {
             fetchMainActivity(applicationContext)
+            finish()
         }
 
     }

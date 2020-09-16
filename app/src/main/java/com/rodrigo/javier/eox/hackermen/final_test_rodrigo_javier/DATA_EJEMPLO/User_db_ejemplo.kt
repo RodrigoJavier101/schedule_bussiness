@@ -1,6 +1,6 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
 
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.User_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_DataView
 
 
 /*Creacion de 4 User para pruebas*/

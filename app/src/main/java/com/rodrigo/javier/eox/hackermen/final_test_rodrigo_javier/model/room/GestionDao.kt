@@ -2,7 +2,6 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.*
 
 @Dao
 interface GestionDao {

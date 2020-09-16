@@ -4,17 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.app.NotificationCompat
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Productos_DataView
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Productos_DataViewHeader
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.VentasViewModel
-import kotlinx.android.synthetic.main.header_listado_inventario.view.*
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_DataView
 import kotlinx.android.synthetic.main.item_listado_inventario.view.*
 
 class Ventas_Invent_Adapter(var lista_productos: ArrayList<Productos_DataView>) :
@@ -47,6 +39,7 @@ class Ventas_Invent_Adapter(var lista_productos: ArrayList<Productos_DataView>) 
 //            item_view.lbl_item_inventario.text = item.nombre_producto
 //            item_view.lbl_precio_item_inventario.text = item.precio_producto.toString()
 //        }
+
         var lbl_item_inventario: TextView
         var lbl_precio_item_inventario: TextView
 
@@ -60,7 +53,7 @@ class Ventas_Invent_Adapter(var lista_productos: ArrayList<Productos_DataView>) 
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        type_item_or_header: Int
+        item: Int
     ): Ventas_Invent_Adapter.ItemViewHolder {
 
 //        if (type_item_or_header == TYPE_HEADER) {
@@ -81,6 +74,7 @@ class Ventas_Invent_Adapter(var lista_productos: ArrayList<Productos_DataView>) 
 
     override fun onBindViewHolder(holder: Ventas_Invent_Adapter.ItemViewHolder, position: Int) {
 //        holder.bindItems(lista_productos[position])
+
         val data = lista_productos[position]
 //        if (holder is HeaderViewHolder) {
 //            (holder as HeaderViewHolder).item_view.lbl_header_item_inventario.setText(data.nombre_producto)

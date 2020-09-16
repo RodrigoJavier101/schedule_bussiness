@@ -1,6 +1,6 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
 
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Proveedores_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Proveedores_DataView
 
 
 /*Ejemplo de 5 proveedores para pruebas*/

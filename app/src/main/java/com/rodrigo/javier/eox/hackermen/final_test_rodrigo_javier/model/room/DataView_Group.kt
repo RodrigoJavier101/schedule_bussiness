@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room
 
 
 //var userSellings = UserSellings()
@@ -10,16 +10,16 @@ data class User_DataView(
 )
 
 data class Productos_DataView(
-    var id_producto: Int = 0,
-    var nombre_producto: String = "NONE",
+    var id_producto: Int = 2222,
+    var nombre_producto: String = "Data-View-Dafault",
     var precio_producto: Int = 0
 )
 
-data class Productos_DataViewHeader(
+/*data class Productos_DataViewHeader(
     var id_producto: Int = 0,
     var nombre_producto: String = "Producto",
     var precio_producto: String = "Precio"
-)
+)*/
 
 data class Ventas_DataView(
     var id_ventas: Int,

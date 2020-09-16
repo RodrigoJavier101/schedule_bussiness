@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.data_view.Productos_DataView
-import org.w3c.dom.Text
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_DataView
 
 class FromListaToAgregados_Adapter(
     private val productos: MutableList<Productos_DataView>
@@ -19,8 +18,8 @@ class FromListaToAgregados_Adapter(
     inner class ProductoViewHolder(view_: View) :
         RecyclerView.ViewHolder(view_) {
 
-        val producto_item: TextView = view_.findViewById(R.id.lbl_item_agregar_ventas)
-        val producto_valor: TextView = view_.findViewById(R.id.lbl_precio_item_agregar_ventas)
+        val producto_item: TextView = view_.findViewById(R.id.lbl_agregar_item_inventario)
+        val producto_valor: TextView = view_.findViewById(R.id.lbl_agregar_precio_item_inventario)
     }
 
     override fun onCreateViewHolder(

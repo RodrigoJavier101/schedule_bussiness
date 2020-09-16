@@ -49,7 +49,7 @@ class AgregarAVentas_Fragment : Fragment() {
 //    private fun setUpAddButton() {
 //        floatingActionButton.setOnClickListener {
 //            val dialogView = layoutInflater
-//                .inflate(R.layout.add_asundo_agenda_layout_fake, null)
+//                .inflate(R.layout.add_producto_dialog, null)
 //            val agendaAsuntoInput = dialogView.agenda_asunto_input
 //            val dialogBuilder = AlertDialog
 //                .Builder(requireContext())

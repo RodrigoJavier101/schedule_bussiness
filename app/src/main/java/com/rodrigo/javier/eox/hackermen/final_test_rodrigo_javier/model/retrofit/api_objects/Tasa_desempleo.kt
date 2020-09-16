@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.api_objects
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.api_objects
 
 import com.google.gson.annotations.SerializedName
 

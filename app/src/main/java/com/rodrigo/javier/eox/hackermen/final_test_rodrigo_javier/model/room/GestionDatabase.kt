@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.entities.*
 
 @Database(
     entities = [(User_Entity::class), (Productos_Entity::class), (Ventas_Entity::class), (Gastos_Entity::class),

@@ -19,10 +19,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/agenda_asunto_input"
+            android:id="@+id/nombre_producto_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="agrega" />
+            android:hint="agrega un producto" />
+
+       <!-- <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/precio_producto_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="precio al que lo venderás" />
+       -->
+
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
