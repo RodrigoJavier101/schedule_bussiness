@@ -103,94 +103,90 @@ class HomeFragment : Fragment() {
         call.cancel()
     }
 
-
     private fun setUpAddButton(view: View) {
         var btn_agregar = view.findViewById<Button>(R.id.btn_agregar_producto)
+
         btn_agregar.setOnClickListener {
-            val dialogView = layoutInflater
-                .inflate(R.layout.add_producto_dialog, null)
-            val producto_nombre_Input = dialogView.nombre_producto_input
-//            val producto_precio_Input = dialogView.precio_producto_input
-            val dialogBuilder = AlertDialog
-                .Builder(requireContext())
-                .setTitle("Agrega una Asunto a la Agenda")
-                .setView(dialogView)
-                .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-                .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
+            firstDialog()
+            secondDialog()
+        }
+    }
 
-                    if (producto_nombre_Input.text?.isNotEmpty()!!) {//&& producto_precio_Input.text?.isNotEmpty()!!) {
-                        AsyncTask.execute {
-//                            val newItems =
-//                                createEntityListFromDatabase(dao.getAllFromProductosTable())
+    private fun firstDialog() {
+        val dialogView = layoutInflater
+            .inflate(R.layout.add_producto_dialog, null)
+        val producto_nombre_Input = dialogView.nombre_producto_input
+        val producto_precio_Input = dialogView.precio_producto_input
+        val dialogBuilder = AlertDialog
+            .Builder(requireContext())
+            .setTitle("Agrega un Producto")
+            .setView(dialogView)
+            .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+            .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
 
-                            if (producto_nombre_Input != null) {// && producto_precio_Input != null) {
-                                dao.insertProductos(
-                                    insertProducto(
-                                        producto_nombre_Input.text.toString(),
-//                                        producto_precio_Input.text.toString()
-                                        "VALOR !!!"
-                                    )
+                if (producto_nombre_Input.text?.isNotEmpty()!! && producto_precio_Input.text?.isNotEmpty()!!) {
+
+                    AsyncTask.execute {
+                        if (producto_nombre_Input != null && producto_precio_Input != null) {
+                            dao.insertProductos(
+                                insertProducto(
+                                    producto_nombre_Input.text.toString(),
+                                    producto_precio_Input.text.toString()
                                 )
-                            }
+                            )
+                        }
 
-                            var thread = Thread() {
-                                fun run() {
-                                    try {
-                                        synchronized(this) {
-                                            Thread.sleep(500)
-                                            UiThreadStatement.runOnUiThread {
-                                                //                                                adapter.updateData(newItems)
-                                                Toast.makeText(
-                                                    context,
-                                                    "Item en la tabla 'PRODUCTOS'",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
-                                                dialog.dismiss()
-                                            }
+                        var thread = Thread() {
+                            fun run() {
+                                try {
+                                    synchronized(this) {
+                                        Thread.sleep(500)
+                                        UiThreadStatement.runOnUiThread {
+                                            //                                                adapter.updateData(newItems)
+                                            Toast.makeText(
+                                                context,
+                                                "Item en la tabla 'PRODUCTOS'",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                            dialog.dismiss()
                                         }
-                                    } catch (e: InterruptedException) {
-                                        Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                                     }
+                                } catch (e: InterruptedException) {
+                                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                                 }
                             }
-                            thread.start()
                         }
-                    } else {
-                        Toast.makeText(
-                            context,
-                            "Los campos no deben estar vacíos",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        thread.start()
                     }
-
+                } else {
+                    Toast.makeText(
+                        context,
+                        "El campo no debe estar vacío",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-            dialogBuilder.create().show()
+            }
+        dialogBuilder.create().show()
+    }
+
+    private fun secondDialog() {
+
+    }
+
+    fun insertProducto(nombre_prod: String, precio_prod: String): Productos_Entity {
+        var precio: String
+
+        if (precio_prod != "" || precio_prod != " ") {
+            precio = precio_prod
+        } else {
+            precio = "0"
         }
 
-    }
-
-    private fun insertProducto(nombre_prod: String, precio_prod: String): Productos_Entity {
-        return Productos_Entity(
-            nombre_producto = nombre_prod,
-//            precio_producto = precio_prod.toInt()
-            precio_producto = 10000
+        var producto = Productos_Entity(
+            nombre_producto = nombre_prod, precio_producto = precio.toInt()
         )
+
+        return producto
     }
 
-    /* private fun createEntityListFromDatabase(registros_db: LiveData<List<Productos_Entity>>):
-             MutableList<Productos_DataView> {
-         val dataList = mutableListOf<Productos_DataView>()
-         if (registros_db.isNotEmpty()) {
-             for (entity in registros_db) {
-                 val dataView = Productos_DataView(
-                     entity.id_producto,
-                     entity.nombre_producto,
-                     entity.precio_producto
-                 )
-                 dataList.add(dataView)
-             }
-         }
-         return dataList
-     }
- */
 }

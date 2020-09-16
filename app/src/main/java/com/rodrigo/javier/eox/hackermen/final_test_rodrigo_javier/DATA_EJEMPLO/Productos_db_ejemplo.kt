@@ -1,12 +1,13 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.DataEjemplo
 
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
 
 
 /*Ejemplo con 5 productos para pruebas*/
 /*los ítems no debes repetirse ----> evitar la duplicación de nombre de producto (relacionando por
 ejemplo id -> nombre del producto)*/
-var producto_1 = Productos_DataView(
+var producto_1 = Productos_Entity(
 11111,
 /*el txt debe ser tratado para quedar en minúsculas al entrar a la db*/
 "calcetines",

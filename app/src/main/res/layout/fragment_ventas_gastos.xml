@@ -11,9 +11,9 @@
         android:id="@+id/tab_layout_ventas_gastos"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:tabGravity="fill"
+        app:tabGravity="center"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="#99399399" />
+        app:tabSelectedTextColor="#daaaddaa" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_ventas_gastos"

@@ -7,9 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
 import kotlinx.android.synthetic.main.item_listado_inventario.view.*
 
-class Ventas_Invent_Adapter(var lista_productos: ArrayList<Productos_DataView>) :
+class Ventas_Invent_Adapter(var lista_productos: List<Productos_Entity>) :
     RecyclerView.Adapter<Ventas_Invent_Adapter.ItemViewHolder>() {
 
 
