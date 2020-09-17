@@ -37,7 +37,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Gestion de Negocios</string>
-    <string name="nav_header_subtitle">Apoyo en la administración \ny gestión de tus negocios.</string>
+    <string name="nav_header_subtitle">Mejor que una simple libreta.</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Logout</string>
     <string name="action_fab">Sincronizando con la Nube</string>
