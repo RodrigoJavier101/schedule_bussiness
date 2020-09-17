@@ -16,7 +16,6 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.Ad
 
 class AdminFragment : Fragment() {
 
-    private lateinit var adminViewModel: AdminViewModel
     var view_pager_adapter: FragmentPagerAdapter? = null
     private var tab_layout_admin: TabLayout? = null
     private var view_pager_admin: ViewPager2? = null
@@ -27,12 +26,6 @@ class AdminFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_admin, container, false)
-        adminViewModel =
-            ViewModelProviders.of(this).get(AdminViewModel::class.java)
-
-        adminViewModel.liveData.observe(viewLifecycleOwner, Observer {
-
-        })
         initFragmentsAdmin(view)
         return view
     }

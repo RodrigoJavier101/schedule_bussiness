@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 
 class Listado_Fragment : Fragment() {
 
-    private lateinit var model: ViewModelEspecial
     private val adapter = Lista_Inventario_Adapter(mutableListOf())
     private var listado_productos: MutableList<Productos_DataView> = mutableListOf()
     private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
@@ -31,7 +30,6 @@ class Listado_Fragment : Fragment() {
         val view: View = inflater.inflate(R.layout.listado_inventario_fragment, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
 
-//        model = ViewModelProviders.of(this).get(ViewModelEspecial::class.java)
         recycler_inventario = view.findViewById(R.id.recycler_listado_inventario)
         recycler_inventario.adapter = adapter
         recycler_inventario.hasFixedSize()
@@ -40,23 +38,8 @@ class Listado_Fragment : Fragment() {
         recycler_inventario.addItemDecoration(divider)
         recycler_inventario.layoutManager = LinearLayoutManager(requireContext())
 
-/*
-        var card = view.findViewById<CardView>(R.id.lbl_total_ventas)
-        card.setOnClickListener { view ->
-            Toast.makeText(context, "evento click en el cardview", Toast.LENGTH_SHORT).show()
-        }
-*/
-
-//        model.todos_los_productos.observe(viewLifecycleOwner, Observer { item ->
-//            listado_productos.let {
-//                adapter.itemCount
-//            }
-//        })
-
-
         CoroutineScope(Dispatchers.IO).launch {
             val productos_ddbb = createProductListFromDatabase()
-//            updateAgregarVenta(productos_ddbb)
 
             recycler_inventario.adapter =
                 Lista_Inventario_Adapter(productos_ddbb)

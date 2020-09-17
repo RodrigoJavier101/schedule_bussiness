@@ -29,7 +29,6 @@ import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
     private lateinit var service: ApiRetrofit
     private var call: Call<Json4Kotlin_Base>? = null
     private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
@@ -40,16 +39,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-        })
 
         callIndicators()
-//            suspend { setUpAddButton(root) }
+
         setUpAddButton(root)
         return root
     }

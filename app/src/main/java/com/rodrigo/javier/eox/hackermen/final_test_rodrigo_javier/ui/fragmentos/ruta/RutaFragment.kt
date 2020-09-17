@@ -15,7 +15,6 @@ import retrofit2.Call
 
 class RutaFragment : Fragment() {
 
-    private lateinit var rutaViewModel: RutaViewModel
     private lateinit var service: ApiRetrofit
     private lateinit var call: Call<Json4Kotlin_Base>
 
@@ -26,14 +25,7 @@ class RutaFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
-        rutaViewModel =
-            ViewModelProviders.of(this).get(RutaViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_ruta, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_home)
-        rutaViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-        })
-
 
         return view
     }
