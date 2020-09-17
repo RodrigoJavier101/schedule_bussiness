@@ -129,7 +129,6 @@ class HomeFragment : Fragment() {
                                     producto_precio_Input.text.toString()
                                 )
                             )
-
                         }
 
                         var thread = Thread() {

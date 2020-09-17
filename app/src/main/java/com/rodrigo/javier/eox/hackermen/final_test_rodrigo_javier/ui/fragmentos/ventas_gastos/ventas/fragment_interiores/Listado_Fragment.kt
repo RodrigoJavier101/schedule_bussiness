@@ -1,6 +1,7 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,9 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.Lista_Inventario_Adapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_model.ViewModelEspecial
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class Listado_Fragment : Fragment() {
 
@@ -53,11 +57,15 @@ class Listado_Fragment : Fragment() {
 //            }
 //        })
 
-        suspend {
-            recycler_inventario.adapter =
-                Lista_Inventario_Adapter(createProductListFromDatabase())
-        }
 
+        CoroutineScope(Dispatchers.IO).launch {
+            val productos_ddbb = createProductListFromDatabase()
+//            updateAgregarVenta(productos_ddbb)
+
+            recycler_inventario.adapter =
+                Lista_Inventario_Adapter(productos_ddbb)
+
+        }
         return view
     }
 
@@ -65,15 +73,14 @@ class Listado_Fragment : Fragment() {
     companion object {
         fun newInstance(): Listado_Fragment {
             var newListado_Fragment = Listado_Fragment()
-
             return newListado_Fragment
         }
     }
 
-    private fun createProductListFromDatabase():
+    suspend fun createProductListFromDatabase():
             List<Productos_Entity> {
 
-        var registros_db = dao.getAllFromProductosTable()
+        val registros_db = dao.getAllFromProductosTable()
 
         return registros_db
     }
