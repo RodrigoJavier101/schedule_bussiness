@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_model.VentasViewModel
 
 class VentasFragment : Fragment() {
 

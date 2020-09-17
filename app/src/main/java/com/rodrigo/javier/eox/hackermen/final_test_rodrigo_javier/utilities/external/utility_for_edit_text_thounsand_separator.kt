@@ -12,6 +12,7 @@ class NumberTextWatcher(et: EditText) : TextWatcher {
     private val dfnd: DecimalFormat
     private var hasFractionalPart: Boolean
     private val et: EditText
+
     override fun afterTextChanged(s: Editable) {
         et.removeTextChangedListener(this)
         try {
@@ -40,8 +41,9 @@ class NumberTextWatcher(et: EditText) : TextWatcher {
     }
 
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-        hasFractionalPart =
+           hasFractionalPart =
             if (s.toString().contains(df.decimalFormatSymbols.decimalSeparator.toString())) {
                 true
             } else {

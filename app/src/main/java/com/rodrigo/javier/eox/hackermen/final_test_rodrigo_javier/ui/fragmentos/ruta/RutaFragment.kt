@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.ApiRetrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.api_objects.Json4Kotlin_Base
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_model.RutaViewModel
 import retrofit2.Call
 
 class RutaFragment : Fragment() {

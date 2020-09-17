@@ -5,20 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.AdminViewPagerAdapter
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.admin_fragments.Admin_Clientes_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.admin_fragments.Admin_Estadisticas_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.admin_.admin_fragments.Admin_Proveedores_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_model.AdminViewModel
 
 class AdminFragment : Fragment() {
 
