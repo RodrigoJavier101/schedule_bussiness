@@ -21,7 +21,6 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_model.HomeViewModel
 import kotlinx.android.synthetic.main.add_producto_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
