@@ -30,6 +30,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lbl_id_item_listado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="NONE"
+                android:textAlignment="center" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/lbl_item_inventario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

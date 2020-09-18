@@ -76,6 +76,9 @@ interface GestionDao {
     fun deleteProductos(productos: Array<out Productos_Entity>)
 
     @Delete
+    fun deleteProducto(producto: Productos_Entity)
+
+    @Delete
     fun deleteVentas(venta: Ventas_Entity)
 
     @Delete

@@ -1,7 +1,6 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListener
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerLongClick
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerShortClick
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.Lista_Inventario_Adapter
 import kotlinx.android.synthetic.main.item_listado_inventario.view.*
@@ -19,10 +19,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class Listado_Fragment : Fragment(), CardViewListener {
+class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListenerLongClick {
 
     private lateinit var adapter: Lista_Inventario_Adapter
-    private var listado_productos: MutableList<Productos_DataView> = mutableListOf()
+
+    //    private var listado_productos: MutableList<Productos_DataView> = mutableListOf()
     private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
     private lateinit var recycler_inventario: RecyclerView
 
@@ -43,7 +44,11 @@ class Listado_Fragment : Fragment(), CardViewListener {
 
         CoroutineScope(Dispatchers.IO).launch {
             val productos_ddbb = createProductListFromDatabase()
-            adapter = Lista_Inventario_Adapter(productos_ddbb, this@Listado_Fragment)
+            adapter = Lista_Inventario_Adapter(
+                productos_ddbb,
+                this@Listado_Fragment,
+                this@Listado_Fragment
+            )
             recycler_inventario.adapter = adapter
         }
         return view
@@ -65,12 +70,23 @@ class Listado_Fragment : Fragment(), CardViewListener {
         return registros_db
     }
 
-    override fun cardViewClicked(view: View, position: Int) {
+    override fun cardViewClickedShort(view: View, position: Int) {
         Toast.makeText(
             context,
-            view.lbl_item_inventario.text.toString() + " - " + view.lbl_precio_item_inventario.text.toString(),
+            view.lbl_id_item_listado.text.toString() + " - " + view.lbl_item_inventario.text.toString() + " - " + view.lbl_precio_item_inventario.text.toString(),
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    override fun cardViewClickedLong(producto: Productos_Entity) {
+        deleteItem(producto)
+        Toast.makeText(context, "Eliminado ${producto.nombre_producto}", Toast.LENGTH_SHORT).show()
+    }
+
+    fun deleteItem(producto: Productos_Entity) {
+        CoroutineScope(Dispatchers.IO).launch {
+            dao.deleteProducto(producto)
+        }
     }
 
 }
