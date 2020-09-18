@@ -17,6 +17,7 @@
         app:tabIndicatorHeight="@dimen/fab_margin"
         app:tabMode="fixed"
         app:tabPadding="0dp"
+        app:tabRippleColor="@color/colorPrimaryDark"
         app:tabSelectedTextColor="#daaaddaa" />
 
     <androidx.viewpager2.widget.ViewPager2

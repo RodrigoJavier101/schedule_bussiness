@@ -7,6 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.gastos.GastosFragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.VentasFragment
 
+/**
+ * ADAPTER ESPECIAL PARA EL VIEW PAGER VENTAS/GASTOS*/
 class VentasGastosAdapter(
     fragmentManager: FragmentManager?,
     lifecycle: Lifecycle

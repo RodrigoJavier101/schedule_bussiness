@@ -9,7 +9,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Proveedores_Entity
 import kotlinx.android.synthetic.main.item_admin_proveedores.view.*
 
-class AdminProveedoresRecyclerAdapter(
+class AdminProveedoresAdapter(
     private var lista_proveeodres: MutableList<Proveedores_Entity>,
     context: Context
 ) :
