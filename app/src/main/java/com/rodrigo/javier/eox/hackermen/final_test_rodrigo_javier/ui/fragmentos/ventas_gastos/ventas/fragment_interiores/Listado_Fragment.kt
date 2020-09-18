@@ -6,18 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerLongClick
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerShortClick
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.*
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.Lista_Inventario_Adapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.ListaViewModel
 import kotlinx.android.synthetic.main.item_listado_inventario.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListenerLongClick {
 
@@ -26,7 +31,7 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
     //    private var listado_productos: MutableList<Productos_DataView> = mutableListOf()
     private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
     private lateinit var recycler_inventario: RecyclerView
-
+    private lateinit var model: ListaViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,7 +39,8 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
     ): View? {
         val view: View = inflater.inflate(R.layout.listado_inventario_fragment, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
-
+        model =
+            ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
         recycler_inventario = view.findViewById(R.id.recycler_listado_inventario)
         recycler_inventario.hasFixedSize()
         val divider =
@@ -70,12 +76,8 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
         return registros_db
     }
 
-    override fun cardViewClickedShort(view: View, position: Int) {
-        Toast.makeText(
-            context,
-            view.lbl_id_item_listado.text.toString() + " - " + view.lbl_item_inventario.text.toString() + " - " + view.lbl_precio_item_inventario.text.toString(),
-            Toast.LENGTH_SHORT
-        ).show()
+    override fun cardViewClickedShort(producto: Productos_Entity, view: View, position: Int) {
+        model.setSelected(producto)
     }
 
     override fun cardViewClickedLong(producto: Productos_Entity) {

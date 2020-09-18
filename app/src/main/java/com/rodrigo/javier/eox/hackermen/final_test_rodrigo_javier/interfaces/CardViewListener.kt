@@ -4,7 +4,7 @@ import android.view.View
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
 
 interface CardViewListenerShortClick {
-    fun cardViewClickedShort(view: View, position: Int)
+    fun cardViewClickedShort(producto: Productos_Entity,view: View, position: Int)
 }
 
 interface CardViewListenerLongClick{

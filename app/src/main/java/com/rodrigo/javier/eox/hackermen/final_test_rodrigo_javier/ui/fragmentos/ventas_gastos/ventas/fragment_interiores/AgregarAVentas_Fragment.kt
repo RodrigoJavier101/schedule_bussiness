@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDatabase
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.FromListaToAgregados_Adapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.ListaViewModel
 
 
 class AgregarAVentas_Fragment : Fragment() {
@@ -21,19 +24,26 @@ class AgregarAVentas_Fragment : Fragment() {
     private lateinit var dataBase: GestionDatabase
     private lateinit var dao: GestionDao
     private lateinit var floatingActionButton: FloatingActionButton
+    private lateinit var lista_productos: ArrayList<Productos_Entity>
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        var view: View = inflater.inflate(R.layout.agregar_a_ventas_fragment, container, false)
-
+        val view: View = inflater.inflate(R.layout.agregar_a_ventas_fragment, container, false)
 
         dataBase = RoomApplication.gestionDatabase!!
         dao = dataBase.getGestionDao()
-//        setUpViews(view)
+
+
+        recycler = view.findViewById(R.id.recyclerview_agregados_a_ventas)
+        recycler.hasFixedSize()
+        val divider = DividerItemDecoration(recycler.context, 1)
+        recycler.addItemDecoration(divider)
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+        lista_productos = arrayListOf()
+
         return view
     }
 
@@ -43,6 +53,19 @@ class AgregarAVentas_Fragment : Fragment() {
 
             return newAgregarAVentas_Fragment
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val viewModel: ListaViewModel =
+            ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
+        viewModel.getSelected()?.observe(viewLifecycleOwner) { item ->
+            Toast.makeText(context, item.nombre_producto, Toast.LENGTH_SHORT).show()
+            lista_productos.add(item)
+            adapter = FromListaToAgregados_Adapter(lista_productos)
+            recycler.adapter = adapter
+        }
+
     }
 
 

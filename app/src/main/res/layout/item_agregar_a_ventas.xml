@@ -24,6 +24,16 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lbl_agregar_id_inventario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center_horizontal"
+                android:text="none"
+                android:textAlignment="center"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/lbl_agregar_item_inventario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

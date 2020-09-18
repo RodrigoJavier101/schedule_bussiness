@@ -43,6 +43,7 @@ class Lista_Inventario_Adapter(
 
             item_view.setOnClickListener {
                 listenerCardViewShort.cardViewClickedShort(
+                    producto = lista_productos.get(this.layoutPosition),
                     item_view.cardview_item_inventario,
                     this.layoutPosition
                 )

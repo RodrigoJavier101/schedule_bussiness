@@ -6,41 +6,48 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_DataView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
+import kotlinx.android.synthetic.main.item_agregar_a_ventas.view.*
 
 class FromListaToAgregados_Adapter(
-    private val productos: MutableList<Productos_DataView>
-) : RecyclerView.Adapter<FromListaToAgregados_Adapter.ProductoViewHolder>() {
+    private val productos: ArrayList<Productos_Entity>
+) : RecyclerView.Adapter<FromListaToAgregados_Adapter.AgregarViewHolder>() {
 
-    private var producto: List<Productos_DataView> =
-        emptyList<Productos_DataView>()
-
-    inner class ProductoViewHolder(view_: View) :
+    inner class AgregarViewHolder(view_: View) :
         RecyclerView.ViewHolder(view_) {
 
-        val producto_item: TextView = view_.findViewById(R.id.lbl_agregar_item_inventario)
-        val producto_valor: TextView = view_.findViewById(R.id.lbl_agregar_precio_item_inventario)
+        var lbl_id_producto: TextView
+        var lbl_nombre_producto: TextView
+        var lbl_precio_producto: TextView
+
+        init {
+            lbl_id_producto = view_.lbl_agregar_id_inventario
+            lbl_nombre_producto = view_.lbl_agregar_item_inventario
+            lbl_precio_producto = view_.lbl_agregar_precio_item_inventario
+
+        }
+
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FromListaToAgregados_Adapter.ProductoViewHolder {
+    ): FromListaToAgregados_Adapter.AgregarViewHolder {
         val view =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_agregar_a_ventas, parent, false)
 
-        return ProductoViewHolder(view)
+        return AgregarViewHolder(view)
     }
 
-
     override fun onBindViewHolder(
-        holder: FromListaToAgregados_Adapter.ProductoViewHolder,
+        holder: FromListaToAgregados_Adapter.AgregarViewHolder,
         position: Int
     ) {
-        val currente: Productos_DataView = productos[position]
-        holder.producto_item.text = currente.nombre_producto
-        holder.producto_valor.text = currente.precio_producto.toString()
+        val data: Productos_Entity = productos[position]
+        holder.lbl_id_producto.text = data.id_producto.toString()
+        holder.lbl_nombre_producto.text = data.nombre_producto
+        holder.lbl_precio_producto.text = data.precio_producto.toString()
     }
 
     override fun getItemCount(): Int {
