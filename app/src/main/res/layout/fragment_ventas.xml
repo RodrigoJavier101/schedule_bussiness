@@ -16,11 +16,11 @@
         android:padding="5dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/listado_de_inventario"
+            android:id="@+id/lbl_productos_disponibles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Listado de inventario"
+            android:text="Productos disponibles"
             android:textAlignment="center" />
 
         <fragment
@@ -40,7 +40,7 @@
         android:padding="5dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/items_agregar_vendidos"
+            android:id="@+id/lbl_items_agregar_vendidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
