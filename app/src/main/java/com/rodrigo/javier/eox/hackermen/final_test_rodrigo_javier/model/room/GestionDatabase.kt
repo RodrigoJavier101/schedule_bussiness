@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(
     entities = [(User_Entity::class), (Productos_Entity::class), (Ventas_Entity::class), (Gastos_Entity::class),
         (Clientes_Entity::class), (Proveedores_Entity::class), (Ruta_Entity::class)],
-    version = 1, exportSchema = false
+    version = 2, exportSchema = false
 )
 
 /*@Database(

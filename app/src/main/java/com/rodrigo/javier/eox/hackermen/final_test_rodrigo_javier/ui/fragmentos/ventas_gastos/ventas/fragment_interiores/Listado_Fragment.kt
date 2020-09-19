@@ -76,7 +76,7 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
         }
     }
 
-    fun createProductListFromDatabase():
+    suspend fun createProductListFromDatabase():
             List<Productos_Entity> {
 
         val registros_db = dao.getAllFromProductosTable()

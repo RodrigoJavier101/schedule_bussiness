@@ -86,12 +86,12 @@ data class Gastos_Entity(
 @Entity(tableName = "clientes_table")
 data class Clientes_Entity(
     @PrimaryKey(autoGenerate = true)
-    var id_clientes: Int,
-    var nombre_cliente: String,
-    var mail_cliente: String,
-    var telefono_cliente: String,
-    var status_cliente: String,
-    var domicilio_cliente: String,
+    var id_clientes: Int = 0,
+    var nombre_cliente: String = "NN",
+    var mail_cliente: String = "@gregar mail",
+    var telefono_cliente: Long = 0,
+    var status_cliente: String = "no coment",
+    var domicilio_cliente: String = "calle",
 )
 
 @Entity(tableName = "proveedores_table")
