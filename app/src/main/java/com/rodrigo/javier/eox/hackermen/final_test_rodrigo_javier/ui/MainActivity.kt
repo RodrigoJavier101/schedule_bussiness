@@ -26,7 +26,6 @@ import java.lang.Thread.sleep
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var sharedPreferences: SharedPreferences
 
     @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        sharedPreferences =
-            getSharedPreferences(CommonFunctions.fileNameShPref, Context.MODE_PRIVATE)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -48,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        readFromSHPref()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -62,14 +59,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun readFromSHPref() {
-        Toast.makeText(
-            this,
-            sharedPreferences.getString("NombreUsuario", "") +" - "+
-            sharedPreferences.getString("PasswordUsuario",""),
-            Toast.LENGTH_LONG
-        ).show()
-    }
+
 
     fun inItemClick(item: MenuItem) {
         var intent = Intent(this, LoginActivity::class.java)

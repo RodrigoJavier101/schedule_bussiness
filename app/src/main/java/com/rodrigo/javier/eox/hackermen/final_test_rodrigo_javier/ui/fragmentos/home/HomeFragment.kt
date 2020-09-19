@@ -1,6 +1,8 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.home
 
+import android.content.Context
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +23,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
 import kotlinx.android.synthetic.main.add_producto_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
@@ -32,6 +35,8 @@ class HomeFragment : Fragment() {
     private lateinit var service: ApiRetrofit
     private var call: Call<Json4Kotlin_Base>? = null
     private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
+    private lateinit var sharedPreferences: SharedPreferences
+    lateinit var btnAdmin: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,9 +45,28 @@ class HomeFragment : Fragment() {
 
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-
+        sharedPreferences = requireActivity().getSharedPreferences(
+            CommonFunctions.fileNameShPref,
+            Context.MODE_PRIVATE
+        )
+        btnAdmin = root.findViewById(R.id.btn_admin_)
         callIndicators()
+        readFromSHPref()
         return root
+    }
+
+    fun readFromSHPref() {
+        Toast.makeText(
+            context,
+            sharedPreferences.getString("NombreUsuario", "") + " - " +
+                    sharedPreferences.getString("PasswordUsuario", ""),
+            Toast.LENGTH_LONG
+        ).show()
+        if (sharedPreferences.getString("NombreUsuario", "").equals("Admin")) {
+            btnAdmin.visibility = View.VISIBLE
+        } else {
+            btnAdmin.visibility = View.GONE
+        }
     }
 
     fun callIndicators() {

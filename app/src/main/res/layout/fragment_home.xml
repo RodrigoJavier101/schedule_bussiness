@@ -214,7 +214,14 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_admin_"
+                android:layout_width="90dp"
+                android:layout_height="70dp"
+                android:fontFamily="@font/robotomono_regular"
+                android:text="gestionar\nusuarios"
+                android:textSize="10sp"
+                android:visibility="gone" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

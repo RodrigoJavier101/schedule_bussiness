@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(
     entities = [(User_Entity::class), (Productos_Entity::class), (Ventas_Entity::class), (Gastos_Entity::class),
         (Clientes_Entity::class), (Proveedores_Entity::class), (Ruta_Entity::class)],
-    version = 2, exportSchema = false
+    version = 3, exportSchema = false
 )
 abstract class GestionDatabase : RoomDatabase() {
     abstract fun getGestionDao(): GestionDao
@@ -25,7 +25,7 @@ abstract class GestionDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     GestionDatabase::class.java,
-                    "check_database"
+                    "gestion_database"
                 ).build()
                 INSTANCE = instance
                 return instance

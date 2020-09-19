@@ -7,7 +7,7 @@ import androidx.room.*
 interface GestionDao {
 
     @Query("select * from user_table")
-    fun getAllFromUserTable(): LiveData<List<User_Entity>>
+    fun getAllFromUserTable(): List<User_Entity>
 
     @Query("select * from productos_table")
     fun getAllFromProductosTable(): List<Productos_Entity>
