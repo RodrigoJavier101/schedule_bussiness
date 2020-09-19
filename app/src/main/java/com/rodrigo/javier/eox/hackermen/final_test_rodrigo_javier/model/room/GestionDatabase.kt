@@ -10,13 +10,6 @@ import androidx.room.RoomDatabase
         (Clientes_Entity::class), (Proveedores_Entity::class), (Ruta_Entity::class)],
     version = 2, exportSchema = false
 )
-
-/*@Database(
-    entities = [(Productos_DataView::class)],
-    version = 1,
-    exportSchema = false
-
-)*/
 abstract class GestionDatabase : RoomDatabase() {
     abstract fun getGestionDao(): GestionDao
 

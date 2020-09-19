@@ -23,10 +23,10 @@
     <!--entradas del spinner de userlogin-->
     <string name="encabezado_spinner_login">Selecciona</string>
     <string-array name="spinner_login">
+        <item>Administrador</item>
         <item>Fabiola</item>
         <item>Michelle</item>
         <item>Kathy</item>
-        <item>Otras personas agregadas</item>
     </string-array>
 
     <!--BOILERPLATE DRAWER NAV-->

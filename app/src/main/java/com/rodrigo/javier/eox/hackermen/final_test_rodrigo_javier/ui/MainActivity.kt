@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
         readFromSHPref()
     }
 
@@ -73,7 +72,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun inItemClick(item: MenuItem) {
-        Toast.makeText(this, "LoginOut", Toast.LENGTH_SHORT).show()
         var intent = Intent(this, LoginActivity::class.java)
         startActivity((intent))
         finish()
