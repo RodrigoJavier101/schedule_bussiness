@@ -42,8 +42,6 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         callIndicators()
-
-        setUpAddButton(root)
         return root
     }
 
@@ -90,77 +88,4 @@ class HomeFragment : Fragment() {
         super.onDestroy()
         call!!.cancel()
     }
-
-    private fun setUpAddButton(view: View) {
-        var btn_agregar = view.findViewById<Button>(R.id.btn_agregar_producto)
-
-        btn_agregar.setOnClickListener {
-            generateDialog()
-        }
-    }
-
-    private fun generateDialog() {
-        val dialogView = layoutInflater
-            .inflate(R.layout.add_producto_dialog, null)
-        val producto_nombre_Input = dialogView.nombre_producto_input
-        val producto_precio_Input = dialogView.precio_producto_input
-        val dialogBuilder = AlertDialog
-            .Builder(requireContext())
-            .setTitle("Agrega un Producto")
-            .setView(dialogView)
-            .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-            .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
-
-                if (producto_nombre_Input.text?.isNotEmpty()!! && producto_precio_Input.text?.isNotEmpty()!!) {
-
-                    AsyncTask.execute {
-                        if (producto_nombre_Input != null && producto_precio_Input != null) {
-                            dao.insertProductos(
-                                insertProducto(
-                                    producto_nombre_Input.text.toString(),
-                                    producto_precio_Input.text.toString()
-                                )
-                            )
-                        }
-
-                        var thread = Thread() {
-                            fun run() {
-                                try {
-                                    synchronized(this) {
-                                        Thread.sleep(500)
-                                        UiThreadStatement.runOnUiThread {
-                                            //                                                adapter.updateData(newItems)
-                                            Toast.makeText(
-                                                context,
-                                                "Item en la tabla 'PRODUCTOS'",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                            dialog.dismiss()
-                                        }
-                                    }
-                                } catch (e: InterruptedException) {
-                                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
-                                }
-                            }
-                        }
-                        thread.start()
-                    }
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Ningún campo debe estar vacío",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        dialogBuilder.create().show()
-    }
-
-    fun insertProducto(nombre_prod: String, precio_prod: String): Productos_Entity {
-        var producto = Productos_Entity(
-            nombre_producto = nombre_prod, precio_producto = precio_prod.toInt()
-        )
-        return producto
-    }
-
 }

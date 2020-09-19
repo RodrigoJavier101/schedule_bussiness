@@ -213,13 +213,6 @@
                 android:text="limpiar ruta"
                 android:textSize="10sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_agregar_producto"
-                android:layout_width="90dp"
-                android:layout_height="70dp"
-                android:fontFamily="@font/robotomono_regular"
-                android:text="agregar proucto"
-                android:textSize="10sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

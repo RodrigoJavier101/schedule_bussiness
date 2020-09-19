@@ -96,12 +96,11 @@
             android:id="@+id/text_edit_password"
             android:layout_width="150dp"
             android:layout_height="50dp"
+            android:layout_marginTop="25dp"
             android:cursorVisible="true"
-            android:textCursorDrawable="@drawable/puntero"
             android:inputType="numberPassword"
             android:maxLength="4"
             android:paddingLeft="10dp"
-            android:layout_marginTop="25dp"
             android:textAlignment="center"
             android:textSize="20dp" />
 
