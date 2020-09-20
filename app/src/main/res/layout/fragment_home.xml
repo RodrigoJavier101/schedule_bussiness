@@ -220,8 +220,8 @@
                 android:layout_height="70dp"
                 android:fontFamily="@font/robotomono_regular"
                 android:text="gestionar\nusuarios"
-                android:textSize="10sp"
-                android:visibility="gone" />
+                android:textSize="10sp" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
