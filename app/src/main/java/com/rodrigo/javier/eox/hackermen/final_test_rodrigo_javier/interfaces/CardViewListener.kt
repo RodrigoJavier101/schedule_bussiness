@@ -2,11 +2,19 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces
 
 import android.view.View
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_Entity
 
 interface CardViewListenerShortClick {
-    fun cardViewClickedShort(producto: Productos_Entity,view: View, position: Int)
+    /*para listar una venta*/
+    fun cardViewClickedShort(producto: Productos_Entity, view: View, position: Int)
 }
 
-interface CardViewListenerLongClick{
+interface CardViewListenerLongClick {
+    /*para eliminar item producto*/
     fun cardViewClickedLong(producto: Productos_Entity)
+}
+
+interface ItemUserClickListener {
+    /*para actualizar user*/
+    fun itemUserUpdateClick(user:User_Entity)
 }

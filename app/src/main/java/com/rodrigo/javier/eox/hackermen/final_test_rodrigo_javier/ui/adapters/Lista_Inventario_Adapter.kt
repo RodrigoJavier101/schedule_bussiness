@@ -16,7 +16,7 @@ class Lista_Inventario_Adapter(
     private val lista_productos: List<Productos_Entity>,
     private var listenerCardViewShort: CardViewListenerShortClick,
     private var listenerCardViewLong: CardViewListenerLongClick
-) :
+    ) :
     RecyclerView.Adapter<Lista_Inventario_Adapter.ProductoViewHolder>() {
 
     inner class ProductoViewHolder(var item_view: View) : RecyclerView.ViewHolder(item_view) {
@@ -40,7 +40,6 @@ class Lista_Inventario_Adapter(
             actionShort: CardViewListenerShortClick,
             actionLong: CardViewListenerLongClick
         ) {
-
             item_view.setOnClickListener {
                 listenerCardViewShort.cardViewClickedShort(
                     producto = lista_productos.get(this.layoutPosition),

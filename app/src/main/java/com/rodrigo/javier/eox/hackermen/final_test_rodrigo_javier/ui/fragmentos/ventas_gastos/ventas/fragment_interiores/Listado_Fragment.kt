@@ -33,11 +33,10 @@ import kotlinx.coroutines.launch
 class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListenerLongClick {
 
     private lateinit var adapter: Lista_Inventario_Adapter
-
-    //    private var listado_productos: MutableList<Productos_DataView> = mutableListOf()
     private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
     private lateinit var recycler_inventario: RecyclerView
     private lateinit var model: ListaViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -93,6 +93,7 @@ data class Clientes_Entity(
     var telefono_cliente: Long = 0,
     var status_cliente: String = "no coment",
     var domicilio_cliente: String = "calle",
+    var id_ruta: Int = 0,
 )
 
 @Entity(tableName = "proveedores_table")
