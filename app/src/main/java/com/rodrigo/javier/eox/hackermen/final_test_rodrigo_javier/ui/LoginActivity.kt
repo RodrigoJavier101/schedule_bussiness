@@ -3,11 +3,13 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import android.widget.Toast.LENGTH_LONG
+import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import com.google.android.material.textfield.TextInputEditText
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
@@ -37,31 +39,62 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
         sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
         btn_login.setOnClickListener {
             saveInSharedPreferences(it)
-            fetchMainActivity(applicationContext)
-            finish()
+//            fetchMainActivity(applicationContext)
+            validateUser()
+
         }
+    }
+
+    private fun validateUser() {
+        var passResp: Int = 0
+        var username = spinner_login.selectedItem.toString()
+        var listaUsers: List<User_Entity> = listOf()
+        var editloginpass = findViewById<EditText>(R.id.text_edit_password)
+        CoroutineScope(Dispatchers.IO).launch {
+            passResp = dao.getPasswordFromUserTable(username)
+
+            if (passResp.toString().equals(editloginpass.text.toString())) {
+                fetchMainActivity(applicationContext)
+                finish()
+            } else {
+                AsyncTask.execute {
+                    var thread = Thread() {
+                        fun run() {
+                            try {
+                                synchronized(this) {
+//                                    Thread.sleep(500)
+                                    UiThreadStatement.runOnUiThread {
+                                        Toast.makeText(
+                                            this@LoginActivity,
+                                            "pass no coincide",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
+                            } catch (e: InterruptedException) {
+                                Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_LONG)
+                                    .show()
+                            }
+                        }
+                    }
+                    thread.start()
+                }
+
+            }
+
+        }
+
     }
 
     private fun fillSpinner() {
         var users_list: List<User_Entity> = dao.getAllFromUserTable()
         var usersName: ArrayList<String> = arrayListOf()
-         users_list.forEach {
-             usersName.add(it.user_name)
-         }
+        users_list.forEach {
+            usersName.add(it.user_name)
+        }
 
         spinner_login.adapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, usersName)
-
-        /*spinner_login.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                Toast.makeText(this@LoginActivity, myStrings[p2], LENGTH_LONG).show()
-            }
-
-        }*/
     }
 
     fun initViews() {
@@ -116,4 +149,6 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
         }
 
     }
+
+
 }

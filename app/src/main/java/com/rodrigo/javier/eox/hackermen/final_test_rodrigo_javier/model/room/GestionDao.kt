@@ -9,6 +9,9 @@ interface GestionDao {
     @Query("select * from user_table")
     fun getAllFromUserTable(): List<User_Entity>
 
+    @Query("select password from user_table where user_name = :userName")
+    fun getPasswordFromUserTable(userName: String): Int
+
     @Query("select * from productos_table")
     fun getAllFromProductosTable(): List<Productos_Entity>
 
