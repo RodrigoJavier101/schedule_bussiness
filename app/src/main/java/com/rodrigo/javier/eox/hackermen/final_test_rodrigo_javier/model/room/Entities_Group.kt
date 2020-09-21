@@ -7,6 +7,7 @@ import androidx.room.*
 data class Ruta_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_ruta_punto_entrega: Int,
+    var fecha_ruta:String="0-0-0",
     @Embedded
     var datos_cliente: Clientes_Entity
 )

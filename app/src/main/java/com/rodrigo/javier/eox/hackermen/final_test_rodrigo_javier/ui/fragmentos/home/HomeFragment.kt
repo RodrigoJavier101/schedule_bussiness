@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,9 +26,11 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.SimpleAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.HomeAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
-import kotlinx.android.synthetic.main.add_producto_dialog.view.*
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.HomeViewModel
+import kotlinx.android.synthetic.main.add_agrega_user.view.*
+import kotlinx.android.synthetic.main.add_update_delete_user.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,8 +48,9 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     private lateinit var sharedPreferences: SharedPreferences
     lateinit var btnAdmin: Button
     lateinit var btnAgregarUser: Button
-    private lateinit var adapter: SimpleAdapter
+    private lateinit var adapter: HomeAdapter
     private lateinit var recyclerview: RecyclerView
+    private lateinit var model: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,6 +63,8 @@ class HomeFragment : Fragment(), ItemUserClickListener {
             CommonFunctions.fileNameShPref,
             Context.MODE_PRIVATE
         )
+        model =
+            ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
 
         recyclerview = root.findViewById(R.id.recycler_users)
         recyclerview.hasFixedSize()
@@ -66,13 +72,13 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         recyclerview.addItemDecoration(divider)
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-
+        var users_ddbb: List<User_Entity> = listOf()
         CoroutineScope(Dispatchers.IO).launch {
-            val users_ddbb = createUsersListFromDatabase()
-            adapter = SimpleAdapter(users_ddbb, this@HomeFragment)
+            users_ddbb = createUsersListFromDatabase()
+            adapter = HomeAdapter(users_ddbb, this@HomeFragment)
+
             recyclerview.adapter = adapter
         }
-
 
         btnAdmin = root.findViewById(R.id.btn_admin_)
         btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
@@ -90,15 +96,17 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun createUsersListFromDatabase(): List<User_Entity> {
-        val users_db = dao.getAllFromUserTable()
+
+        var users_db = dao.getAllFromUserTable()
+
         return users_db
     }
 
     private fun generateDialog() {
         val dialogView = layoutInflater
             .inflate(R.layout.add_agrega_user, null)
-        val producto_nombre_Input = dialogView.nombre_producto_input
-        val producto_precio_Input = dialogView.precio_producto_input
+        val nombreuser_Input = dialogView.nombre_user_input
+        val passwordInput = dialogView.password_input
         val dialogBuilder = AlertDialog
             .Builder(requireContext())
             .setTitle("Agrega un Usuario")
@@ -106,37 +114,38 @@ class HomeFragment : Fragment(), ItemUserClickListener {
             .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
             .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
 
-                if (producto_nombre_Input.text?.isNotEmpty()!! && producto_precio_Input.text?.isNotEmpty()!!) {
 
-                    AsyncTask.execute {
-                        if (producto_nombre_Input != null && producto_precio_Input != null) {
-                            /*dao.insertProductos(
+                if (nombreuser_Input.text?.isNotEmpty()!! && passwordInput.text?.isNotEmpty()!!) {
 
-                            )*/
+                    if (nombreuser_Input != null && passwordInput != null) {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            var user: User_Entity = User_Entity(
+                                user_name = nombreuser_Input.text.toString(),
+                                password = Integer.parseInt(passwordInput.text.toString())
+                            )
+                            dao.insertUsers(user)
                         }
-
-                        var thread = Thread() {
-                            fun run() {
-                                try {
-                                    synchronized(this) {
-                                        Thread.sleep(500)
-                                        UiThreadStatement.runOnUiThread {
-                                            //                                                adapter.updateData(newItems)
-                                            Toast.makeText(
-                                                context,
-                                                "Item en la tabla 'PRODUCTOS'",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                            dialog.dismiss()
+                        AsyncTask.execute {
+                            var thread = Thread() {
+                                fun run() {
+                                    try {
+                                        synchronized(this) {
+                                            Thread.sleep(500)
+                                            UiThreadStatement.runOnUiThread {
+                                                adapter.notifyDataSetChanged()
+                                                dialog.dismiss()
+                                            }
                                         }
+                                    } catch (e: InterruptedException) {
+                                        Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                                     }
-                                } catch (e: InterruptedException) {
-                                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                                 }
                             }
+                            thread.start()
                         }
-                        thread.start()
+
                     }
+
                 } else {
                     Toast.makeText(
                         context,
@@ -144,6 +153,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
             }
         dialogBuilder.create().show()
     }
@@ -214,13 +224,85 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun setVisibilityView(view: View) {
-
-        var recyclerAgregarUser = view.findViewById<RecyclerView>(R.id.recycler_users)
         btnAgregarUser.visibility = View.VISIBLE
-        recyclerAgregarUser.visibility = View.VISIBLE
+        recyclerview.visibility = View.VISIBLE
     }
 
     override fun itemUserUpdateClick(user: User_Entity) {
-        Toast.makeText(context, user.user_name, Toast.LENGTH_SHORT).show()
+        optionsAdmin(user)
     }
+
+    private fun optionsAdmin(user: User_Entity) {
+        if (user.user_name.equals("Admin")) {
+            Toast.makeText(context, "No se puede modificar el Admin", Toast.LENGTH_SHORT).show()
+        } else {
+            val dialogView = layoutInflater
+                .inflate(R.layout.add_update_delete_user, null)
+            val nombreuser_update_Input = dialogView.nombre_user_update_input
+            nombreuser_update_Input.setHint(user.user_name)
+            val password_updateInput = dialogView.password_update_input
+            password_updateInput.setHint(user.password.toString())
+
+            val dialogBuilder = AlertDialog
+                .Builder(requireContext())
+                .setTitle("Agrega Update or Delete User")
+                .setView(dialogView)
+                .setNegativeButton("Delete") { dialog: DialogInterface, _: Int ->
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        dao.deleteUsers(user)
+                    }
+
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Update") { dialog: DialogInterface, _: Int ->
+
+                    if (dialogView.nombre_user_update_input.text.toString()
+                            .isNotBlank() || dialogView.nombre_user_update_input.text.toString()
+                            .isNotEmpty()
+                    ) {
+                        user.user_name = dialogView.nombre_user_update_input.text.toString()
+                    }
+                    if (dialogView.password_update_input.text.toString()
+                            .isNotBlank() || dialogView.password_update_input.text.toString()
+                            .isNotEmpty()
+                    ) {
+                        user.password = dialogView.password_update_input.text.toString().toInt()
+                    }
+                    CoroutineScope(Dispatchers.IO).launch {
+                        dao.updateUsers(user)
+                    }
+                    if (nombreuser_update_Input.text?.isNotEmpty()!! && password_updateInput.text?.isNotEmpty()!!) {
+
+                        if (nombreuser_update_Input != null && password_updateInput != null) {
+
+                            AsyncTask.execute {
+                                var thread = Thread() {
+                                    fun run() {
+                                        try {
+                                            synchronized(this) {
+                                                Thread.sleep(500)
+                                                UiThreadStatement.runOnUiThread {
+                                                    adapter.notifyDataSetChanged()
+                                                    dialog.dismiss()
+                                                }
+                                            }
+                                        } catch (e: InterruptedException) {
+                                            Toast.makeText(context, e.message, Toast.LENGTH_LONG)
+                                                .show()
+                                        }
+                                    }
+                                }
+                                thread.start()
+                            }
+
+                        }
+
+                    }
+                }
+            dialogBuilder.create().show()
+        }
+    }
+
 }
+

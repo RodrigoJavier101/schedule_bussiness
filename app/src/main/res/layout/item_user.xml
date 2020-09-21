@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -14,7 +16,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/lbl_item_nombre_user"
-        android:layout_width="250sp"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="NONE"

@@ -43,11 +43,12 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
     }
 
     private fun fillSpinner() {
-        val users_list: List<User_Entity> = dao.getAllFromUserTable()
-        var usersName: List<String> = listOf()
-        users_list.forEach {
-            usersName = listOf(it.user_name)
-        }
+        var users_list: List<User_Entity> = dao.getAllFromUserTable()
+        var usersName: ArrayList<String> = arrayListOf()
+         users_list.forEach {
+             usersName.add(it.user_name)
+         }
+
         spinner_login.adapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, usersName)
 
@@ -71,7 +72,10 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
     private fun startSpinner() {
         val userAdmin = User_Entity(0, "Admin", 9999)
         CoroutineScope(Dispatchers.IO).launch {
-            if (dao.getAllFromUserTable().isEmpty()) {
+//            dao.insertUsers(userAdmin)
+//            fillSpinner()
+
+            if (dao.getAllFromUserTable().isEmpty() || dao.getAllFromUserTable() === null) {
                 dao.insertUsers(userAdmin)
                 fillSpinner()
             } else {

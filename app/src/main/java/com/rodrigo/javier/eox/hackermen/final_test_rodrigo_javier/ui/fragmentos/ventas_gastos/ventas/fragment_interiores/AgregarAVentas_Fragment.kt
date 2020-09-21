@@ -43,8 +43,6 @@ class AgregarAVentas_Fragment : Fragment() {
         val divider = DividerItemDecoration(recycler.context, 1)
         recycler.addItemDecoration(divider)
         recycler.layoutManager = LinearLayoutManager(requireContext())
-//        recycler.layoutManager =
-//            GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
         lista_productos = arrayListOf()
 
         return view

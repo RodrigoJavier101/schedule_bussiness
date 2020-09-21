@@ -170,5 +170,4 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
         return producto
     }
 
-
 }

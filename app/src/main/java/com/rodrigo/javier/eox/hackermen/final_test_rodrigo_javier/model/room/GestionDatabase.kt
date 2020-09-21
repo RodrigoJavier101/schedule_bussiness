@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(
     entities = [(User_Entity::class), (Productos_Entity::class), (Ventas_Entity::class), (Gastos_Entity::class),
         (Clientes_Entity::class), (Proveedores_Entity::class), (Ruta_Entity::class)],
-    version = 4, exportSchema = false
+    version = 8, exportSchema = false
 )
 abstract class GestionDatabase : RoomDatabase() {
     abstract fun getGestionDao(): GestionDao

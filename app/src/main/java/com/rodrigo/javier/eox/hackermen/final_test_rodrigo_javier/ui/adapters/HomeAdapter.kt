@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.ItemUserClickListener
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.HomeViewModel
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.ListaViewModel
 import kotlinx.android.synthetic.main.item_user.view.*
 
 
-class SimpleAdapter(
+class HomeAdapter(
     private val lista: List<User_Entity>,
     private val listenerUpdateUser: ItemUserClickListener
 ) :
-    RecyclerView.Adapter<SimpleAdapter.MyViewHolder>() {
+    RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+
 
 
     inner class MyViewHolder(var item_view: View) : RecyclerView.ViewHolder(item_view) {
@@ -48,10 +52,12 @@ class SimpleAdapter(
     ): MyViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
+
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SimpleAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeAdapter.MyViewHolder, position: Int) {
+
         val data: User_Entity = lista[position]
         holder.item_view.lbl_item_id_user.setText(data.id_user.toString())
         holder.item_view.lbl_item_nombre_user.setText(data.user_name)
