@@ -137,11 +137,6 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
                                         Thread.sleep(500)
                                         UiThreadStatement.runOnUiThread {
                                             //                                                adapter.updateData(newItems)
-                                            Toast.makeText(
-                                                context,
-                                                "Item en la tabla 'PRODUCTOS'",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
                                             dialog.dismiss()
                                         }
                                     }

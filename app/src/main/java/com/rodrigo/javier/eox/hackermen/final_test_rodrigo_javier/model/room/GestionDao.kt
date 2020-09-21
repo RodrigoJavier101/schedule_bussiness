@@ -13,7 +13,7 @@ interface GestionDao {
     fun getAllFromProductosTable(): List<Productos_Entity>
 
     @Query("select * from ventas_table")
-    fun getAllFromVentasTable(): LiveData<List<Ventas_Entity>>
+    fun getAllFromVentasTable(): List<Ventas_Entity>
 
     @Query("select * from gastos_table")
     fun getAllFromGastosTable(): LiveData<List<Gastos_Entity>>

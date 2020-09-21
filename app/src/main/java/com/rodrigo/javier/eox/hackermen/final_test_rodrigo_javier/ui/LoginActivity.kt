@@ -72,8 +72,6 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
     private fun startSpinner() {
         val userAdmin = User_Entity(0, "Admin", 9999)
         CoroutineScope(Dispatchers.IO).launch {
-//            dao.insertUsers(userAdmin)
-//            fillSpinner()
 
             if (dao.getAllFromUserTable().isEmpty() || dao.getAllFromUserTable() === null) {
                 dao.insertUsers(userAdmin)

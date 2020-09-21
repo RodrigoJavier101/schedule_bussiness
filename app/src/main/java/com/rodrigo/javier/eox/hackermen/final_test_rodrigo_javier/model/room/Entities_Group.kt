@@ -7,7 +7,7 @@ import androidx.room.*
 data class Ruta_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_ruta_punto_entrega: Int,
-    var fecha_ruta:String="0-0-0",
+    var fecha_ruta: String = "0-0-0",
     @Embedded
     var datos_cliente: Clientes_Entity
 )
@@ -51,9 +51,7 @@ data class Productos_Entity(
 data class Ventas_Entity(
     @PrimaryKey(autoGenerate = true)
     var id_ventas: Int = 0,
-    var id_user: Int = 0,
-    var fecha_venta: String = "0-0-0",
-    var id_producto: Int = 0,
+    var valor_producto_vendido: Int = 0
 )
 
 //@Entity(
