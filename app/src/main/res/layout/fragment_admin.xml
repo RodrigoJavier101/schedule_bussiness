@@ -10,15 +10,15 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_admin"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:textAlignment="center"
         app:tabGravity="center"
         app:tabIndicatorAnimationDuration="1000"
         app:tabIndicatorHeight="@dimen/fab_margin"
         app:tabMode="fixed"
-        app:tabPadding="0dp"
+        app:tabPadding="10dp"
         app:tabRippleColor="@color/colorPrimaryDark"
-        app:tabSelectedTextColor="#daaaddaa" />
+        app:tabSelectedTextColor="#ED9121" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager_admin"

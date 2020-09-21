@@ -10,10 +10,10 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_ventas_gastos"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         app:tabGravity="center"
         app:tabMode="fixed"
-        app:tabIndicatorHeight="20dp"
+        app:tabIndicatorHeight="10dp"
         app:tabRippleColor="@color/colorPrimaryDark"
         app:tabSelectedTextColor="#daaaddaa" />
 

@@ -218,6 +218,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_admin_"
                 android:layout_width="90dp"
+                android:background="#ED9121"
                 android:layout_height="70dp"
                 android:fontFamily="@font/robotomono_regular"
                 android:text="gestionar\nusuarios"

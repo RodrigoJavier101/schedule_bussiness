@@ -52,38 +52,13 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
         var editloginpass = findViewById<EditText>(R.id.text_edit_password)
         CoroutineScope(Dispatchers.IO).launch {
             passResp = dao.getPasswordFromUserTable(username)
-
             if (passResp.toString().equals(editloginpass.text.toString())) {
                 fetchMainActivity(applicationContext)
                 finish()
-            } else {
-                AsyncTask.execute {
-                    var thread = Thread() {
-                        fun run() {
-                            try {
-                                synchronized(this) {
-//                                    Thread.sleep(500)
-                                    UiThreadStatement.runOnUiThread {
-                                        Toast.makeText(
-                                            this@LoginActivity,
-                                            "pass no coincide",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                }
-                            } catch (e: InterruptedException) {
-                                Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_LONG)
-                                    .show()
-                            }
-                        }
-                    }
-                    thread.start()
-                }
-
             }
-
         }
 
+//        Toast.makeText(this, "La pass no coincide ${passResp}", Toast.LENGTH_SHORT).show()
     }
 
     private fun fillSpinner() {
