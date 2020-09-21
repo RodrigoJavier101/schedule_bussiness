@@ -26,9 +26,11 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.FromListaToAgregados_Adapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.HomeAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.HomeViewModel
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.ListaViewModel
 import kotlinx.android.synthetic.main.add_agrega_user.view.*
 import kotlinx.android.synthetic.main.add_update_delete_user.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -66,27 +68,38 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         model =
             ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
 
+        btnAdmin = root.findViewById(R.id.btn_admin_)
+        btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
         recyclerview = root.findViewById(R.id.recycler_users)
-        recyclerview.hasFixedSize()
-        val divider = DividerItemDecoration(recyclerview.context, 1)
-        recyclerview.addItemDecoration(divider)
-        recyclerview.layoutManager = LinearLayoutManager(requireContext())
-
-        var users_ddbb: List<User_Entity> = listOf()
+        var users_ddbb: MutableList<User_Entity> = mutableListOf()
         CoroutineScope(Dispatchers.IO).launch {
             users_ddbb = createUsersListFromDatabase()
             adapter = HomeAdapter(users_ddbb, this@HomeFragment)
-
             recyclerview.adapter = adapter
+            recyclerview.hasFixedSize()
+            val divider = DividerItemDecoration(recyclerview.context, 1)
+            recyclerview.addItemDecoration(divider)
+            recyclerview.layoutManager = LinearLayoutManager(requireContext())
+
         }
 
-        btnAdmin = root.findViewById(R.id.btn_admin_)
-        btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
+
+
+        model.getSelected()?.observe(viewLifecycleOwner) { item ->
+            adapter.addItem(item)
+        }
         callIndicators()
         readFromSHPref()
         setUpAddButtonGestionar(root)
         setUpAddButtonAgregar(root)
+
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
     private fun setUpAddButtonAgregar(view: View?) {
@@ -95,7 +108,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         }
     }
 
-    private fun createUsersListFromDatabase(): List<User_Entity> {
+    private fun createUsersListFromDatabase(): MutableList<User_Entity> {
 
         var users_db = dao.getAllFromUserTable()
 
@@ -123,7 +136,10 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                                 user_name = nombreuser_Input.text.toString(),
                                 password = Integer.parseInt(passwordInput.text.toString())
                             )
+
                             dao.insertUsers(user)
+                            suspend { model.setSelected(user) }
+
                         }
                         AsyncTask.execute {
                             var thread = Thread() {
@@ -132,7 +148,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                                         synchronized(this) {
                                             Thread.sleep(500)
                                             UiThreadStatement.runOnUiThread {
-                                                adapter.notifyDataSetChanged()
+                                                //                                                adapter.notifyDataSetChanged()
                                                 dialog.dismiss()
                                             }
                                         }
@@ -153,19 +169,12 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             }
         dialogBuilder.create().show()
     }
 
 
     private fun readFromSHPref() {
-        /* Toast.makeText(
-             context,
-             sharedPreferences.getString("NombreUsuario", "") + " - " +
-                     sharedPreferences.getString("PasswordUsuario", ""),
-             Toast.LENGTH_LONG
-         ).show()*/
         if (sharedPreferences.getString("NombreUsuario", "").equals("Admin")) {
             btnAdmin.visibility = View.VISIBLE
         } else {
@@ -174,7 +183,6 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun callIndicators() {
-
         service =
             RetrofitClient.getRetrofitObject()
         call = service.getPhrase()

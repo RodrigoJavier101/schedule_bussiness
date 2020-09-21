@@ -16,11 +16,10 @@ import kotlinx.android.synthetic.main.item_user.view.*
 
 
 class HomeAdapter(
-    private val lista: List<User_Entity>,
+    var lista: MutableList<User_Entity>,
     private val listenerUpdateUser: ItemUserClickListener
 ) :
     RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
-
 
 
     inner class MyViewHolder(var item_view: View) : RecyclerView.ViewHolder(item_view) {
@@ -37,7 +36,7 @@ class HomeAdapter(
         fun initialize(
             action: ItemUserClickListener
         ) {
-            item_view.setOnClickListener{
+            item_view.setOnClickListener {
                 listenerUpdateUser.itemUserUpdateClick(
                     user = lista.get(this.layoutPosition)
                 )
@@ -70,6 +69,13 @@ class HomeAdapter(
 
     override fun getItemCount(): Int {
         return lista.size
+    }
+
+    fun addItem(user: User_Entity?) {
+        if (user != null) {
+            lista.add(user)
+        }
+        notifyDataSetChanged()
     }
 
 }

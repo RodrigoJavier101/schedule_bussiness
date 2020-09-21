@@ -7,7 +7,7 @@ import androidx.room.*
 interface GestionDao {
 
     @Query("select * from user_table")
-    fun getAllFromUserTable(): List<User_Entity>
+    fun getAllFromUserTable(): MutableList<User_Entity>
 
     @Query("select password from user_table where user_name = :userName")
     fun getPasswordFromUserTable(userName: String): Int
