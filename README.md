@@ -54,3 +54,8 @@ Este listad se llena tanto con Ruta como con este tab, directamente.
 
 Proveedores.
 Listado de provedores y datos.
+
+
+
+EN LA RAMA MASTER_3 EXPLORO EL USO DE VIEW MODEL JUNTO CON ROOM
+POR LO QUE ALTERO LAS CLASES INVOLUCRADAS
