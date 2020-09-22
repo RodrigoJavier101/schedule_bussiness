@@ -22,6 +22,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Roo
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.RutaAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.RutaViewModel
+import kotlinx.android.synthetic.main.fragment_ruta.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,12 +33,13 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
     private lateinit var nombreCliente: TextView
     private lateinit var domicilioCliente: TextView
     private lateinit var telefonoCliente: TextView
-    private lateinit var listaUsers: MutableLiveData<ArrayList<User_Entity>>
     private lateinit var model: RutaViewModel
     private lateinit var recyclerview: RecyclerView
     private lateinit var adapter: RutaAdapter
     private lateinit var dao: GestionDao
     private lateinit var btnRuta: Button
+    private lateinit var btnLimpiar: Button
+    private lateinit var listaCliente: List<Clientes_Entity>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +54,14 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
         initRecycler()
 
         setUpAddButton(view)
+        setUpLimpiarButton(view)
         return view
+    }
+
+    private fun setUpLimpiarButton(view: View?) {
+        btnLimpiar.setOnClickListener {
+            limpiarInputs()
+        }
     }
 
     private fun initRecycler() {
@@ -63,45 +72,40 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
         CoroutineScope(Dispatchers.IO).launch {
-            var clientesddbb = createClientesListFromDatabase()
-            adapter = RutaAdapter(
-                clientesddbb,
-                this@RutaFragment
 
-            )
-            recyclerview.adapter = adapter
-        }
-        model.getElemento()?.observe(viewLifecycleOwner) {
-            var lista: ArrayList<Clientes_Entity> = arrayListOf()
-            lista.add(it)
+            var lista: List<Clientes_Entity> =
+                createClientesListFromDatabase()//arrayListOf()
+
             adapter = RutaAdapter(
                 lista,
                 this@RutaFragment
 
             )
             recyclerview.adapter = adapter
+
+
         }
-
-
     }
 
-    private fun createClientesListFromDatabase(): List<Clientes_Entity> {
+
+    suspend fun createClientesListFromDatabase(): List<Clientes_Entity> {
         return dao.getAllFromClientesTable()
     }
 
     private fun initVariables() {
+        listaCliente = listOf()
         dao = RoomApplication.gestionDatabase.getGestionDao()
         model = ViewModelProvider(requireActivity()).get(RutaViewModel::class.java)
     }
 
     private fun initViews(view: View) {
         btnRuta = view.findViewById<Button>(R.id.btn_crear_ruta)
+        btnLimpiar = view.findViewById<Button>(R.id.btn_limpiar_ruta)
         nombreCliente = view.findViewById(R.id.cliente_ruta_input)
         domicilioCliente = view.findViewById(R.id.domicilio_cliente_ruta_input)
         telefonoCliente = view.findViewById(R.id.telefono_cliente_ruta_input)
         recyclerview = view.findViewById(R.id.recycler_ruta)
     }
-
 
     companion object {
         fun newInstance(): RutaFragment {
@@ -134,7 +138,7 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
                 Toast.LENGTH_SHORT
             )
                 .show()
-
+            limpiarInputs()
         } else {
             Toast.makeText(
                 context,
@@ -144,11 +148,17 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
         }
     }
 
+    private fun limpiarInputs() {
+        nombreCliente.setText("")
+        domicilioCliente.setText("")
+        telefonoCliente.setText("")
+    }
+
     override fun itemClienteUpdateClick(cliente: Clientes_Entity) {
-//        model.setElemento(cliente)
         Toast.makeText(context, cliente.nombre_cliente, Toast.LENGTH_SHORT).show()
         CoroutineScope(Dispatchers.IO).launch {
             dao.deleteClientes(cliente)
         }
     }
+
 }
