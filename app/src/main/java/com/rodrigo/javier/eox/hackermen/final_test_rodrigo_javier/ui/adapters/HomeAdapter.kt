@@ -23,12 +23,12 @@ class HomeAdapter(
 
 
     inner class MyViewHolder(var item_view: View) : RecyclerView.ViewHolder(item_view) {
-        var lbl_id: TextView
+        //        var lbl_id: TextView
         var lbl_nombre: TextView
         var lbl_password: TextView
 
         init {
-            lbl_id = item_view.findViewById(R.id.lbl_item_id_user)
+//            lbl_id = item_view.findViewById(R.id.lbl_item_id_user)
             lbl_nombre = item_view.findViewById(R.id.lbl_item_nombre_user)
             lbl_password = item_view.findViewById(R.id.lbl_item_password_user)
         }
@@ -58,7 +58,7 @@ class HomeAdapter(
     override fun onBindViewHolder(holder: HomeAdapter.MyViewHolder, position: Int) {
 
         val data: User_Entity = lista[position]
-        holder.item_view.lbl_item_id_user.setText(data.id_user.toString())
+//        holder.item_view.lbl_item_id_user.setText(data.id_user.toString())
         holder.item_view.lbl_item_nombre_user.setText(data.user_name)
         holder.item_view.lbl_item_password_user.setText(data.password.toString())
 

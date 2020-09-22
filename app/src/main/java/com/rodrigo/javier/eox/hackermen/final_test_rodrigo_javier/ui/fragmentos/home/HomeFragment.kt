@@ -54,6 +54,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     private lateinit var recyclerview: RecyclerView
     private lateinit var model: HomeViewModel
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -66,7 +67,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
             Context.MODE_PRIVATE
         )
         model =
-            ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+            ViewModelProvider(requireActivity()).get(HomeViewModel::class.java);
 
         btnAdmin = root.findViewById(R.id.btn_admin_)
         btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
@@ -83,11 +84,10 @@ class HomeFragment : Fragment(), ItemUserClickListener {
 
         }
 
-
-
         model.getSelected()?.observe(viewLifecycleOwner) { item ->
             adapter.addItem(item)
         }
+
         callIndicators()
         readFromSHPref()
         setUpAddButtonGestionar(root)
@@ -131,16 +131,15 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                 if (nombreuser_Input.text?.isNotEmpty()!! && passwordInput.text?.isNotEmpty()!!) {
 
                     if (nombreuser_Input != null && passwordInput != null) {
+                        var user: User_Entity = User_Entity(
+                            user_name = nombreuser_Input.text.toString(),
+                            password = Integer.parseInt(passwordInput.text.toString())
+                        )
+
                         CoroutineScope(Dispatchers.IO).launch {
-                            var user: User_Entity = User_Entity(
-                                user_name = nombreuser_Input.text.toString(),
-                                password = Integer.parseInt(passwordInput.text.toString())
-                            )
-
                             dao.insertUsers(user)
-                            suspend { model.setSelected(user) }
-
                         }
+                        model.setSelected(user)
                         AsyncTask.execute {
                             var thread = Thread() {
                                 fun run() {
@@ -280,6 +279,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                     CoroutineScope(Dispatchers.IO).launch {
                         dao.updateUsers(user)
                     }
+//                    model.setSelected(user)
                     if (nombreuser_update_Input.text?.isNotEmpty()!! && password_updateInput.text?.isNotEmpty()!!) {
 
                         if (nombreuser_update_Input != null && password_updateInput != null) {

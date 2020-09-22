@@ -8,12 +8,20 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Use
 
 class HomeViewModel : ViewModel() {
     private val user_ = MutableLiveData<User_Entity>()
-
+    private val deleted_user = MutableLiveData<User_Entity>()
     fun setSelected(item: User_Entity) {
         user_.value = item
     }
 
     fun getSelected(): MutableLiveData<User_Entity>? {
         return user_
+    };
+
+    fun setDeleted(item: User_Entity) {
+        user_.value = item
+    }
+
+    fun getDeleted(): MutableLiveData<User_Entity> {
+        return deleted_user
     }
 }
