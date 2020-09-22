@@ -22,7 +22,7 @@ interface GestionDao {
     fun getAllFromGastosTable(): LiveData<List<Gastos_Entity>>
 
     @Query("select * from clientes_table")
-    fun getAllFromClientesTable(): LiveData<List<Clientes_Entity>>
+    fun getAllFromClientesTable(): List<Clientes_Entity>
 
     @Query("select * from proveedores_table")
     fun getAllFromProveedoresTable(): LiveData<List<Proveedores_Entity>>
@@ -88,7 +88,7 @@ interface GestionDao {
     fun deleteGastos(gasto: Gastos_Entity)
 
     @Delete
-    fun deleleClientes(cliente: Clientes_Entity)
+    fun deleteClientes(cliente: Clientes_Entity)
 
     @Delete
     fun deleteProveedores(proveedor: Proveedores_Entity)

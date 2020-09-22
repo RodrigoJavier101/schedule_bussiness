@@ -21,7 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class AgregarAVentas_Fragment : Fragment() {
+class AgregarAVentasFragment : Fragment() {
 
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: FromListaToAgregados_Adapter
@@ -52,8 +52,8 @@ class AgregarAVentas_Fragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): AgregarAVentas_Fragment {
-            var newAgregarAVentas_Fragment = AgregarAVentas_Fragment()
+        fun newInstance(): AgregarAVentasFragment {
+            var newAgregarAVentas_Fragment = AgregarAVentasFragment()
 
             return newAgregarAVentas_Fragment
         }

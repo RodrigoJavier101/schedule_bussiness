@@ -1,6 +1,7 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces
 
 import android.view.View
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Clientes_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_Entity
 
@@ -17,4 +18,9 @@ interface CardViewListenerLongClick {
 interface ItemUserClickListener {
     /*para actualizar user*/
     fun itemUserUpdateClick(user:User_Entity)
+}
+
+interface ItemClienteClickListener {
+    /*para actualizar user*/
+    fun itemClienteUpdateClick(cliente: Clientes_Entity)
 }

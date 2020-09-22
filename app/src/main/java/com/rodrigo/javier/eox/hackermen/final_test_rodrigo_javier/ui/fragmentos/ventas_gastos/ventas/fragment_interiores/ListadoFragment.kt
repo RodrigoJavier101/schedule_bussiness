@@ -24,13 +24,12 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Roo
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.Lista_Inventario_Adapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.ListaViewModel
 import kotlinx.android.synthetic.main.add_producto_dialog.view.*
-import kotlinx.android.synthetic.main.item_listado_inventario.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListenerLongClick {
+class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListenerLongClick {
 
     private lateinit var adapter: Lista_Inventario_Adapter
     private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
@@ -57,8 +56,8 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
             val productos_ddbb = createProductListFromDatabase()
             adapter = Lista_Inventario_Adapter(
                 productos_ddbb,
-                this@Listado_Fragment,
-                this@Listado_Fragment
+                this@ListadoFragment,
+                this@ListadoFragment
             )
             recycler_inventario.adapter = adapter
         }
@@ -69,8 +68,8 @@ class Listado_Fragment : Fragment(), CardViewListenerShortClick, CardViewListene
 
 
     companion object {
-        fun newInstance(): Listado_Fragment {
-            var newListado_Fragment = Listado_Fragment()
+        fun newInstance(): ListadoFragment {
+            var newListado_Fragment = ListadoFragment()
             return newListado_Fragment
         }
     }

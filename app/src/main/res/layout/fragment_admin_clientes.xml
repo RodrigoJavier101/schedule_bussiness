@@ -59,12 +59,14 @@
                 android:id="@+id/cliente__input"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/abel_regular"
                 android:layout_marginLeft="5dp"
                 android:hint="nombre cliente"
                 android:textSize="14sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/domicilio_cliente_input"
+                android:fontFamily="@font/abel_regular"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -73,6 +75,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/telefono_cliente_input"
+                android:fontFamily="@font/abel_regular"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -87,6 +90,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_agregar_cliente"
             android:layout_width="90dp"
+           android:fontFamily="@font/abel_regular"
             android:layout_height="70dp"
             android:text="agregar" />
 
