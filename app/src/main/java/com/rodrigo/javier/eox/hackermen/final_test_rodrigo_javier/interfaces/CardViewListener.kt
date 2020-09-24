@@ -22,5 +22,5 @@ interface ItemUserClickListener {
 
 interface ItemClienteClickListener {
     /*para actualizar user*/
-    fun itemClienteUpdateClick(cliente: Clientes_Entity)
+    fun itemClienteUpdateClick(cliente: Clientes_Entity?)
 }

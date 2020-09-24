@@ -1,19 +1,23 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Clientes_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Ruta_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDatabase
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ruta.RutaFragment
+import kotlinx.coroutines.withContext
+import org.w3c.dom.Entity
 
-class RutaViewModel:ViewModel() {
+class RutaViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val elemento = MutableLiveData<Clientes_Entity>()
+    var list: LiveData<MutableList<Clientes_Entity>>
 
-    fun setElemento(item: Clientes_Entity) {
-        elemento.value = item
+    init {
+//        list = GestionDatabase.getInstance(this, GestionDatabase.getInstance(this.getApplication()))
+        list = GestionDatabase.getData(GestionDatabase.getInstance(this.getApplication()))
     }
 
-    fun getElemento(): MutableLiveData<Clientes_Entity> {
-        return elemento
-    }
+
+    fun fetchAllData(): LiveData<MutableList<Clientes_Entity>> = list
 }

@@ -3,6 +3,7 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
 
 @Dao
 interface GestionDao {
@@ -22,8 +23,25 @@ interface GestionDao {
     @Query("select * from gastos_table")
     fun getAllFromGastosTable(): LiveData<List<Gastos_Entity>>
 
+    /*pruebas para ruta e insert clientes*/
     @Query("select * from clientes_table")
     fun getAllFromClientesTable(): List<Clientes_Entity>
+
+    /*PRUEBA RAMA MASTER 3*/
+    @Query("SELECT * FROM clientes_table")
+    fun getClienteInfo(): LiveData<List<Clientes_Entity>>
+
+    @Insert
+    fun addCliente(cliente: Clientes_Entity)
+
+    @Update(onConflict = REPLACE)
+    fun updateCliente(cliente: Clientes_Entity)
+
+    @Delete
+    fun deleteCliente(cliente: Clientes_Entity?)
+
+    /***************************/
+
 
     @Query("select * from proveedores_table")
     fun getAllFromProveedoresTable(): LiveData<List<Proveedores_Entity>>

@@ -1,27 +1,28 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ruta
 
 
+import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import android.webkit.ClientCertRequest
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.ItemClienteClickListener
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Clientes_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.User_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.RutaAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.RutaViewModel
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.RutaViewModelViewModel
 import kotlinx.android.synthetic.main.fragment_ruta.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +34,7 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
     private lateinit var nombreCliente: TextView
     private lateinit var domicilioCliente: TextView
     private lateinit var telefonoCliente: TextView
-    private lateinit var model: RutaViewModel
+    private lateinit var model: RutaViewModelViewModel
     private lateinit var recyclerview: RecyclerView
     private lateinit var adapter: RutaAdapter
     private lateinit var dao: GestionDao
@@ -48,7 +49,7 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
 
     ): View? {
         val view = inflater.inflate(R.layout.fragment_ruta, container, false)
-        model = ViewModelProvider(requireActivity()).get(RutaViewModel::class.java)
+        model = ViewModelProvider(requireActivity()).get(RutaViewModelViewModel::class.java)
         initViews(view)
         initVariables()
         initRecycler()
@@ -73,13 +74,12 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
 
         CoroutineScope(Dispatchers.IO).launch {
 
-            var lista: List<Clientes_Entity> =
-                createClientesListFromDatabase()//arrayListOf()
+            var lista: LiveData<List<Clientes_Entity>> =
+                createClientesListFromDatabase()
 
             adapter = RutaAdapter(
                 lista,
-                this@RutaFragment
-
+                this@RutaFragment, requireContext()
             )
             recyclerview.adapter = adapter
 
@@ -88,14 +88,15 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
     }
 
 
-    suspend fun createClientesListFromDatabase(): List<Clientes_Entity> {
-        return dao.getAllFromClientesTable()
+    suspend fun createClientesListFromDatabase(): LiveData<List<Clientes_Entity>> {
+//        return dao.getAllFromClientesTable()
+        return dao.getClienteInfo()
     }
 
     private fun initVariables() {
         listaCliente = listOf()
         dao = RoomApplication.gestionDatabase.getGestionDao()
-        model = ViewModelProvider(requireActivity()).get(RutaViewModel::class.java)
+        model = ViewModelProvider(requireActivity()).get(RutaViewModelViewModel::class.java)
     }
 
     private fun initViews(view: View) {
@@ -131,7 +132,7 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 dao.insertClientes(cliente)
             }
-            model.setElemento(cliente)
+            model.getClientes(cliente)
             Toast.makeText(
                 context,
                 nombreCliente.text.toString() + " - " + domicilioCliente.text.toString() + " - " + telefonoCliente.text.toString(),
@@ -162,3 +163,96 @@ class RutaFragment : Fragment(), ItemClienteClickListener {
     }
 
 }
+
+
+/*
+class RutaFragment : Fragment(), ItemClienteClickListener {
+
+    lateinit var adapter: RutaAdapter
+    lateinit var viewModel: RutaViewModel
+    var list: MutableList<Clientes_Entity>? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_ruta, container, false)
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recycler_ruta.layoutManager = LinearLayoutManager(context)
+        adapter = RutaAdapter(list, this@RutaFragment, requireContext())
+        recycler_ruta.adapter = adapter
+
+        viewModel = ViewModelProviders.of(this).get(RutaViewModel::class.java)
+        viewModel.fetchAllData()
+            .observe(viewLifecycleOwner, object : Observer<MutableList<Clientes_Entity>> {
+                override fun onChanged(t: MutableList<Clientes_Entity>?) {
+                    Log.v("OnChanged", "OnChanged!!")
+                    adapter.addItems(t)
+                }
+            })
+
+        */
+/*add.setOnClickListener {
+            openDialog()
+        }*//*
+
+
+        val model = ViewModelProviders.of(this).get(RutaViewModelViewModel::class.java)
+        model.getClientes().observe(viewLifecycleOwner, { users ->
+            // update UI
+            Toast.makeText(context, "view model view model", Toast.LENGTH_SHORT).show()
+        })
+
+    }
+
+    private fun openDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.add_agrega_user)
+        val lp: WindowManager.LayoutParams = WindowManager.LayoutParams().apply {
+            copyFrom(dialog.window?.attributes)
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            height = WindowManager.LayoutParams.WRAP_CONTENT
+        }
+
+//        val submit = dialog.findViewById<View>(R.id.submit) as TextView
+//        val name = dialog.findViewById<View>(R.id.ruta) as EditText
+//        val author = dialog.findViewById<View>(R.id.author) as EditText
+//        val genre = dialog.findViewById<View>(R.id.genre) as EditText
+
+        */
+/*  btn.setOnClickListener {
+              when {
+                  name.length() == 0 || author.length() == 0 || genre.length() == 0 ->
+                      Toast.makeText(
+                          this@DbActivity, "Please fill all the fields", Toast.LENGTH_SHORT
+                      ).show()
+
+                  else -> {
+                      val cliente = Clientes_Entity(
+                          name.text.toString(),
+                          author.text.toString(),
+                          genre.text.toString()
+                      )
+                      GestionDatabase.insertData(GestionDatabase.getInstance(this), cliente)
+                      dialog.dismiss()
+                  }
+              }
+          }*//*
+
+        dialog.show()
+        dialog.getWindow()?.setAttributes(lp)
+    }
+
+    override fun itemClienteUpdateClick(cliente: Clientes_Entity?) {
+        Toast.makeText(context, "Click desde nuevo fragment", Toast.LENGTH_SHORT).show()
+    }
+}
+*/
