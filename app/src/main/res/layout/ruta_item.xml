@@ -12,28 +12,28 @@
         android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_view_piority"
+            android:id="@+id/lbl_item_telefono_ruta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="1"
+            android:text="000000"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_view_title"
+            android:id="@+id/lbl_item_nombre_cliene_ruta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="title"
+            android:text="Costumer name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_view_description"
+            android:id="@+id/lbl_item_domicilio_ruta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_title"
-            android:text="Description"/>
+            android:layout_below="@id/lbl_item_nombre_cliene_ruta"
+            android:text="Address" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

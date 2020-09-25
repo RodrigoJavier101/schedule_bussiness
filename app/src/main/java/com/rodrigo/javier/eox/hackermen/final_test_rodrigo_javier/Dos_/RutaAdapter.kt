@@ -10,46 +10,46 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.RutaAdapt
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import java.util.*
 
-class RutaAdapter(private var notes: List<Clientes_Entity>? = ArrayList()) :
+class RutaAdapter(private var clientes: List<Clientes_Entity>? = ArrayList()) :
     RecyclerView.Adapter<NoteHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.note_item,
+            R.layout.ruta_item,
             parent, false
         )
         return NoteHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: NoteHolder, position: Int) {
-        val currentNote = notes!![position]
-        holder.textViewTitle.text = currentNote.title
-        holder.textViewDescription.text = currentNote.description
-        holder.textViewPriority.text = currentNote.priority.toString()
+        val currentNote = clientes!![position]
+        holder.textViewTitleNombreCliente.text = currentNote.nombre_cliente
+        holder.textViewDomicilioCliente.text = currentNote.domicilio_cliente
+        holder.textViewTelefonoCliente.text = currentNote.telefono_cliente.toString()
     }
 
     override fun getItemCount(): Int {
-        return notes!!.size
+        return clientes!!.size
     }
 
     fun setNotes(notes: List<Clientes_Entity>?) {
-        this.notes = notes
+        this.clientes = notes
         notifyDataSetChanged()
     }
 
     fun getNoteAt(position: Int): Clientes_Entity? {
-        return notes!![position]
+        return clientes!![position]
     }
 
     inner class NoteHolder(itemView: View) : ViewHolder(itemView) {
-        val textViewTitle: TextView
-        val textViewDescription: TextView
-        val textViewPriority: TextView
+        val textViewTitleNombreCliente: TextView
+        val textViewDomicilioCliente: TextView
+        val textViewTelefonoCliente: TextView
 
         init {
-            textViewTitle = itemView.findViewById(R.id.text_view_title)
-            textViewDescription = itemView.findViewById(R.id.text_view_description)
-            textViewPriority = itemView.findViewById(R.id.text_view_piority)
+            textViewTitleNombreCliente = itemView.findViewById(R.id.lbl_item_nombre_cliene_ruta)
+            textViewDomicilioCliente = itemView.findViewById(R.id.lbl_item_domicilio_ruta)
+            textViewTelefonoCliente = itemView.findViewById(R.id.lbl_item_telefono_ruta)
         }
     }
 }

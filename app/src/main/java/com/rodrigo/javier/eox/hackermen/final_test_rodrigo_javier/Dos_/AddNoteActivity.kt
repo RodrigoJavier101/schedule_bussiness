@@ -11,26 +11,26 @@ import androidx.appcompat.app.AppCompatActivity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
 class AddNoteActivity(
-        private var editTextTitle: EditText? = null,
-        private var editTextDescription: EditText? = null,
-        private var numberPickerPriority: NumberPicker? = null,
+    private var editTextNombreCliente: EditText? = null,
+    private var editTextDomicilioCliente: EditText? = null,
+    private var numberPickerTelefonoCliente: NumberPicker? = null,
 ) : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_note)
-        editTextTitle = findViewById(R.id.edit_text_title)
-        editTextDescription = findViewById(R.id.edit_text_description)
-        numberPickerPriority = findViewById(R.id.number_picker_priority)
-        numberPickerPriority?.minValue = 1//setMinValue(1)
-        numberPickerPriority?.maxValue = 10//setMaxValue(10)
+        setContentView(R.layout.fragment_add_cliente)
+        editTextNombreCliente = findViewById(R.id.edit_text_nombre_cliente)
+        editTextDomicilioCliente = findViewById(R.id.edit_text_domicilio_cliente)
+        numberPickerTelefonoCliente = findViewById(R.id.number_picker_telefono_cliente)
+        numberPickerTelefonoCliente?.minValue = 1//setMinValue(1)
+        numberPickerTelefonoCliente?.maxValue = 10//setMaxValue(10)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_close)
-        title = "Add Note"
+        title = "Add Cliente"
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.add_note_menu, menu)
+        menuInflater.inflate(R.menu.add_cliente_menu, menu)
         //        return super.onCreateOptionsMenu(menu);
         return true
     }
@@ -46,28 +46,28 @@ class AddNoteActivity(
     }
 
     private fun saveNote() {
-        val title = editTextTitle!!.text.toString()
-        val description = editTextDescription!!.text.toString()
-        val priority = numberPickerPriority!!.value
-        if (title.trim { it <= ' ' }.isEmpty() || description.trim { it <= ' ' }.isEmpty()) {
+        val nombre = editTextNombreCliente!!.text.toString()
+        val domicilio = editTextDomicilioCliente!!.text.toString()
+        val telefono = numberPickerTelefonoCliente!!.value
+        if (nombre.trim { it <= ' ' }.isEmpty() || domicilio.trim { it <= ' ' }.isEmpty()) {
             Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT)
                     .show()
             return
         }
         val data = Intent()
-        data.putExtra(EXTRA_TITLE, title)
-        data.putExtra(EXTRA_DESCRIPTION, description)
-        data.putExtra(EXTRA_PRIORITY, priority)
+        data.putExtra(EXTRA_NOMBRE_CLIENTE, nombre)
+        data.putExtra(EXTRA_DOMICILIO_CLIENTE, domicilio)
+        data.putExtra(EXTRA_TELEFONO_CLIENTE, telefono)
         setResult(RESULT_OK, data)
         finish()
     }
 
     companion object {
-        const val EXTRA_TITLE = "com.rodrigo.javier.eox.hackermen" +
+        const val EXTRA_NOMBRE_CLIENTE = "com.rodrigo.javier.eox.hackermen" +
                 ".tutorialroomviewmodellivedatarecview.EXTRA_TITLE"
-        const val EXTRA_DESCRIPTION = "com.rodrigo.javier.eox.hackermen" +
+        const val EXTRA_DOMICILIO_CLIENTE = "com.rodrigo.javier.eox.hackermen" +
                 ".tutorialroomviewmodellivedatarecview.EXTRA_DESCRIPTION"
-        const val EXTRA_PRIORITY = "com.rodrigo.javier.eox.hackermen" +
+        const val EXTRA_TELEFONO_CLIENTE = "com.rodrigo.javier.eox.hackermen" +
                 ".tutorialroomviewmodellivedatarecview.EXTRA_PRIORITY"
     }
 }
