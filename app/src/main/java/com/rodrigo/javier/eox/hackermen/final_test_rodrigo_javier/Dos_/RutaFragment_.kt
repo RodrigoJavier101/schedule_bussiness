@@ -1,5 +1,6 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
@@ -18,9 +19,9 @@ class RutaFragment_ : Fragment() {
     private var noteViewModel: RutaViewModel? = null
     private var adapter: RutaAdapter? = null
 
-    private lateinit var nombreCliente: TextView
-    private lateinit var domicilioCliente: TextView
-    private lateinit var telefonoCliente: TextView
+    private var nombreCliente: TextView? = null
+    private var domicilioCliente: TextView? = null
+    private var telefonoCliente: TextView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +37,7 @@ class RutaFragment_ : Fragment() {
 
         val buttonAddNotes = view.findViewById<FloatingActionButton>(R.id.button_add_note)
         buttonAddNotes.setOnClickListener {
-            val intent = Intent(context, AddNoteActivity::class.java)
+            val intent = Intent(context, AddNoteFragment::class.java)
             startActivityForResult(intent, ADD_NOTE_REQUEST)
         }
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
@@ -82,10 +83,12 @@ class RutaFragment_ : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK) {
-            val nombreCliente = data!!.getStringExtra(AddNoteActivity.EXTRA_NOMBRE_CLIENTE)
-            val domicilioCliente = data.getStringExtra(AddNoteActivity.EXTRA_DOMICILIO_CLIENTE)
-            val telefonoClientes = data.getIntExtra(AddNoteActivity.EXTRA_TELEFONO_CLIENTE, 111111111)
-            val note = Clientes_Entity(nombreCliente!!, domicilioCliente!!, telefonoClientes.toLong())
+            val nombreCliente = data!!.getStringExtra(AddNoteFragment.EXTRA_NOMBRE_CLIENTE)
+            val domicilioCliente = data.getStringExtra(AddNoteFragment.EXTRA_DOMICILIO_CLIENTE)
+            val telefonoClientes =
+                data.getIntExtra(AddNoteFragment.EXTRA_TELEFONO_CLIENTE, 111111111)
+            val note =
+                Clientes_Entity(nombreCliente!!, domicilioCliente!!, telefonoClientes.toLong())
             noteViewModel!!.insert(note)
             Toast.makeText(context, "Note saved", Toast.LENGTH_SHORT).show()
         } else {
@@ -93,30 +96,30 @@ class RutaFragment_ : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        return super.onCreateOptionsMenu(menu);
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.main_menu_new, menu)
-        return true
-    }
+    /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
+ //        return super.onCreateOptionsMenu(menu);
+         val menuInflater = menuInflater
+         menuInflater.inflate(R.menu.main_menu_new, menu)
+         return true
+     }*/
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.delete_all_notes -> {
-                noteViewModel!!.deleteAllNotes()
-                Toast.makeText(context, "All notes deleted", Toast.LENGTH_SHORT).show()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+    /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         return when (item.itemId) {
+             R.id.delete_all_notes -> {
+                 noteViewModel!!.deleteAllNotes()
+                 Toast.makeText(context, "All notes deleted", Toast.LENGTH_SHORT).show()
+                 true
+             }
+             else -> super.onOptionsItemSelected(item)
+         }
+     }*/
 
     companion object {
         private const val ADD_NOTE_REQUEST = 1
 
-        fun newInstance(): RutaFragment {
-            var newRutaFragment = RutaFragment()
-            return newRutaFragment
+        fun newInstance(): RutaFragment_ {
+            var newRutaFragment_ = RutaFragment_()
+            return newRutaFragment_
         }
     }
 }

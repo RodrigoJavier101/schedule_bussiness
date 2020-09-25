@@ -12,13 +12,13 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
 private lateinit var btnRuta: Button
 private lateinit var btnLimpiar: Button
-
+/*
 
 private fun setUpLimpiarButton(view: View?) {
     btnLimpiar.setOnClickListener {
         limpiarInputs()
     }
-}
+}*/
 
 
 private fun initViews(view: View) {
@@ -29,13 +29,13 @@ private fun initViews(view: View) {
 }
 
 
-private fun setUpAddButton(view: View) {
+/*private fun setUpAddButton(view: View) {
     btnRuta.setOnClickListener {
         ingresaRuta()
     }
-}
+}*/
 
-private fun ingresaRuta() {
+/*private fun ingresaRuta() {
     if (nombreCliente.text.isNotEmpty() && domicilioCliente.text.isNotEmpty() && telefonoCliente.text.isNotEmpty()) {
         var cliente =
             Clientes_Entity(
@@ -45,7 +45,6 @@ private fun ingresaRuta() {
             )
 
 
-        limpiarInputs()
     } else {
         Toast.makeText(
             context,
@@ -53,16 +52,16 @@ private fun ingresaRuta() {
             Toast.LENGTH_SHORT
         ).show()
     }
-}
+}*/
 
-private fun limpiarInputs() {
+/*private fun limpiarInputs() {
     nombreCliente.setText("")
     domicilioCliente.setText("")
     telefonoCliente.setText("")
-}
+}*/
 
-override fun itemClienteUpdateClick(cliente: Clientes_Entity?) {
+/*override fun itemClienteUpdateClick(cliente: Clientes_Entity?) {
     Toast.makeText(context, cliente?.nombre_cliente, Toast.LENGTH_SHORT).show()
 
-}
+}*/
 

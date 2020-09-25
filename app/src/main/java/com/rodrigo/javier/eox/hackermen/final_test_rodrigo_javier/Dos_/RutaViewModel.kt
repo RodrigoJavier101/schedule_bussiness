@@ -10,7 +10,7 @@ necesita context ???, si se guarda el context en la act habran memory leaks
 se deberia pasar el */
 class RutaViewModel(application: Application) : AndroidViewModel(application) {
     val repository: GestionRepository
-    val allNotes: LiveData<List<Note>?>?
+    val allNotes: LiveData<List<Clientes_Entity>?>?
 
     init {
         repository = GestionRepository(application)
@@ -18,15 +18,15 @@ class RutaViewModel(application: Application) : AndroidViewModel(application) {
     }
     /*la activity solamente tiene una referencia al viewmodel por lo que se necesita nuevamente
     mets para traer datos desde repository*/
-    fun insert(note: Note?) {
+    fun insert(note: Clientes_Entity?) {
         repository.insert(note)
     }
 
-    fun update(note: Note?) {
+    fun update(note: Clientes_Entity?) {
         repository.update(note)
     }
 
-    fun delete(note: Note?) {
+    fun delete(note: Clientes_Entity?) {
         repository.delete(note)
     }
 

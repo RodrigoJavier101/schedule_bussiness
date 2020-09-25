@@ -21,22 +21,6 @@
             </intent-filter>
         </activity>
 
-
-        <activity
-            android:name=".Dos_.AddNoteActivity"
-            android:parentActivityName=".Dos_.RutaFragment_">
-
-        </activity>
-        <activity
-            android:name=".Dos_.RutaFragment_"
-            android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
     </application>
 
 </manifest>

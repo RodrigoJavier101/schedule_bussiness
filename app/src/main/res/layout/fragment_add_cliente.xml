@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".Dos_.AddNoteActivity">
+    tools:context=".Dos_.AddNoteFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_text_nombre_cliente"
