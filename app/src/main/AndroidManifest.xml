@@ -24,11 +24,11 @@
 
         <activity
             android:name=".Dos_.AddNoteActivity"
-            android:parentActivityName=".Dos_.MainActivityNew">
+            android:parentActivityName=".Dos_.RutaFragment_">
 
         </activity>
         <activity
-            android:name=".Dos_.MainActivityNew"
+            android:name=".Dos_.RutaFragment_"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

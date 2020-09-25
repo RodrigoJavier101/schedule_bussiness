@@ -12,34 +12,36 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.getbase.floatingactionbutton.FloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
-class MainActivityNew : AppCompatActivity() {
-    private var noteViewModel: NoteViewModel? = null
-    private var adapter: NoteAdapter? = null
+class RutaFragment_ : AppCompatActivity() {
+    private var noteViewModel: RutaViewModel? = null
+    private var adapter: RutaAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val buttonAddNotes = findViewById<FloatingActionButton>(R.id.button_add_note)
         buttonAddNotes.setOnClickListener {
-            val intent = Intent(this@MainActivityNew, AddNoteActivity::class.java)
+            val intent = Intent(this@RutaFragment_, AddNoteActivity::class.java)
             startActivityForResult(intent, ADD_NOTE_REQUEST)
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
         /*es por si cambia el tamaño del rv*/recyclerView.setHasFixedSize(true)
-        adapter = NoteAdapter()
+        adapter = RutaAdapter()
         /*por default el adapter está vacío*/recyclerView.adapter = adapter
         /*hay que attach el observer al livedata*/
         /*view model se destruye cuando no se necesita*/
 //        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel::class.java)
-        noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
+        noteViewModel = ViewModelProvider(this).get(RutaViewModel::class.java)
         noteViewModel!!.allNotes!!.observe(this, { notes ->
 
             /*aquí es donde se actualiza el adpater */
             /*por el momento la lista no me llega desde la ddbb no se porqué*/
-            var note1 = Note("Title 1", "Description 1", 1)
-            var note2 = Note("Title 1", "Description 1", 1)
-            var note3 = Note("Title 1", "Description 1", 1)
+            var note1 = Clientes_Entity("Title 1", "Description 1", 1)
+            var note2 = Clientes_Entity("Title 1", "Description 1", 1)
+            var note3 = Clientes_Entity("Title 1", "Description 1", 1)
             notes!!.forEach {
                 Toast.makeText(applicationContext, notes.toString(), Toast.LENGTH_SHORT).show()
             }
@@ -58,7 +60,7 @@ class MainActivityNew : AppCompatActivity() {
 
             override fun onSwiped(viewHolder: ViewHolder, direction: Int) {
                 noteViewModel!!.delete(adapter!!.getNoteAt(viewHolder.adapterPosition))
-                Toast.makeText(this@MainActivityNew, "Note deleted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@RutaFragment_, "Note deleted", Toast.LENGTH_SHORT).show()
             }
         }).attachToRecyclerView(recyclerView)
     }
@@ -69,7 +71,7 @@ class MainActivityNew : AppCompatActivity() {
             val title = data!!.getStringExtra(AddNoteActivity.EXTRA_TITLE)
             val description = data.getStringExtra(AddNoteActivity.EXTRA_DESCRIPTION)
             val priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1)
-            val note = Note(title!!, description!!, priority)
+            val note = Clientes_Entity(title!!, description!!, priority)
             noteViewModel!!.insert(note)
             Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show()
         } else {
@@ -80,7 +82,7 @@ class MainActivityNew : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 //        return super.onCreateOptionsMenu(menu);
         val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.main_menu_new, menu)
         return true
     }
 

@@ -6,14 +6,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.NoteAdapter.NoteHolder
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.RutaAdapter.NoteHolder
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import java.util.*
 
-class NoteAdapter(private var notes: List<Note>? = ArrayList()) : RecyclerView.Adapter<NoteHolder>() {
+class RutaAdapter(private var notes: List<Clientes_Entity>? = ArrayList()) :
+    RecyclerView.Adapter<NoteHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.note_item,
-                parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.note_item,
+            parent, false
+        )
         return NoteHolder(itemView)
     }
 
@@ -28,12 +32,12 @@ class NoteAdapter(private var notes: List<Note>? = ArrayList()) : RecyclerView.A
         return notes!!.size
     }
 
-    fun setNotes(notes: List<Note>?) {
+    fun setNotes(notes: List<Clientes_Entity>?) {
         this.notes = notes
         notifyDataSetChanged()
     }
 
-    fun getNoteAt(position: Int): Note? {
+    fun getNoteAt(position: Int): Clientes_Entity? {
         return notes!![position]
     }
 

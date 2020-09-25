@@ -8,12 +8,12 @@ import androidx.lifecycle.LiveData
 /*subclass de view model, éste permite pasarle applciation enel constructor por lo  que no se
 necesita context ???, si se guarda el context en la act habran memory leaks
 se deberia pasar el */
-class NoteViewModel(application: Application) : AndroidViewModel(application) {
-    val repository: NoteRepository
+class RutaViewModel(application: Application) : AndroidViewModel(application) {
+    val repository: GestionRepository
     val allNotes: LiveData<List<Note>?>?
 
     init {
-        repository = NoteRepository(application)
+        repository = GestionRepository(application)
         allNotes = repository.allNotes
     }
     /*la activity solamente tiene una referencia al viewmodel por lo que se necesita nuevamente

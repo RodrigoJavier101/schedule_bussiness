@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.Clientes_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.ItemClienteClickListener
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.RutaViewModel
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

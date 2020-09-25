@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Uno_
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
