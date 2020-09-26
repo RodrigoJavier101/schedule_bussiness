@@ -54,7 +54,7 @@ abstract class GestionDatabase : RoomDatabase() {
                 /*en su lugar se usa builder*/
                 instance = Room.databaseBuilder(context.applicationContext, GestionDatabase::class.java,
                         "note_database")
-                        .fallbackToDestructiveMigration() /*----permite crear algo en la ddb cuandro se crea por primera vez----*/
+//                        .fallbackToDestructiveMigration() /*----permite crear algo en la ddb cuandro se crea por primera vez----*/
                         .addCallback(roomcallback)
                         .build()
             }

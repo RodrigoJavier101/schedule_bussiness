@@ -12,19 +12,8 @@ data class Clientes_Entity(
     var status_cliente: String = "no coment",
     var domicilio_cliente: String = "calle",
     var id_ruta: Int = 0,
-){
+) {
     @PrimaryKey(autoGenerate = true)
     var id_clientes: Int = 0
 }
-
-
-/*
-* @Entity(tableName = "note_table")
-class Note(val title: String, val description: String, val priority: Int) {
-    @PrimaryKey(autoGenerate = true)
-    var id = 0
-
-}
-*
-* */
 

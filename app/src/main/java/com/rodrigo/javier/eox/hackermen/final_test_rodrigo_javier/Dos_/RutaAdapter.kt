@@ -22,10 +22,10 @@ class RutaAdapter(private var clientes: List<Clientes_Entity>? = ArrayList()) :
     }
 
     override fun onBindViewHolder(holder: NoteHolder, position: Int) {
-        val currentNote = clientes!![position]
-        holder.textViewTitleNombreCliente.text = currentNote.nombre_cliente
-        holder.textViewDomicilioCliente.text = currentNote.domicilio_cliente
-        holder.textViewTelefonoCliente.text = currentNote.telefono_cliente.toString()
+        val currentClien = clientes!![position]
+        holder.textViewTitleNombreCliente.text = currentClien.nombre_cliente
+        holder.textViewDomicilioCliente.text = currentClien.domicilio_cliente
+        holder.textViewTelefonoCliente.text = currentClien.telefono_cliente.toString()
     }
 
     override fun getItemCount(): Int {
