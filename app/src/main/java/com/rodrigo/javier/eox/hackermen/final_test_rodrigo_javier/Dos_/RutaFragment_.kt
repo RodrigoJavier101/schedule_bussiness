@@ -40,9 +40,11 @@ class RutaFragment_ : Fragment() {
             val intent = Intent(context, AddNoteFragment::class.java)
             startActivityForResult(intent, ADD_NOTE_REQUEST)
         }
+
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        /*es por si cambia el tamaño del rv*/recyclerView.setHasFixedSize(true)
+        /*es por si cambia el tamaño del rv*/
+        recyclerView.setHasFixedSize(true)
         adapter = RutaAdapter()
         /*por default el adapter está vacío*/recyclerView.adapter = adapter
         /*hay que attach el observer al livedata*/
