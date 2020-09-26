@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.proyectofinalrodrigojaviergarridodagle.utilities
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.common
 
 import android.app.DatePickerDialog
 import android.app.Dialog

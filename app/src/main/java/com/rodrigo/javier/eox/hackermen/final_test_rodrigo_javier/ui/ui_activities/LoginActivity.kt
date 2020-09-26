@@ -17,7 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
+class LoginActivity : AppCompatActivity(){  //, SharedPreferences.OnSharedPreferenceChangeListener {
 
     lateinit var sharedPreferences: SharedPreferences
     lateinit var spinner_login: Spinner
@@ -27,15 +27,14 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        dao = RoomApplication.gestionDatabase.getGestionDao()
+//        dao = RoomApplication.gestionDatabase.getGestionDao()
         initViews()
         startSpinner()
         sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
         btn_login.setOnClickListener {
-            saveInSharedPreferences(it)
-//            fetchMainActivity(applicationContext)
-            validateUser()
-
+//            saveInSharedPreferences(it)
+            fetchMainActivity(applicationContext)
+//            validateUser()
         }
     }
 
@@ -45,9 +44,9 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
         var listaUsers: List<User_Entity> = listOf()
         var editloginpass = findViewById<EditText>(R.id.text_edit_password)
         CoroutineScope(Dispatchers.IO).launch {
-            passResp = dao.getPasswordFromUserTable(username)
+//            passResp = dao.getPasswordFromUserTable(username)
             if (passResp.toString().equals(editloginpass.text.toString())) {
-                fetchMainActivity(applicationContext)
+//                fetchMainActivity(applicationContext)
                 finish()
             }
         }
@@ -56,9 +55,9 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
     }
 
     private fun fillSpinner() {
-        var users_list: List<User_Entity> = dao.getAllFromUserTable()
+        var users_list: List<User_Entity>? = null//dao.getAllFromUserTable()
         var usersName: ArrayList<String> = arrayListOf()
-        users_list.forEach {
+        users_list?.forEach {
             usersName.add(it.user_name)
         }
 
@@ -72,15 +71,15 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
     }
 
     private fun startSpinner() {
-        val userAdmin = User_Entity(0, "Admin", 9999)
+        val userAdmin = User_Entity("", 9999)
         CoroutineScope(Dispatchers.IO).launch {
 
-            if (dao.getAllFromUserTable().isEmpty() || dao.getAllFromUserTable() === null) {
-                dao.insertUsers(userAdmin)
-                fillSpinner()
-            } else {
-                fillSpinner()
-            }
+            /*   if (dao.getAllFromUserTable().isEmpty() || dao.getAllFromUserTable() === null) {
+                   dao.insertUsers(userAdmin)
+                   fillSpinner()
+               } else {
+                   fillSpinner()
+               }*/
         }
 
     }
@@ -90,7 +89,7 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
         return startActivity(intent)
     }
 
-    override fun onSharedPreferenceChanged(
+    /*override fun onSharedPreferenceChanged(
         changedSharedPreferences: SharedPreferences?,
         changedKey: String?
     ) {
@@ -101,7 +100,7 @@ class LoginActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceC
         if (changedKey.equals("f", true)) {
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
         }
-    }
+    }*/
 
     private fun saveInSharedPreferences(it: View) {
         if (this::sharedPreferences.isInitialized) {

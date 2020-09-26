@@ -16,12 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerLongClick
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerShortClick
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.GestionDao
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.Productos_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.room.RoomApplication
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.adapters.Lista_Inventario_Adapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.Lista_Inventario_Adapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.ListaViewModel
 import kotlinx.android.synthetic.main.add_producto_dialog.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -29,10 +24,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListenerLongClick {
+class ListadoFragment : Fragment() { //, CardViewListenerShortClick, CardViewListenerLongClick {
 
     private lateinit var adapter: Lista_Inventario_Adapter
-    private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
+
+    //    private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
     private lateinit var recycler_inventario: RecyclerView
     private lateinit var model: ListaViewModel
 
@@ -53,12 +49,12 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
         recycler_inventario.layoutManager = LinearLayoutManager(requireContext())
 
         CoroutineScope(Dispatchers.IO).launch {
-            val productos_ddbb = createProductListFromDatabase()
-            adapter = Lista_Inventario_Adapter(
-                productos_ddbb,
+//            val productos_ddbb = createProductListFromDatabase()
+        /*    adapter = Lista_Inventario_Adapter(
+                productos_ddbb
                 this@ListadoFragment,
                 this@ListadoFragment
-            )
+            )*/
             recycler_inventario.adapter = adapter
         }
 
@@ -74,28 +70,28 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
         }
     }
 
-    fun createProductListFromDatabase():
+/*    fun createProductListFromDatabase():
             List<Productos_Entity> {
 
         val registros_db = dao.getAllFromProductosTable()
 
         return registros_db
-    }
+    }*/
 
-    override fun cardViewClickedShort(producto: Productos_Entity, view: View, position: Int) {
-        model.setSelected(producto)
-    }
+    /* override fun cardViewClickedShort(producto: Productos_Entity, view: View, position: Int) {
+         model.setSelected(producto)
+     }*/
 
-    override fun cardViewClickedLong(producto: Productos_Entity) {
+    /*override fun cardViewClickedLong(producto: Productos_Entity) {
         deleteItem(producto)
         Toast.makeText(context, "Eliminado ${producto.nombre_producto}", Toast.LENGTH_SHORT).show()
-    }
+    }*/
 
-    fun deleteItem(producto: Productos_Entity) {
+    /*fun deleteItem(producto: Productos_Entity) {
         CoroutineScope(Dispatchers.IO).launch {
             dao.deleteProducto(producto)
         }
-    }
+    }*/
 
     private fun setUpAddButton(view: View) {
         var btn_agregar = view.findViewById<Button>(R.id.btn_agregar_producto)
@@ -121,12 +117,12 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
 
                     AsyncTask.execute {
                         if (producto_nombre_Input != null && producto_precio_Input != null) {
-                            dao.insertProductos(
+                            /*dao.insertProductos(
                                 insertProducto(
                                     producto_nombre_Input.text.toString(),
                                     producto_precio_Input.text.toString()
                                 )
-                            )
+                            )*/
                         }
 
                         var thread = Thread() {
@@ -157,11 +153,11 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
         dialogBuilder.create().show()
     }
 
-    fun insertProducto(nombre_prod: String, precio_prod: String): Productos_Entity {
+  /*  fun insertProducto(nombre_prod: String, precio_prod: String): Productos_Entity {
         val producto = Productos_Entity(
             nombre_producto = nombre_prod, precio_producto = precio_prod.toInt()
         )
         return producto
-    }
+    }*/
 
 }

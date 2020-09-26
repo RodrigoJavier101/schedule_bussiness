@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta
 
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta.RutaViewModel
 
 class AddClienteFragment(
     private var editTextNombreCliente: EditText? = null,
