@@ -31,15 +31,15 @@ class RutaFragment_ : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_ruta_new, container, false)
 
-        nombreCliente = view.findViewById(R.id.cliente_ruta_input)
-        domicilioCliente = view.findViewById(R.id.domicilio_cliente_ruta_input)
-        telefonoCliente = view.findViewById(R.id.telefono_cliente_ruta_input)
+        nombreCliente = view.findViewById(R.id.lbl_item_nombre_cliene_ruta)
+        domicilioCliente = view.findViewById(R.id.lbl_item_domicilio_ruta)
+        telefonoCliente = view.findViewById(R.id.lbl_item_telefono_ruta)
 
-        val buttonAddNotes = view.findViewById<FloatingActionButton>(R.id.button_add_note)
+      /*  val buttonAddNotes = view.findViewById<FloatingActionButton>(R.id.button_add_note)
         buttonAddNotes.setOnClickListener {
             val intent = Intent(context, AddNoteFragment::class.java)
             startActivityForResult(intent, ADD_NOTE_REQUEST)
-        }
+        }*/
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -82,7 +82,7 @@ class RutaFragment_ : Fragment() {
     }
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK) {
             val nombreCliente = data!!.getStringExtra(AddNoteFragment.EXTRA_NOMBRE_CLIENTE)
@@ -96,7 +96,7 @@ class RutaFragment_ : Fragment() {
         } else {
             Toast.makeText(context, "Not saved", Toast.LENGTH_SHORT).show()
         }
-    }
+    }*/
 
     /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
  //        return super.onCreateOptionsMenu(menu);
