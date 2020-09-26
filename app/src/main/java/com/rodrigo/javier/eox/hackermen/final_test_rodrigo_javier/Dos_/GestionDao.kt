@@ -22,6 +22,6 @@ interface GestionDao {
     @Query("delete from clientes_table")
     fun deleteAllNotes()
 
-    @Query("select * from clientes_table order by telefono_cliente desc")
+    @Query("select * from clientes_table order by nombre_cliente desc")
     fun getAllNotes(): LiveData<List<Clientes_Entity>?>?
 }
