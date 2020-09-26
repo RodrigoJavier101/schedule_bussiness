@@ -2,6 +2,7 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
@@ -40,6 +41,7 @@ class RutaFragment_ : Fragment() {
         recyclerView.adapter = adapter
         noteViewModel = ViewModelProvider(this).get(RutaViewModel::class.java)
         noteViewModel!!.allNotes!!.observe(viewLifecycleOwner, { clientes ->
+            Log.d("-----------LOG------------->", clientes.toString())
             adapter!!.setNotes(clientes)
         })
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(

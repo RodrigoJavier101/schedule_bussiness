@@ -1,6 +1,7 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.EditText
 import android.widget.Toast
@@ -36,6 +37,13 @@ class AddNoteFragment(
         return view
     }
 
+    private fun limpiarViews() {
+        editTextNombreCliente!!.setText("")
+        editTextDomicilioCliente!!.setText("")
+        editTextTelefonoCliente!!.setText("")
+
+    }
+
     private fun saveNote() {
         val nombre = editTextNombreCliente!!.text.toString()
         val domicilio = editTextDomicilioCliente!!.text.toString()
@@ -49,12 +57,15 @@ class AddNoteFragment(
             )
                 .show()
             return
-        } else if (nombre.trim { it <= ' ' }.isNotEmpty() || domicilio.trim { it <= ' ' }
-                .isNotEmpty() || telefono.trim { it <= ' ' }.isNotEmpty()) {
+        } else if (nombre.trim { it <= ' ' }.isNotBlank() || domicilio.trim { it <= ' ' }
+                .isNotBlank() || telefono.trim { it <= ' ' }.isNotBlank()) {
             val cliente =
                 Clientes_Entity(nombre!!, domicilio!!, telefono.toLong())
+            Log.d("-----------LOG------------->", cliente.domicilio_cliente.toString())
             noteViewModel!!.insert(cliente)
             Toast.makeText(context, "Cliente guardao en DDBB", Toast.LENGTH_SHORT).show()
+            limpiarViews()
+            /*aqui me gustaria que se cambien automaticamente a la lista de la ruta*/
         } else {
             Toast.makeText(context, "No guardado", Toast.LENGTH_SHORT).show()
         }
