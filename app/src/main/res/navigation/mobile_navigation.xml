@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/nav_ruta"
-        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.RutaFragment_"
+        android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.RutaContainerFragment"
         android:label="@string/menu_ruta"
-        tools:layout="@layout/fragment_ruta" />
+        tools:layout="@layout/fragment_ruta_container" />
 
 </navigation>

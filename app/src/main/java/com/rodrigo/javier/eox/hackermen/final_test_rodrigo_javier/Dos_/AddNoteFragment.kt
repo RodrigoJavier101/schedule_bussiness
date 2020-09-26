@@ -58,7 +58,7 @@ class AddNoteFragment(
         val telefono = numberPickerTelefonoCliente!!.value
         if (nombre.trim { it <= ' ' }.isEmpty() || domicilio.trim { it <= ' ' }.isEmpty()) {
             Toast.makeText(context, "Please insert a title and description", Toast.LENGTH_SHORT)
-                    .show()
+                .show()
             return
         }
         val data = Intent()
@@ -76,6 +76,14 @@ class AddNoteFragment(
                 ".tutorialroomviewmodellivedatarecview.EXTRA_DESCRIPTION"
         const val EXTRA_TELEFONO_CLIENTE = "com.rodrigo.javier.eox.hackermen" +
                 ".tutorialroomviewmodellivedatarecview.EXTRA_PRIORITY"
+
+        private const val ADD_NOTE_REQUEST = 1
+
+        fun newInstance(): AddNoteFragment {
+            var newaddNoteFragment_ = AddNoteFragment()
+            return newaddNoteFragment_
+        }
+
     }
 }
 
