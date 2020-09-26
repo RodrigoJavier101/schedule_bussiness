@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:tabGravity="center"
-        app:tabMode="fixed"
         app:tabIndicatorHeight="10dp"
+        app:tabMode="fixed"
         app:tabRippleColor="@color/colorPrimaryDark"
         app:tabSelectedTextColor="#daaaddaa" />
 
