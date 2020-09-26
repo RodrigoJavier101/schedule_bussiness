@@ -23,7 +23,7 @@
     <!--entradas del spinner de userlogin-->
     <string name="encabezado_spinner_login">Selecciona</string>
     <string-array name="spinner_login">
-        <!-- <item>ERROR</item>-->
+       <!-- <item>ERROR</item>-->
     </string-array>
 
     <!--BOILERPLATE DRAWER NAV-->

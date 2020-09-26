@@ -3,7 +3,7 @@
     package="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier">
 
     <application
-        android:name=".Dos_.RoomApplication"
+        android:name=".database.RoomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

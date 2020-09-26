@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Dos_.RutaContainerFragment">
+    tools:context=".ui.ui_ruta.RutaContainerFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_ventas_gastos"

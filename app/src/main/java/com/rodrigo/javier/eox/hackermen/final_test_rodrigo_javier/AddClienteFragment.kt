@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier
 
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta.RutaViewModel
 
-class AddNoteFragment(
+class AddClienteFragment(
     private var editTextNombreCliente: EditText? = null,
     private var editTextDomicilioCliente: EditText? = null,
     private var editTextTelefonoCliente: EditText? = null,
@@ -72,8 +73,8 @@ class AddNoteFragment(
     }
 
     companion object {
-        fun newInstance(): AddNoteFragment {
-            var newaddNoteFragment_ = AddNoteFragment()
+        fun newInstance(): AddClienteFragment {
+            var newaddNoteFragment_ = AddClienteFragment()
             return newaddNoteFragment_
         }
     }

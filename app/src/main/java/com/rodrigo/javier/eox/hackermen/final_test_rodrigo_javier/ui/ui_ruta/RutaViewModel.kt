@@ -1,8 +1,10 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionRepository
 
 
 /*subclass de view model, éste permite pasarle applciation enel constructor por lo  que no se

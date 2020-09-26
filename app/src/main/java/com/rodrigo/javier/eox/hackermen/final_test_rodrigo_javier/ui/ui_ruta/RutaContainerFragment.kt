@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import kotlinx.android.synthetic.main.fragment_ruta_container.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

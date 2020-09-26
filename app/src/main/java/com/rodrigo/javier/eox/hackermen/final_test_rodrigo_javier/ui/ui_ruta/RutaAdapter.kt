@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_.RutaAdapter.NoteHolder
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta.RutaAdapter.NoteHolder
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import java.util.*
 

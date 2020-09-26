@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_activities
 
 import android.os.Bundle
 import android.view.Menu

@@ -1,9 +1,10 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.Dos_
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.AddClienteFragment
 
 class RutaContainerAdapter(
     fragmentManager: FragmentManager?,
@@ -15,7 +16,7 @@ class RutaContainerAdapter(
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = RutaFragment_.newInstance()
-            1 -> fragment = AddNoteFragment.newInstance()
+            1 -> fragment = AddClienteFragment.newInstance()
         }
         return fragment!!
     }
