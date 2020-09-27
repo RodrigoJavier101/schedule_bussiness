@@ -40,7 +40,7 @@ class RutaFragment_ : Fragment() {
         adapter = RutaAdapter()
         recyclerView.adapter = adapter
         noteViewModel = ViewModelProvider(this).get(RutaViewModel::class.java)
-        noteViewModel!!.allNotes!!.observe(viewLifecycleOwner, { clientes ->
+        noteViewModel!!.allClientes!!.observe(viewLifecycleOwner, { clientes ->
             Log.d("-----------LOG------------->", clientes.toString())
             adapter!!.setNotes(clientes)
         })

@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 @Database(entities = [Clientes_Entity::class], version = 16, exportSchema = false)
 abstract class GestionDatabase : RoomDatabase() {
     /*se usa para acceder al dao, room se ocupa del código*/ /*se usa este metodo para acceder al ddbb*/
-    abstract fun notesDao(): GestionDao
+    abstract fun setDao(): GestionDao
     abstract class PopulateddbbAsyncTask : AsyncTask<Void?, Void?, Void?> {
         private var noteDao: GestionDao
 
@@ -24,7 +24,7 @@ abstract class GestionDatabase : RoomDatabase() {
         constructor(
             db: GestionDatabase?
         ) {
-            noteDao = db!!.notesDao()
+            noteDao = db!!.setDao()
             /* noteDao.insert(Note("Title 1", "Description 1", 1))
              noteDao.insert(Note("Title 2", "Description 2", 2))
              noteDao.insert(Note("Title 3", "Description 3", 3))*/

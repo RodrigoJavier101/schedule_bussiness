@@ -1,5 +1,6 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_activities
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,10 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDao
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.RoomApplication
+import androidx.lifecycle.LiveData
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.User_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions.Companion.fileNameShPref
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
@@ -23,36 +23,47 @@ class LoginActivity :
     lateinit var sharedPreferences: SharedPreferences
     lateinit var spinner_login: Spinner
     lateinit var edit_password_login: EditText
+    val repository: GestionRepository
     lateinit var dao: GestionDao
+    val allUsers: LiveData<List<User_Entity>?>?
+
+    init {
+        repository = GestionRepository(application)
+        allUsers = repository.allUsers_
+        dao = GestionDatabase.getInstance(applicationContext)!!.setDao()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-//        dao = RoomApplication.gestionDatabase.getGestionDao()
         initViews()
         startSpinner()
-        sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
+//        sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
         btn_login.setOnClickListener {
 //            saveInSharedPreferences(it)
             fetchMainActivity(applicationContext)
-//            validateUser()
+            validateUser()
         }
     }
 
     private fun validateUser() {
-        var passResp: Int = 0
+        var passResp: String = ""
         var username = spinner_login.selectedItem.toString()
         var listaUsers: List<User_Entity> = listOf()
         var editloginpass = findViewById<EditText>(R.id.text_edit_password)
-        CoroutineScope(Dispatchers.IO).launch {
-//            passResp = dao.getPasswordFromUserTable(username)
+
+        allUsers.let {
+            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+        }
+
+
+/*        CoroutineScope(Dispatchers.IO).launch {
+            passResp = dao.
             if (passResp.toString().equals(editloginpass.text.toString())) {
 //                fetchMainActivity(applicationContext)
                 finish()
             }
-        }
-
-//        Toast.makeText(this, "La pass no coincide ${passResp}", Toast.LENGTH_SHORT).show()
+        }*/
     }
 
     private fun fillSpinner() {

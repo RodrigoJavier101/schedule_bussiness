@@ -16,7 +16,7 @@ class AddClienteFragment(
     private var editTextDomicilioCliente: EditText? = null,
     private var editTextTelefonoCliente: EditText? = null,
 ) : Fragment() {
-    private var noteViewModel: RutaViewModel? = null
+    private var rutaViewModel: RutaViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ class AddClienteFragment(
         editTextDomicilioCliente = view.findViewById(R.id.edit_text_domicilio_client)
         editTextTelefonoCliente = view.findViewById(R.id.edit_text_view_telefon)
 
-        noteViewModel = ViewModelProvider(this).get(RutaViewModel::class.java)
+        rutaViewModel = ViewModelProvider(this).get(RutaViewModel::class.java)
 
         val buttonAddNotes = view.findViewById<FloatingActionButton>(R.id.button_add_note)
         buttonAddNotes.setOnClickListener {
@@ -63,7 +63,7 @@ class AddClienteFragment(
             val cliente =
                 Clientes_Entity(nombre!!, domicilio!!, telefono.toLong())
             Log.d("-----------LOG------------->", cliente.domicilio_cliente.toString())
-            noteViewModel!!.insert(cliente)
+            rutaViewModel!!.insert(cliente)
             Toast.makeText(context, "Cliente guardao en DDBB", Toast.LENGTH_SHORT).show()
             limpiarViews()
             /*aqui me gustaria que se cambien automaticamente a la lista de la ruta*/
