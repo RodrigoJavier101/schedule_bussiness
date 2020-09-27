@@ -1,15 +1,11 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 class Admin_Estadisticas_Fragment : Fragment() {
 

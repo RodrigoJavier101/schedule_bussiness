@@ -1,12 +1,12 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.Admin_Clientes_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.Admin_Estadisticas_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.Admin_Proveedores_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Clientes_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Estadisticas_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Proveedores_Fragment
 
 class AdminViewPagerAdapter(
     fragmentManager: FragmentManager?,

@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

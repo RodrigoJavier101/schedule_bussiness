@@ -1,7 +1,9 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 //        menuInflater.inflate(R.menu.main, menu)
         val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.main_menu_new, menu)
+        menuInflater.inflate(R.menu.main, menu)
         //        return super.onCreateOptionsMenu(menu);
         return true
     }
@@ -52,4 +54,9 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    fun inItemClick(item: MenuItem) {
+        var intent = Intent(this, LoginActivity::class.java)
+        startActivity((intent))
+        finish()
+    }
 }
