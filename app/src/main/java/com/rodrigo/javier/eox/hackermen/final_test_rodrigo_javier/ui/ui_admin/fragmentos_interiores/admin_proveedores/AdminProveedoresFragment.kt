@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_proveedores
 
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Proveedores_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.adapters.AdminProveedoresAdapter
 
 
 class AdminProveedoresFragment : Fragment() {

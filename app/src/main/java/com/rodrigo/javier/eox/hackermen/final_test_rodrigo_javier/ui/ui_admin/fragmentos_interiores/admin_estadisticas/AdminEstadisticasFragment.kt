@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_estadisticas
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 
-class Admin_Estadisticas_Fragment : Fragment() {
+class AdminEstadisticasFragment : Fragment() {
 
     lateinit var lblTotalVentas: TextView
 
@@ -37,8 +37,8 @@ class Admin_Estadisticas_Fragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): Admin_Estadisticas_Fragment {
-            var newAdmin_Estaditicas_Fragment = Admin_Estadisticas_Fragment()
+        fun newInstance(): AdminEstadisticasFragment {
+            var newAdmin_Estaditicas_Fragment = AdminEstadisticasFragment()
             return newAdmin_Estaditicas_Fragment
         }
     }

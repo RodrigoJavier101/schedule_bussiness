@@ -1,12 +1,12 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.adapters
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Clientes_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Estadisticas_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.AdminProveedoresFragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_clientes.AdminClientesFragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_estadisticas.AdminEstadisticasFragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_proveedores.AdminProveedoresFragment
 
 class AdminViewPagerAdapter(
     fragmentManager: FragmentManager?,
@@ -17,8 +17,8 @@ class AdminViewPagerAdapter(
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            2 -> fragment = Admin_Estadisticas_Fragment.newInstance()
-            0 -> fragment = Admin_Clientes_Fragment.newInstance()
+            2 -> fragment = AdminEstadisticasFragment.newInstance()
+            0 -> fragment = AdminClientesFragment.newInstance()
             1 -> fragment = AdminProveedoresFragment.newInstance()
         }
         return fragment!!
