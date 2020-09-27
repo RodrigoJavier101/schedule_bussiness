@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Clientes_Fragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Estadisticas_Fragment
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.Admin_Proveedores_Fragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.AdminProveedoresFragment
 
 class AdminViewPagerAdapter(
     fragmentManager: FragmentManager?,
@@ -19,7 +19,7 @@ class AdminViewPagerAdapter(
         when (position) {
             2 -> fragment = Admin_Estadisticas_Fragment.newInstance()
             0 -> fragment = Admin_Clientes_Fragment.newInstance()
-            1 -> fragment = Admin_Proveedores_Fragment.newInstance()
+            1 -> fragment = AdminProveedoresFragment.newInstance()
         }
         return fragment!!
     }

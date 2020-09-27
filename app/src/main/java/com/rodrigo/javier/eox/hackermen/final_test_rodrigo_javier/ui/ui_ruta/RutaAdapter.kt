@@ -7,22 +7,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta.RutaAdapter.NoteHolder
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta.RutaAdapter.RutaHolder
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import java.util.*
 
 class RutaAdapter(private var clientes: List<Clientes_Entity>? = ArrayList()) :
-    RecyclerView.Adapter<NoteHolder>() {
+    RecyclerView.Adapter<RutaHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RutaHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.ruta_item,
             parent, false
         )
-        return NoteHolder(itemView)
+        return RutaHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: NoteHolder, position: Int) {
+    override fun onBindViewHolder(holder: RutaHolder, position: Int) {
         val currentClien = clientes!![position]
         holder.textViewTitleNombreCliente.text = currentClien.nombre_cliente
         holder.textViewDomicilioCliente.text = currentClien.domicilio_cliente
@@ -33,16 +33,16 @@ class RutaAdapter(private var clientes: List<Clientes_Entity>? = ArrayList()) :
         return clientes!!.size
     }
 
-    fun setNotes(notes: List<Clientes_Entity>?) {
+    fun setClientes(notes: List<Clientes_Entity>?) {
         this.clientes = notes
         notifyDataSetChanged()
     }
 
-    fun getNoteAt(position: Int): Clientes_Entity? {
+    fun getClienteAt(position: Int): Clientes_Entity? {
         return clientes!![position]
     }
 
-    inner class NoteHolder(itemView: View) : ViewHolder(itemView) {
+    inner class RutaHolder(itemView: View) : ViewHolder(itemView) {
         val textViewTitleNombreCliente: TextView
         val textViewDomicilioCliente: TextView
         val textViewTelefonoCliente: TextView

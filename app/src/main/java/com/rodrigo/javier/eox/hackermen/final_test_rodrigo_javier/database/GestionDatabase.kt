@@ -12,7 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 @Database(
     entities = [(User_Entity::class), (Productos_Entity::class), (Ventas_Entity::class), (Gastos_Entity::class),
         (Clientes_Entity::class), (Proveedores_Entity::class), (Ruta_Entity::class)],
-    version = 17, exportSchema = false
+    version = 18, exportSchema = false
 )
 abstract class GestionDatabase : RoomDatabase() {
     /*se usa para acceder al dao, room se ocupa del código*/ /*se usa este metodo para acceder al ddbb*/
@@ -60,7 +60,7 @@ abstract class GestionDatabase : RoomDatabase() {
                     context.applicationContext, GestionDatabase::class.java,
                     "note_database"
                 )
-//                        .fallbackToDestructiveMigration()
+//                    .fallbackToDestructiveMigration()
                     .addCallback(roomcallback)
                     .build()
             }

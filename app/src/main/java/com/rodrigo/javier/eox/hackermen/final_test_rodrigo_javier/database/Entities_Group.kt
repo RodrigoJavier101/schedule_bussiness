@@ -73,10 +73,10 @@ data class Gastos_Entity(
 @Entity(tableName = "proveedores_table")
 data class Proveedores_Entity(
     var nombre_proveedor: String = "sin nombre?",
-    var mail_proveedor: String = "@agregar",
-    var telefono_proveedor: String = "sin-numero",
-    var status_proveedor: String = "no-coment",
     var domicilio_proveedor: String = "none",
+    var telefono_proveedor: Long = 0,
+    var mail_proveedor: String = "@agregar",
+    var status_proveedor: String = "no-coment",
 ) {
     @PrimaryKey(autoGenerate = true)
     var id_proveedores: Int = 0

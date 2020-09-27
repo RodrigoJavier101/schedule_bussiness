@@ -15,7 +15,7 @@ class RutaContainerAdapter(
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = RutaFragment_.newInstance()
-            1 -> fragment = AddClienteFragment.newInstance()
+            1 -> fragment = AddClienteRutaFragment.newInstance()
         }
         return fragment!!
     }

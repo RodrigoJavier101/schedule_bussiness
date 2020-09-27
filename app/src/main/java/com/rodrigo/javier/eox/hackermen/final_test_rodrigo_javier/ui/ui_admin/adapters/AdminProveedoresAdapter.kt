@@ -1,43 +1,66 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Proveedores_Entity
-import kotlinx.android.synthetic.main.item_admin_proveedores.view.*
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ruta.RutaAdapter.RutaHolder
+import java.util.*
+
 
 class AdminProveedoresAdapter(
-    private var lista_proveeodres: MutableList<Proveedores_Entity>,
-    context: Context
+    private var proveedores: List<Proveedores_Entity>? = ArrayList()
 ) :
-    RecyclerView.Adapter<ProveedoresViewHolder>() {
+    RecyclerView.Adapter<AdminProveedoresAdapter.ProveedoresHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProveedoresViewHolder {
-        return ProveedoresViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_admin_proveedores, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProveedoresHolder {
+        val itemView: View = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_admin_proveedores, parent, false)
+        return ProveedoresHolder(
+            itemView
         )
     }
 
 
-    override fun onBindViewHolder(holder: ProveedoresViewHolder, position: Int) {
-        TODO("Not yet implemented")
-        var data = lista_proveeodres[position]
-        holder.lista.text = data.nombre_proveedor
+    override fun onBindViewHolder(holder: ProveedoresHolder, position: Int) {
+        var dataProveedores = proveedores!![position]
+        holder.textViewTitleNombreProveedor.text = dataProveedores.nombre_proveedor
+        holder.textViewDomicilioProveedor.text = dataProveedores.domicilio_proveedor
+        holder.textViewTelefonoProveedor.text = dataProveedores.telefono_proveedor.toString()
     }
 
 
     override fun getItemCount(): Int {
-        return lista_proveeodres.size
+        return proveedores!!.size
+    }
+
+    fun setProveedores(proveedores: List<Proveedores_Entity>?) {
+        this.proveedores = proveedores
+        notifyDataSetChanged()
+    }
+
+    fun getProveedorAt(position: Int): Proveedores_Entity? {
+        return proveedores!![position]
+    }
+
+    inner class ProveedoresHolder(itemView: View) : ViewHolder(itemView) {
+        val textViewTitleNombreProveedor: TextView
+        val textViewDomicilioProveedor: TextView
+        val textViewTelefonoProveedor: TextView
+
+        init {
+            textViewTitleNombreProveedor = itemView.findViewById(R.id.lbl_item_nombre_proveedor)
+            textViewDomicilioProveedor = itemView.findViewById(R.id.lbl_item_domicilio_proveedor)
+            textViewTelefonoProveedor = itemView.findViewById(R.id.lbl_item_telefono_proveedor)
+        }
     }
 
 }
 
-class ProveedoresViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    var lista = view.lbl_item_proveedores
-}
+
 

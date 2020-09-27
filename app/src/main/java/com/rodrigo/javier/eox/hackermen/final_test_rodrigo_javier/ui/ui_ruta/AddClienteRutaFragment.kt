@@ -11,10 +11,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
 
-class AddClienteFragment(
+class AddClienteRutaFragment(
     private var editTextNombreCliente: EditText? = null,
     private var editTextDomicilioCliente: EditText? = null,
-    private var editTextTelefonoCliente: EditText? = null,
+    private var editTextTelefonoCliente: EditText? = null
 ) : Fragment() {
     private var rutaViewModel: RutaViewModel? = null
 
@@ -32,7 +32,7 @@ class AddClienteFragment(
 
         val buttonAddNotes = view.findViewById<FloatingActionButton>(R.id.button_add_note)
         buttonAddNotes.setOnClickListener {
-            saveNote()
+            guardarCliente()
         }
 
         return view
@@ -42,10 +42,9 @@ class AddClienteFragment(
         editTextNombreCliente!!.setText("")
         editTextDomicilioCliente!!.setText("")
         editTextTelefonoCliente!!.setText("")
-
     }
 
-    private fun saveNote() {
+    private fun guardarCliente() {
         val nombre = editTextNombreCliente!!.text.toString()
         val domicilio = editTextDomicilioCliente!!.text.toString()
         val telefono = editTextTelefonoCliente!!.text.toString()
@@ -73,8 +72,8 @@ class AddClienteFragment(
     }
 
     companion object {
-        fun newInstance(): AddClienteFragment {
-            var newaddNoteFragment_ = AddClienteFragment()
+        fun newInstance(): AddClienteRutaFragment {
+            var newaddNoteFragment_ = AddClienteRutaFragment()
             return newaddNoteFragment_
         }
     }

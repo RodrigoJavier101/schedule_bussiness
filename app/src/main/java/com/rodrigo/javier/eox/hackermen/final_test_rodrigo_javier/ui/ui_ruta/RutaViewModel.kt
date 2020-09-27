@@ -32,7 +32,7 @@ class RutaViewModel(application: Application) : AndroidViewModel(application) {
         repository.deleteCliente(cliente)
     }
 
-    fun deleteAllNotes() {
+    fun deleteAllClientes() {
         repository.deleteAllClientes()
     }
 
