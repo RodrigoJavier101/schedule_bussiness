@@ -19,7 +19,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDao
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDatabase
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.User_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.ItemUserClickListener
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.ApiRetrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.RetrofitClient
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.api_objects.Json4Kotlin_Base
@@ -37,19 +40,17 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class HomeFragment : Fragment() {//, ItemUserClickListener {
+class HomeFragment : Fragment(), ItemUserClickListener {
 
     private lateinit var service: ApiRetrofit
     private var call: Call<Json4Kotlin_Base>? = null
-
-    //    private val dao: GestionDao = RoomApplication.gestionDatabase.getGestionDao()
+    private lateinit var dao: GestionDao
     private lateinit var sharedPreferences: SharedPreferences
     lateinit var btnAdmin: Button
     lateinit var btnAgregarUser: Button
     private lateinit var adapter: HomeAdapter
     private lateinit var recyclerview: RecyclerView
     private lateinit var model: HomeViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,26 +63,23 @@ class HomeFragment : Fragment() {//, ItemUserClickListener {
             CommonFunctions.fileNameShPref,
             Context.MODE_PRIVATE
         )
+        dao = GestionDatabase.getInstance(requireContext())!!.setDao()
         model =
             ViewModelProvider(requireActivity()).get(HomeViewModel::class.java);
 
         btnAdmin = root.findViewById(R.id.btn_admin_)
         btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
         recyclerview = root.findViewById(R.id.recycler_users)
-        var users_ddbb: MutableList<User_Entity> = mutableListOf()
+        var users_ddbb: List<User_Entity> = mutableListOf()
         CoroutineScope(Dispatchers.IO).launch {
-//            users_ddbb = createUsersListFromDatabase()
-            adapter = HomeAdapter(users_ddbb)
+            users_ddbb = createUsersListFromDatabase()
+            adapter = HomeAdapter(users_ddbb, this@HomeFragment)
             recyclerview.adapter = adapter
             recyclerview.hasFixedSize()
             val divider = DividerItemDecoration(recyclerview.context, 1)
             recyclerview.addItemDecoration(divider)
             recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-        }
-
-        model.getSelected()?.observe(viewLifecycleOwner) { item ->
-            adapter.addItem(item)
         }
 
         callIndicators()
@@ -94,8 +92,6 @@ class HomeFragment : Fragment() {//, ItemUserClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
     }
 
     private fun setUpAddButtonAgregar(view: View?) {
@@ -104,12 +100,12 @@ class HomeFragment : Fragment() {//, ItemUserClickListener {
         }
     }
 
-/*    private fun createUsersListFromDatabase(): MutableList<User_Entity> {
+    private fun createUsersListFromDatabase(): List<User_Entity> {
 
-        var users_db = dao.getAllFromUserTable()
+        var users_db = dao.getAllUsers_2()
 
         return users_db
-    }*/
+    }
 
     private fun generateDialog() {
         val dialogView = layoutInflater
@@ -133,9 +129,9 @@ class HomeFragment : Fragment() {//, ItemUserClickListener {
                         )
 
                         CoroutineScope(Dispatchers.IO).launch {
-//                            dao.insertUsers(user)
+                            dao.insertUser(user)
                         }
-                        model.setSelected(user)
+//                        model.setSelected(user)
                         AsyncTask.execute {
                             var thread = Thread() {
                                 fun run() {
@@ -231,9 +227,9 @@ class HomeFragment : Fragment() {//, ItemUserClickListener {
         recyclerview.visibility = View.VISIBLE
     }
 
-    /*override fun itemUserUpdateClick(user: User_Entity) {
+    override fun itemUserUpdateClick(user: User_Entity) {
         optionsAdmin(user)
-    }*/
+    }
 
     private fun optionsAdmin(user: User_Entity) {
         if (user.user_name.equals("Admin")) {
@@ -253,7 +249,7 @@ class HomeFragment : Fragment() {//, ItemUserClickListener {
                 .setNegativeButton("Delete") { dialog: DialogInterface, _: Int ->
 
                     CoroutineScope(Dispatchers.IO).launch {
-//                        dao.deleteUsers(user)
+                        dao.deleteUser(user)
                     }
 
                     dialog.dismiss()
@@ -273,7 +269,7 @@ class HomeFragment : Fragment() {//, ItemUserClickListener {
                         user.password = dialogView.password_update_input.text.toString().toInt()
                     }
                     CoroutineScope(Dispatchers.IO).launch {
-//                        dao.updateUsers(user)
+                        dao.updateUser(user)
                     }
 //                    model.setSelected(user)
                     if (nombreuser_update_Input.text?.isNotEmpty()!! && password_updateInput.text?.isNotEmpty()!!) {

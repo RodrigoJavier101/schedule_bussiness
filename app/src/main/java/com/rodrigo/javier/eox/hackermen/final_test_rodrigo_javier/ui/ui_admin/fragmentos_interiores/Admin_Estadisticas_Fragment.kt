@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+
 class Admin_Estadisticas_Fragment : Fragment() {
 
     lateinit var lblTotalVentas: TextView
-//    lateinit var dao: GestionDao
+
+    //    lateinit var dao: GestionDao
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         var view: View = inflater.inflate(R.layout.fragment_admin_estadisticas, container, false)
-        lblTotalVentas = view.findViewById(R.id.lbl_total_ventas_estatisticas)
+//        lblTotalVentas = view.findViewById(R.id.lbl_total_ventas_estatisticas)
 //        dao = RoomApplication.gestionDatabase.getGestionDao()
 //        var lista_ventas: List<Ventas_Entity> = listOf()
 //        CoroutineScope(Dispatchers.IO).launch {

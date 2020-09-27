@@ -20,7 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LoginActivity :
-    AppCompatActivity() {  //, SharedPreferences.OnSharedPreferenceChangeListener {
+    AppCompatActivity() , SharedPreferences.OnSharedPreferenceChangeListener {
 
     lateinit var sharedPreferences: SharedPreferences
     lateinit var spinner_login: Spinner
@@ -41,9 +41,9 @@ class LoginActivity :
         dao = GestionDatabase.getInstance(applicationContext)!!.setDao()
         initViews()
         startSpinner()
-//        sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
         btn_login.setOnClickListener {
-//            saveInSharedPreferences(it)
+            saveInSharedPreferences(it)
             validateUser()
         }
     }
@@ -66,6 +66,7 @@ class LoginActivity :
 
     private fun fillSpinner() {
         var users_list: List<User_Entity> = dao.getAllUsers_2()
+//        Toast.makeText(this, users_list.toString(), Toast.LENGTH_SHORT).show()
         var usersName: ArrayList<String> = arrayListOf()
         users_list?.forEach {
             usersName.add(it!!.user_name)
@@ -100,7 +101,7 @@ class LoginActivity :
         finish()
     }
 
-    /*override fun onSharedPreferenceChanged(
+    override fun onSharedPreferenceChanged(
         changedSharedPreferences: SharedPreferences?,
         changedKey: String?
     ) {
@@ -111,7 +112,7 @@ class LoginActivity :
         if (changedKey.equals("f", true)) {
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
         }
-    }*/
+    }
 
     private fun saveInSharedPreferences(it: View) {
         if (this::sharedPreferences.isInitialized) {

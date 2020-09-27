@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
@@ -41,7 +40,7 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.listado_inventario_fragment, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_listado_inventario, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
         dao = GestionDatabase.getInstance(requireContext())!!.setDao()
         return view
