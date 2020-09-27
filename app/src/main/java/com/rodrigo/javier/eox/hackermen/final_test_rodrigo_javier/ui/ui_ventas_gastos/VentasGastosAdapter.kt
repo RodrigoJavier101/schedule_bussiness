@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.adapters
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

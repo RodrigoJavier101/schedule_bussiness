@@ -12,12 +12,12 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.Ite
 import kotlinx.android.synthetic.main.item_user.view.*
 
 
-class HomeAdapter__(
+class Adapter__(
     var lista: List<User_Entity>
     ,
     private val listenerUpdateUser: ItemUserClickListener
 ) :
-    RecyclerView.Adapter<HomeAdapter__.MyViewHolder>() {
+    RecyclerView.Adapter<Adapter__.MyViewHolder>() {
 
 
     inner class MyViewHolder(var item_view: View) : RecyclerView.ViewHolder(item_view) {

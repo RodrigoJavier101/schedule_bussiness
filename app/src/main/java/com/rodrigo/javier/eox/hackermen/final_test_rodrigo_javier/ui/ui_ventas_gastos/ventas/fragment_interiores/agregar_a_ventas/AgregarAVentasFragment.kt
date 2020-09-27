@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.ventas.fragment_interiores.agregar_a_ventas
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,8 +16,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Gesti
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDatabase
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Productos_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Ventas_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.adapters.FromListaToAgregados_Adapter
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.ListaViewModel
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.ventas.fragment_interiores.lista_inventario.ListaViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

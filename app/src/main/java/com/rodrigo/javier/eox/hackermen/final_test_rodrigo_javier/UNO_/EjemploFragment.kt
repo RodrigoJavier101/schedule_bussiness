@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_clientes
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.UNO_
 
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_clientes.AdminClientesAdapter
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_clientes.AdminClientesFragment
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_clientes.AdminClientesViewModel
 
 
 class EjemploFragment : Fragment() {
@@ -110,7 +113,7 @@ class EjemploFragment : Fragment() {
                 .isEmpty() || telefono.trim { it <= ' ' }.isEmpty()) {
             Toast.makeText(
                 context,
-                "Debes agregar nombre, domicilio y teléfono",
+                "Debes agregar nombre",
                 Toast.LENGTH_SHORT
             )
                 .show()

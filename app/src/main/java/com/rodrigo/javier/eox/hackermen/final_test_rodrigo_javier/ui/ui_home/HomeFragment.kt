@@ -26,6 +26,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.Ite
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.ApiRetrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.RetrofitClient
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.api_objects.Json4Kotlin_Base
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_clientes.AdminClientesViewModel
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeViewModel
@@ -45,7 +46,6 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     private lateinit var service: ApiRetrofit
     private var call: Call<Json4Kotlin_Base>? = null
 
-    /*me permite discriminar el usuario admin para visualizar items*/
     private lateinit var sharedPreferences: SharedPreferences
 
     /*vistas*/
@@ -54,12 +54,12 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     private var nombreUser: TextView? = null
     private var domicilioPassUser: TextView? = null
 
-    private var editTextNombreUser: EditText? = null
-    private var editTextPassUser: EditText? = null
+    //    private var editTextNombreUser: EditText? = null
+//    private var editTextPassUser: EditText? = null
     private lateinit var btnAgregarUser: Button
 
     private lateinit var adapter: HomeAdapter
-    private lateinit var model: HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,65 +69,58 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         initializations(root)
-
-        model =
-            ViewModelProvider(requireActivity()).get(HomeViewModel::class.java);
-
-        var users_ddbb: List<User_Entity> = mutableListOf()
-        CoroutineScope(Dispatchers.IO).launch {
-            users_ddbb = createUsersListFromDatabase()
-            adapter = HomeAdapter(users_ddbb, this@HomeFragment)
-            recyclerview.adapter = adapter
-            recyclerview.hasFixedSize()
-            val divider = DividerItemDecoration(recyclerview.context, 1)
-            recyclerview.addItemDecoration(divider)
-            recyclerview.layoutManager = LinearLayoutManager(requireContext())
-
-        }
-
         callIndicators()
         readFromSHPref()
-        setUpAddButtonGestionar(root)
-        setUpAddButtonAgregar(root)
+        setUpBtnGestionar(root)
+
+        /**********************/
+        setUpBtnAgregar(root)
+
+
+        var users_ddbb: List<User_Entity> = mutableListOf()
+
+//            users_ddbb = createUsersListFromDatabase()
+        recyclerview.hasFixedSize()
+        val divider = DividerItemDecoration(recyclerview.context, 1)
+        recyclerview.addItemDecoration(divider)
+        recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        adapter = HomeAdapter()
+        recyclerview.adapter = adapter
+
+        homeViewModel!!.allUsers!!.observe(viewLifecycleOwner, { clientes ->
+            Log.d("-----------LOG------------->", clientes.toString())
+            adapter!!.setUsers(clientes)
+        })
 
         return root
     }
 
     private fun initializations(root: View) {
+        homeViewModel =
+            ViewModelProvider(requireActivity()).get(HomeViewModel::class.java);
+
         sharedPreferences = requireActivity().getSharedPreferences(
             CommonFunctions.fileNameShPref,
             Context.MODE_PRIVATE
         )
+
+        btnAdmin = root.findViewById(R.id.btn_admin_)
         btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
         recyclerview = root.findViewById(R.id.recycler_users)
-        btnAdmin = root.findViewById(R.id.btn_admin_)
-        nombreUser = null
-        domicilioPassUser = null
+        nombreUser = root.findViewById(R.id.lbl_item_nombre_user);
+        domicilioPassUser = root.findViewById(R.id.lbl_item_password_user)
 
-        editTextNombreUser = null
-        editTextPassUser = null
-        btnAgregarUser = Button
-    }
-
-
-    private fun setUpAddButtonAgregar(view: View?) {
-        btnAgregarUser.setOnClickListener {
-            generateDialog()
-        }
-    }
-
-    private fun createUsersListFromDatabase(): List<User_Entity> {
-
-        var users_db = dao.getAllUsers_2()
-
-        return users_db
+//        editTextNombreUser = root.findViewById(R.id.nombre_user_input)
+//        editTextPassUser = root.findViewById(R.id.password_input)
     }
 
     private fun generateDialog() {
         val dialogView = layoutInflater
             .inflate(R.layout.add_agrega_user, null)
+
         val nombreuser_Input = dialogView.nombre_user_input
         val passwordInput = dialogView.password_input
+
         val dialogBuilder = AlertDialog
             .Builder(requireContext())
             .setTitle("Agrega un Usuario")
@@ -135,40 +128,36 @@ class HomeFragment : Fragment(), ItemUserClickListener {
             .setNegativeButton("Cerrar") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
             .setPositiveButton("Agregar") { dialog: DialogInterface, _: Int ->
 
+                if ((nombreuser_Input.text?.isNotEmpty()!! && passwordInput.text?.isNotEmpty()!!)
+                    && (nombreuser_Input != null && passwordInput != null)
+                ) {
+                    var user: User_Entity = User_Entity(
+                        user_name = nombreuser_Input.text.toString(),
+                        password = Integer.parseInt(passwordInput.text.toString())
+                    )
+                    homeViewModel!!.insertUser(user)
+                    Toast.makeText(context, "User --> DDBB", Toast.LENGTH_SHORT).show()
+                    dialogView.nombre_user_input.setText("")
+                    dialogView.password_input.setText("")
 
-                if (nombreuser_Input.text?.isNotEmpty()!! && passwordInput.text?.isNotEmpty()!!) {
-
-                    if (nombreuser_Input != null && passwordInput != null) {
-                        var user: User_Entity = User_Entity(
-                            user_name = nombreuser_Input.text.toString(),
-                            password = Integer.parseInt(passwordInput.text.toString())
-                        )
-
-                        CoroutineScope(Dispatchers.IO).launch {
-                            dao.insertUser(user)
-                        }
-//                        model.setSelected(user)
-                        AsyncTask.execute {
-                            var thread = Thread() {
-                                fun run() {
-                                    try {
-                                        synchronized(this) {
-                                            Thread.sleep(500)
-                                            UiThreadStatement.runOnUiThread {
-                                                //                                                adapter.notifyDataSetChanged()
-                                                dialog.dismiss()
-                                            }
+                    AsyncTask.execute {
+                        var thread = Thread() {
+                            fun run() {
+                                try {
+                                    synchronized(this) {
+                                        Thread.sleep(500)
+                                        UiThreadStatement.runOnUiThread {
+                                            //                                                adapter.notifyDataSetChanged()
+                                            dialog.dismiss()
                                         }
-                                    } catch (e: InterruptedException) {
-                                        Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                                     }
+                                } catch (e: InterruptedException) {
+                                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                                 }
                             }
-                            thread.start()
                         }
-
+                        thread.start()
                     }
-
                 } else {
                     Toast.makeText(
                         context,
@@ -184,6 +173,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     override fun itemUserUpdateClick(user: User_Entity) {
         optionsAdmin(user)
     }
+
 
     private fun optionsAdmin(user: User_Entity) {
         if (user.user_name.equals("Admin")) {
@@ -203,7 +193,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                 .setNegativeButton("Delete") { dialog: DialogInterface, _: Int ->
 
                     CoroutineScope(Dispatchers.IO).launch {
-                        dao.deleteUser(user)
+//                        dao.deleteUser(user)
                     }
 
                     dialog.dismiss()
@@ -223,7 +213,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                         user.password = dialogView.password_update_input.text.toString().toInt()
                     }
                     CoroutineScope(Dispatchers.IO).launch {
-                        dao.updateUser(user)
+//                        dao.updateUser(user)
                     }
 //                    model.setSelected(user)
                     if (nombreuser_update_Input.text?.isNotEmpty()!! && password_updateInput.text?.isNotEmpty()!!) {
@@ -237,7 +227,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                                             synchronized(this) {
                                                 Thread.sleep(500)
                                                 UiThreadStatement.runOnUiThread {
-                                                    adapter.notifyDataSetChanged()
+//                                                    adapter.notifyDataSetChanged()
                                                     dialog.dismiss()
                                                 }
                                             }
@@ -258,6 +248,11 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         }
     }
 
+    private fun setUpBtnAgregar(view: View?) {
+        btnAgregarUser.setOnClickListener {
+            generateDialog()
+        }
+    }
 
     private fun readFromSHPref() {
         if (sharedPreferences.getString("NombreUsuario", "").equals("Admin")) {
@@ -310,7 +305,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         call!!.cancel()
     }
 
-    private fun setUpAddButtonGestionar(view: View) {
+    private fun setUpBtnGestionar(view: View) {
         btnAdmin.setOnClickListener {
             setVisibilityView(view)
         }
