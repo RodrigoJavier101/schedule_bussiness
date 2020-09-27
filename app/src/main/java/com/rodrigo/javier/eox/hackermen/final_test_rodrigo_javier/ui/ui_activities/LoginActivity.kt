@@ -17,7 +17,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LoginActivity : AppCompatActivity(){  //, SharedPreferences.OnSharedPreferenceChangeListener {
+class LoginActivity :
+    AppCompatActivity() {  //, SharedPreferences.OnSharedPreferenceChangeListener {
 
     lateinit var sharedPreferences: SharedPreferences
     lateinit var spinner_login: Spinner
@@ -86,7 +87,8 @@ class LoginActivity : AppCompatActivity(){  //, SharedPreferences.OnSharedPrefer
 
     private fun fetchMainActivity(context: Context) {
         val intent = Intent(this, MainActivity::class.java)
-        return startActivity(intent)
+        startActivity(intent)
+        finish()
     }
 
     /*override fun onSharedPreferenceChanged(
