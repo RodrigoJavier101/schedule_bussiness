@@ -48,9 +48,9 @@ class AdminFragment : Fragment() {
             view_pager_admin!!,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
-                    0 -> tab.text = "Estadisticas"
-                    1 -> tab.text = "Clientes"
-                    2 -> tab.text = "Proveedores"
+                    2 -> tab.text = "Estadisticas"
+                    0 -> tab.text = "Clientes"
+                    1 -> tab.text = "Proveedores"
                 }
             }).attach()
 

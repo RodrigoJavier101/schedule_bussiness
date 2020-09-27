@@ -17,9 +17,9 @@ class AdminViewPagerAdapter(
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = Admin_Estadisticas_Fragment.newInstance()
-            1 -> fragment = Admin_Clientes_Fragment.newInstance()
-            2 -> fragment = Admin_Proveedores_Fragment.newInstance()
+            2 -> fragment = Admin_Estadisticas_Fragment.newInstance()
+            0 -> fragment = Admin_Clientes_Fragment.newInstance()
+            1 -> fragment = Admin_Proveedores_Fragment.newInstance()
         }
         return fragment!!
     }

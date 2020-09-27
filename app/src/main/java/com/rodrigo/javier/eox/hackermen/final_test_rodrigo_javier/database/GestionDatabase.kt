@@ -8,7 +8,12 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 
-@Database(entities = [Clientes_Entity::class], version = 16, exportSchema = false)
+//@Database(entities = [Clientes_Entity::class], version = 16, exportSchema = false)
+@Database(
+    entities = [(User_Entity::class), (Productos_Entity::class), (Ventas_Entity::class), (Gastos_Entity::class),
+        (Clientes_Entity::class), (Proveedores_Entity::class), (Ruta_Entity::class)],
+    version = 17, exportSchema = false
+)
 abstract class GestionDatabase : RoomDatabase() {
     /*se usa para acceder al dao, room se ocupa del código*/ /*se usa este metodo para acceder al ddbb*/
     abstract fun setDao(): GestionDao
@@ -28,7 +33,6 @@ abstract class GestionDatabase : RoomDatabase() {
             /* noteDao.insert(Note("Title 1", "Description 1", 1))
              noteDao.insert(Note("Title 2", "Description 2", 2))
              noteDao.insert(Note("Title 3", "Description 3", 3))*/
-
         }
 
         /**
@@ -52,11 +56,13 @@ abstract class GestionDatabase : RoomDatabase() {
             if (instance == null) {
                 /*no se llama Note database porque es abstract*/
                 /*en su lugar se usa builder*/
-                instance = Room.databaseBuilder(context.applicationContext, GestionDatabase::class.java,
-                        "note_database")
-//                        .fallbackToDestructiveMigration() /*----permite crear algo en la ddb cuandro se crea por primera vez----*/
-                        .addCallback(roomcallback)
-                        .build()
+                instance = Room.databaseBuilder(
+                    context.applicationContext, GestionDatabase::class.java,
+                    "note_database"
+                )
+//                        .fallbackToDestructiveMigration()
+                    .addCallback(roomcallback)
+                    .build()
             }
             return instance
         }

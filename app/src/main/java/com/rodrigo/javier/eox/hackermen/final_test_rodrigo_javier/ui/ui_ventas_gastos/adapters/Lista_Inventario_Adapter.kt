@@ -13,11 +13,10 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.Car
 import kotlinx.android.synthetic.main.item_listado_inventario.view.*
 
 class Lista_Inventario_Adapter(
-    private val lista_productos: List<Productos_Entity>
-//    ,
-//    private var listenerCardViewShort: CardViewListenerShortClick,
-//    private var listenerCardViewLong: CardViewListenerLongClick
-    ) :
+    private val lista_productos: List<Productos_Entity>,
+    private var listenerCardViewShort: CardViewListenerShortClick,
+    private var listenerCardViewLong: CardViewListenerLongClick
+) :
     RecyclerView.Adapter<Lista_Inventario_Adapter.ProductoViewHolder>() {
 
     inner class ProductoViewHolder(var item_view: View) : RecyclerView.ViewHolder(item_view) {
@@ -42,17 +41,17 @@ class Lista_Inventario_Adapter(
             actionLong: CardViewListenerLongClick
         ) {
             item_view.setOnClickListener {
-                /*listenerCardViewShort.cardViewClickedShort(
+                listenerCardViewShort.cardViewClickedShort(
                     producto = lista_productos.get(this.layoutPosition),
                     item_view.cardview_item_inventario,
                     this.layoutPosition
-                )*/
+                )
             }
 
             item_view.setOnLongClickListener {
-                /*listenerCardViewLong.cardViewClickedLong(
+                listenerCardViewLong.cardViewClickedLong(
                     producto = lista_productos.get(this.layoutPosition)
-                )*/
+                )
                 return@setOnLongClickListener true
             }
         }
@@ -78,11 +77,11 @@ class Lista_Inventario_Adapter(
         (holder).item_view.lbl_id_item_listado.setText(data.id_producto.toString())
         (holder).item_view.lbl_item_inventario.setText(data.nombre_producto)
         (holder).item_view.lbl_precio_item_inventario.setText(data.precio_producto.toString())
-        /*holder.initialize(
+        holder.initialize(
             lista_productos.get(position),
             listenerCardViewShort,
             listenerCardViewLong
-        )*/
+        )
 
     }
 

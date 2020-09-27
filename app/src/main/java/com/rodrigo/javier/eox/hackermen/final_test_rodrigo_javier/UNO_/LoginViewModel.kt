@@ -1,4 +1,4 @@
-package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_activities
+package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.UNO_
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

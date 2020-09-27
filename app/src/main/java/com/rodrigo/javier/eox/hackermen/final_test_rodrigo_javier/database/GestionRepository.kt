@@ -14,9 +14,8 @@ class GestionRepository(application: Application?) {
     val allGastos_: LiveData<List<Gastos_Entity>?>?
     val allVentas_: LiveData<List<Ventas_Entity>?>?
 
-    /*Applo es una clase de contexto para crear la ddbb en el contexto*/
     init {
-        val database = GestionDatabase.getInstance(application!!)
+        val database = GestionDatabase.getInstance(application!!.applicationContext)
         dao = database!!.setDao()
         allClientes_ = dao.getAllClientes()
         allUsers_ = dao.getAllUsers()

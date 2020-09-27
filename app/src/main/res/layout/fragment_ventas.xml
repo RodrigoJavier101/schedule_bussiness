@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".ui.fragmentos.ventas_gastos.ventas.VentasFragment">
+    tools:context="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.VentasFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="6"
+        android:layout_weight="10"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="5dp">
@@ -24,15 +25,15 @@
             android:textAlignment="center" />
 
         <fragment
-            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores.ListadoFragment"
-            android:id="@+id/fragment_ingresos_listado_inventario"
+            android:id="@+id/fragment_ingresos_listado_agregado"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores.AgregarAVentasFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="8"
         android:gravity="center_horizontal"
@@ -48,8 +49,8 @@
             android:textAlignment="center" />
 
         <fragment
-            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores.AgregarAVentasFragment"
-            android:id="@+id/fragment_ingresos_listado_agregado"
+            android:id="@+id/fragment_ingresos_listado_inventario"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.fragment_interiores.ListadoFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

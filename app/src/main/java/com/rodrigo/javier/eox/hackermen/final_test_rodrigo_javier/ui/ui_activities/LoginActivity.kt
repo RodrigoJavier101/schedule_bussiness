@@ -6,9 +6,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asFlow
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.*
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions.Companion.fileNameShPref
@@ -23,54 +25,50 @@ class LoginActivity :
     lateinit var sharedPreferences: SharedPreferences
     lateinit var spinner_login: Spinner
     lateinit var edit_password_login: EditText
-    val repository: GestionRepository
+//    val repository: GestionRepository
     lateinit var dao: GestionDao
-    val allUsers: LiveData<List<User_Entity>?>?
+//    val allUsers: LiveData<List<User_Entity>?>?
 
     init {
-        repository = GestionRepository(application)
-        allUsers = repository.allUsers_
-        dao = GestionDatabase.getInstance(applicationContext)!!.setDao()
+//        repository = GestionRepository(this.application!!)
+//        allUsers = repository.allUsers_
+//        dao = GestionDatabase.getInstance(applicationContext)!!.setDao()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        dao = GestionDatabase.getInstance(applicationContext)!!.setDao()
         initViews()
         startSpinner()
 //        sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
         btn_login.setOnClickListener {
 //            saveInSharedPreferences(it)
-            fetchMainActivity(applicationContext)
             validateUser()
         }
     }
 
     private fun validateUser() {
-        var passResp: String = ""
+        var passResp: Int? = 0
         var username = spinner_login.selectedItem.toString()
         var listaUsers: List<User_Entity> = listOf()
         var editloginpass = findViewById<EditText>(R.id.text_edit_password)
 
-        allUsers.let {
-            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-        }
+           CoroutineScope(Dispatchers.IO).launch {
+               passResp = dao.getPasswordFromUserTable(username)
+               if (passResp.toString().equals(editloginpass.text.toString())) {
+                   fetchMainActivity(applicationContext)
+                   finish()
+               }
+           }
 
-
-/*        CoroutineScope(Dispatchers.IO).launch {
-            passResp = dao.
-            if (passResp.toString().equals(editloginpass.text.toString())) {
-//                fetchMainActivity(applicationContext)
-                finish()
-            }
-        }*/
     }
 
     private fun fillSpinner() {
-        var users_list: List<User_Entity>? = null//dao.getAllFromUserTable()
+        var users_list: List<User_Entity> = dao.getAllUsers_2()
         var usersName: ArrayList<String> = arrayListOf()
         users_list?.forEach {
-            usersName.add(it.user_name)
+            usersName.add(it!!.user_name)
         }
 
         spinner_login.adapter =
@@ -83,15 +81,15 @@ class LoginActivity :
     }
 
     private fun startSpinner() {
-        val userAdmin = User_Entity("", 9999)
+        val userAdmin = User_Entity("Admin", 9999)
         CoroutineScope(Dispatchers.IO).launch {
-
-            /*   if (dao.getAllFromUserTable().isEmpty() || dao.getAllFromUserTable() === null) {
-                   dao.insertUsers(userAdmin)
+               if (dao.getAllUsers_2() === null || dao.getAllUsers_2().isEmpty()) {
+                   Log.d("-----------LOG------------->", userAdmin.password.toString())
+                   dao.insertUser(userAdmin)
                    fillSpinner()
                } else {
                    fillSpinner()
-               }*/
+               }
         }
 
     }

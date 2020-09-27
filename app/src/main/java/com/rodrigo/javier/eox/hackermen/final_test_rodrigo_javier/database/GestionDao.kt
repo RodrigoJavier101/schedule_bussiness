@@ -31,11 +31,14 @@ interface GestionDao {
     @Query("select * from user_table")
     fun getAllUsers(): LiveData<List<User_Entity>?>?
 
+    @Query("select * from user_table")
+    fun getAllUsers_2(): List<User_Entity>
+
     @Query("delete from user_table")
     fun deleteAllUsers()
 
     @Query("select password from user_table where user_name = :userName")
-    fun getPasswordFromUserTable(userName: Array<out String?>): LiveData<Int>?
+    fun getPasswordFromUserTable(userName: String?): Int?
 
     @Insert
     fun insertUser(user: User_Entity?)
@@ -67,6 +70,9 @@ interface GestionDao {
     /*SECCION PRODUCTOS*/
     @Query("select * from productos_table")
     fun getAllProductos(): LiveData<List<Productos_Entity>?>?
+
+    @Query("select * from productos_table")
+    fun getAllProductos_2(): List<Productos_Entity>
 
     @Query("delete from productos_table")
     fun deleteAllProductos()
