@@ -1,6 +1,5 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,72 +7,49 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.User_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.ItemUserClickListener
-import kotlinx.android.synthetic.main.item_user.view.*
+import java.util.ArrayList
 
-
-class HomeAdapter(
-    var lista: List<User_Entity>
-    ,
-    private val listenerUpdateUser: ItemUserClickListener
+class HomeAdapter (
+    private var users: List<User_Entity>? = ArrayList()
 ) :
-    RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+    RecyclerView.Adapter<HomeAdapter.ClientesHolder>() {
 
-
-    inner class MyViewHolder(var item_view: View) : RecyclerView.ViewHolder(item_view) {
-        //        var lbl_id: TextView
-        var lbl_nombre: TextView
-        var lbl_password: TextView
-
-        init {
-//            lbl_id = item_view.findViewById(R.id.lbl_item_id_user)
-            lbl_nombre = item_view.findViewById(R.id.lbl_item_nombre_user)
-            lbl_password = item_view.findViewById(R.id.lbl_item_password_user)
-        }
-
-        fun initialize(
-            action: ItemUserClickListener
-        ) {
-            item_view.setOnClickListener {
-                listenerUpdateUser.itemUserUpdateClick(
-                    user = lista.get(this.layoutPosition)
-                )
-            }
-        }
-    }
-
-
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): MyViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
-
-        return MyViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-        val data: User_Entity = lista[position]
-//        holder.item_view.lbl_item_id_user.setText(data.id_user.toString())
-        holder.item_view.lbl_item_nombre_user.setText(data.user_name)
-        holder.item_view.lbl_item_password_user.setText(data.password.toString())
-
-        holder.initialize(
-            listenerUpdateUser
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientesHolder {
+        val itemView: View = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_user, parent, false)
+        return ClientesHolder(
+            itemView
         )
     }
 
-    override fun getItemCount(): Int {
-        return lista.size
+    override fun onBindViewHolder(holder: ClientesHolder, position: Int) {
+        var dataUser = users!![position]
+        holder.textViewNombreUser.text = dataUser.user_name
+        holder.textViewPassUser.text = dataUser.password.toString()
     }
 
-    fun addItem(user: User_Entity?) {
-        if (user != null) {
-//            lista.add(user)
-        }
+
+    override fun getItemCount(): Int {
+        return users!!.size
+    }
+
+    fun setUsers(users: List<User_Entity>?) {
+        this.users = users
         notifyDataSetChanged()
+    }
+
+    fun getUserAt(position: Int): User_Entity? {
+        return users!![position]
+    }
+
+    inner class ClientesHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textViewNombreUser: TextView
+        val textViewPassUser: TextView
+
+        init {
+            textViewNombreUser = itemView.findViewById(R.id.lbl_item_nombre_user)
+            textViewPassUser = itemView.findViewById(R.id.lbl_item_password_user)
+        }
     }
 
 }

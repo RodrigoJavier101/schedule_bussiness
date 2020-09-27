@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -19,8 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDao
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDatabase
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.User_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.ItemUserClickListener
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.ApiRetrofit
@@ -28,7 +28,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.api_objects.Json4Kotlin_Base
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.view_models.HomeViewModel
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeViewModel
 import kotlinx.android.synthetic.main.add_agrega_user.view.*
 import kotlinx.android.synthetic.main.add_update_delete_user.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -44,12 +44,21 @@ class HomeFragment : Fragment(), ItemUserClickListener {
 
     private lateinit var service: ApiRetrofit
     private var call: Call<Json4Kotlin_Base>? = null
-    private lateinit var dao: GestionDao
+
+    /*me permite discriminar el usuario admin para visualizar items*/
     private lateinit var sharedPreferences: SharedPreferences
-    lateinit var btnAdmin: Button
-    lateinit var btnAgregarUser: Button
-    private lateinit var adapter: HomeAdapter
+
+    /*vistas*/
     private lateinit var recyclerview: RecyclerView
+    private lateinit var btnAdmin: Button
+    private var nombreUser: TextView? = null
+    private var domicilioPassUser: TextView? = null
+
+    private var editTextNombreUser: EditText? = null
+    private var editTextPassUser: EditText? = null
+    private lateinit var btnAgregarUser: Button
+
+    private lateinit var adapter: HomeAdapter
     private lateinit var model: HomeViewModel
 
     override fun onCreateView(
@@ -59,17 +68,11 @@ class HomeFragment : Fragment(), ItemUserClickListener {
 
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        sharedPreferences = requireActivity().getSharedPreferences(
-            CommonFunctions.fileNameShPref,
-            Context.MODE_PRIVATE
-        )
-        dao = GestionDatabase.getInstance(requireContext())!!.setDao()
+        initializations(root)
+
         model =
             ViewModelProvider(requireActivity()).get(HomeViewModel::class.java);
 
-        btnAdmin = root.findViewById(R.id.btn_admin_)
-        btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
-        recyclerview = root.findViewById(R.id.recycler_users)
         var users_ddbb: List<User_Entity> = mutableListOf()
         CoroutineScope(Dispatchers.IO).launch {
             users_ddbb = createUsersListFromDatabase()
@@ -90,9 +93,22 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun initializations(root: View) {
+        sharedPreferences = requireActivity().getSharedPreferences(
+            CommonFunctions.fileNameShPref,
+            Context.MODE_PRIVATE
+        )
+        btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
+        recyclerview = root.findViewById(R.id.recycler_users)
+        btnAdmin = root.findViewById(R.id.btn_admin_)
+        nombreUser = null
+        domicilioPassUser = null
+
+        editTextNombreUser = null
+        editTextPassUser = null
+        btnAgregarUser = Button
     }
+
 
     private fun setUpAddButtonAgregar(view: View?) {
         btnAgregarUser.setOnClickListener {
@@ -164,68 +180,6 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         dialogBuilder.create().show()
     }
 
-
-    private fun readFromSHPref() {
-        if (sharedPreferences.getString("NombreUsuario", "").equals("Admin")) {
-            btnAdmin.visibility = View.VISIBLE
-        } else {
-            btnAdmin.visibility = View.GONE
-        }
-    }
-
-    private fun callIndicators() {
-        service =
-            RetrofitClient.getRetrofitObject()
-        call = service.getPhrase()
-
-        call!!.enqueue(object : Callback<Json4Kotlin_Base> {
-
-            override fun onResponse(
-                call: Call<Json4Kotlin_Base>,
-                response: Response<Json4Kotlin_Base>
-            ) {
-                val json: Json4Kotlin_Base
-
-                try {
-                    json = response.body()!!
-                    lbl_dolar.text = json.dolar.valor.toString()
-                    lbl_euro.text = json.euro.valor.toString()
-                    lbl_uf.text = json.uf.valor.toString()
-                    lbl_utm.text = json.utm.valor.toString()
-                    lbl_desempleo.text = json.tasa_desempleo.valor.toString() + "%"
-                } catch (t: Throwable) {
-                    Log.d("ERROR capa 8 --->", t.message.toString())
-                }
-            }
-
-            override fun onFailure(call: Call<Json4Kotlin_Base>, t: Throwable) {
-
-            }
-        })
-    }
-
-    companion object {
-        fun newInstance(): HomeFragment {
-            var newHomeFragment = HomeFragment()
-            return newHomeFragment
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        call!!.cancel()
-    }
-
-    private fun setUpAddButtonGestionar(view: View) {
-        btnAdmin.setOnClickListener {
-            setVisibilityView(view)
-        }
-    }
-
-    private fun setVisibilityView(view: View) {
-        btnAgregarUser.visibility = View.VISIBLE
-        recyclerview.visibility = View.VISIBLE
-    }
 
     override fun itemUserUpdateClick(user: User_Entity) {
         optionsAdmin(user)
@@ -302,6 +256,69 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                 }
             dialogBuilder.create().show()
         }
+    }
+
+
+    private fun readFromSHPref() {
+        if (sharedPreferences.getString("NombreUsuario", "").equals("Admin")) {
+            btnAdmin.visibility = View.VISIBLE
+        } else {
+            btnAdmin.visibility = View.GONE
+        }
+    }
+
+    private fun callIndicators() {
+        service =
+            RetrofitClient.getRetrofitObject()
+        call = service.getPhrase()
+
+        call!!.enqueue(object : Callback<Json4Kotlin_Base> {
+
+            override fun onResponse(
+                call: Call<Json4Kotlin_Base>,
+                response: Response<Json4Kotlin_Base>
+            ) {
+                val json: Json4Kotlin_Base
+
+                try {
+                    json = response.body()!!
+                    lbl_dolar.text = json.dolar.valor.toString()
+                    lbl_euro.text = json.euro.valor.toString()
+                    lbl_uf.text = json.uf.valor.toString()
+                    lbl_utm.text = json.utm.valor.toString()
+                    lbl_desempleo.text = json.tasa_desempleo.valor.toString() + "%"
+                } catch (t: Throwable) {
+                    Log.d("ERROR capa 8 --->", t.message.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<Json4Kotlin_Base>, t: Throwable) {
+
+            }
+        })
+    }
+
+    companion object {
+        fun newInstance(): HomeFragment {
+            var newHomeFragment = HomeFragment()
+            return newHomeFragment
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        call!!.cancel()
+    }
+
+    private fun setUpAddButtonGestionar(view: View) {
+        btnAdmin.setOnClickListener {
+            setVisibilityView(view)
+        }
+    }
+
+    private fun setVisibilityView(view: View) {
+        btnAgregarUser.visibility = View.VISIBLE
+        recyclerview.visibility = View.VISIBLE
     }
 
 }

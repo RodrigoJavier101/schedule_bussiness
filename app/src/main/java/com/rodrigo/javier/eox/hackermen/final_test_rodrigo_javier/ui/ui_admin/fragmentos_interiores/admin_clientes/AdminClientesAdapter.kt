@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Proveedores_Entity
 import java.util.ArrayList
 
 class AdminClientesAdapter (
