@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_ruta
+                R.id.nav_home, R.id.nav_ventas_gastos, R.id.nav_ruta, R.id.nav_admin
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 //        menuInflater.inflate(R.menu.main, menu)
         val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.add_cliente_menu, menu)
+        menuInflater.inflate(R.menu.main_menu_new, menu)
         //        return super.onCreateOptionsMenu(menu);
         return true
     }

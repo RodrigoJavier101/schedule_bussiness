@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".database.RoomApplication"
         android:allowBackup="true"
