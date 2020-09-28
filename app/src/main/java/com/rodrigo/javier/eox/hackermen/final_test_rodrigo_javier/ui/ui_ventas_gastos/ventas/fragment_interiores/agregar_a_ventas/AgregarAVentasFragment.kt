@@ -44,8 +44,6 @@ class AgregarAVentasFragment : Fragment() {
 
         recycler = view.findViewById(R.id.recyclerview_agregados_a_ventas)
         recycler.hasFixedSize()
-//        val divider = DividerItemDecoration(recycler.context, 1)
-//        recycler.addItemDecoration(divider)
         recycler.layoutManager = LinearLayoutManager(requireContext())
         lista_productos = arrayListOf()
 
@@ -65,7 +63,7 @@ class AgregarAVentasFragment : Fragment() {
         val viewModel: ListaViewModel =
             ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
         var count: Int = 0
-        viewModel.getSelected()?.observe(viewLifecycleOwner) { item ->
+        viewModel.getProductSelected()?.observe(viewLifecycleOwner) { item ->
             lista_productos.add(item)
             adapter = FromListaToAgregados_Adapter(lista_productos)
             recycler.adapter = adapter

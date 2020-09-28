@@ -64,9 +64,9 @@ class ListadoFragment__ : Fragment(), CardViewListenerShortClick, CardViewListen
         CoroutineScope(Dispatchers.IO).launch {
             val productos_ddbb = createProductListFromDatabase()
             adapter = Lista_Inventario_Adapter(
-                productos_ddbb,
-                this@ListadoFragment__,
-                this@ListadoFragment__
+//                productos_ddbb,
+//                this@ListadoFragment__,
+//                this@ListadoFragment__
             )
             recycler_inventario.adapter = adapter
         }
