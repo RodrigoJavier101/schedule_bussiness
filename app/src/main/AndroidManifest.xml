@@ -3,32 +3,31 @@
     package="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
-        android:name=".model.room.RoomApplication"
+        android:name=".database.RoomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.LoginActivity"
-            android:label="@string/login_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <!--<action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />-->
+                <!--                <action android:name="android.intent.action.MAIN" />-->
+                <!--                <category android:name="android.intent.category.LAUNCHER" />-->
                 <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ui_activities.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- <action android:name="android.intent.action.VIEW"-->
             </intent-filter>
         </activity>
     </application>

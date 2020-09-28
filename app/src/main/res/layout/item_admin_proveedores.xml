@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lbl_item_proveedores"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="8dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_item_telefono_proveedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_item_nombre_proveedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Dealer Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbl_item_domicilio_proveedor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lbl_item_nombre_proveedor"
+            android:maxLines="1"
+            android:text="Seller Address" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

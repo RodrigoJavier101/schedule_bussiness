@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat11">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_listado_clinete"
+            android:id="@+id/recycler_provedores"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#7de6d0"

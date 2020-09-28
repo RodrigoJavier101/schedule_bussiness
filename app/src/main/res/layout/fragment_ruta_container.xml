@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.ui_ruta.RutaContainerFragment">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_ventas_gastos"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="10dp"
+        app:tabMode="fixed"
+        app:tabRippleColor="@color/colorPrimaryDark"
+        app:tabSelectedTextColor="#daaaddaa" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_ventas_gastos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

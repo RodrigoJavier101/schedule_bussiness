@@ -3,7 +3,9 @@ IMPORTANTE!!
 para el acceso a la app
 /*********************************************/
 user = admin
-password = 9999 
+password = 9999
+
+LA RAMA MASTER 4 ES LA DEFINITIVA
 /*********************************************/
 
 DETALLES:
@@ -54,3 +56,8 @@ Este listad se llena tanto con Ruta como con este tab, directamente.
 
 Proveedores.
 Listado de provedores y datos.
+
+
+
+EN LA RAMA MASTER_3 EXPLORO EL USO DE VIEW MODEL JUNTO CON ROOM
+POR LO QUE ALTERO LAS CLASES INVOLUCRADAS

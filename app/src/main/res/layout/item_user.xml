@@ -6,14 +6,6 @@
     android:layout_marginBottom="5dp"
     android:orientation="horizontal">
 
-  <!--  <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lbl_item_id_user"
-        android:layout_width="50sp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="NONE"
-        android:textAlignment="center" />
--->
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/lbl_item_nombre_user"
         android:layout_width="200sp"
