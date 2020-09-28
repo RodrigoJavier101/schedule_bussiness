@@ -45,19 +45,25 @@ class AgregarAVentasFragment : Fragment() {
         recycler.hasFixedSize()
         recycler.layoutManager = LinearLayoutManager(requireContext())
         lista_productos = arrayListOf()
+        adapter = FromListaToAgregados_Adapter(lista_productos)
+        recycler.adapter = adapter
 
-
-        viewModel!!.getProductSelected()!!.observe(this.viewLifecycleOwner, { productos ->
-            lista_productos.add(productos)
-            Toast.makeText(context, productos.toString(), Toast.LENGTH_SHORT).show()
-            adapter = FromListaToAgregados_Adapter(lista_productos)
-            recycler.adapter = adapter
-//            adapter!!.setProductos(productos)
-        })
-
-        setUpAddButton(lista_productos)
 
         return view
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        val viewModel: ListaViewModel =
+//            ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
+
+        viewModel.getProductSelected()?.observe(viewLifecycleOwner) { item ->
+            lista_productos.add(item)
+
+            adapter.setProductos(lista_productos)
+        }
+        setUpAddButton(lista_productos)
     }
 
     companion object {
@@ -67,11 +73,6 @@ class AgregarAVentasFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
 
     private fun setUpAddButton(lista: ArrayList<Productos_Entity>) {
         var counter: Int = 0
