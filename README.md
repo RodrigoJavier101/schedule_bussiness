@@ -3,7 +3,9 @@ IMPORTANTE!!
 para el acceso a la app
 /*********************************************/
 user = admin
-password = 9999 
+password = 9999
+
+LA RAMA MASTER 4 ES LA DEFINITIVA
 /*********************************************/
 
 DETALLES:
