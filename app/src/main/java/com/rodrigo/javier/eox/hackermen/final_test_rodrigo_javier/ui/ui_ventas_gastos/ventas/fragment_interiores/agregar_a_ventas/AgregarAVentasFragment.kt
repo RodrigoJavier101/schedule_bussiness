@@ -27,7 +27,8 @@ class AgregarAVentasFragment : Fragment() {
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: FromListaToAgregados_Adapter
     private lateinit var fabAg_: FloatingActionButton
-//    private lateinit var dao: GestionDao
+
+    //    private lateinit var dao: GestionDao
     private lateinit var lista_productos: ArrayList<Productos_Entity>
     private lateinit var viewModel: ListaViewModel
 
@@ -39,11 +40,22 @@ class AgregarAVentasFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_agregar_a_ventas, container, false)
         fabAg_ = view.findViewById(R.id.fab_agregar)
         viewModel = ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
-
         recycler = view.findViewById(R.id.recyclerview_agregados_a_ventas)
+
         recycler.hasFixedSize()
         recycler.layoutManager = LinearLayoutManager(requireContext())
         lista_productos = arrayListOf()
+
+
+        viewModel!!.getProductSelected()!!.observe(this.viewLifecycleOwner, { productos ->
+            lista_productos.add(productos)
+            Toast.makeText(context, productos.toString(), Toast.LENGTH_SHORT).show()
+            adapter = FromListaToAgregados_Adapter(lista_productos)
+            recycler.adapter = adapter
+//            adapter!!.setProductos(productos)
+        })
+
+        setUpAddButton(lista_productos)
 
         return view
     }
@@ -58,13 +70,6 @@ class AgregarAVentasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var count: Int = 0
-        viewModel.getProductSelected()?.observe(viewLifecycleOwner) { item ->
-            lista_productos.add(item)
-            adapter = FromListaToAgregados_Adapter(lista_productos)
-            recycler.adapter = adapter
-        }
-        setUpAddButton(lista_productos)
 
     }
 

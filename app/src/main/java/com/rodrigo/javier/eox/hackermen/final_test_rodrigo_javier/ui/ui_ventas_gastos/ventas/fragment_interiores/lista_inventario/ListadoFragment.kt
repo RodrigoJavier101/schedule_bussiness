@@ -56,7 +56,6 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
         )
         recycler_inventario.adapter = adapter
         model!!.allProducts!!.observe(viewLifecycleOwner, { productos ->
-            Log.d("-----------LOG------------->", productos.toString())
             adapter!!.setProductos(productos)
         })
         setUpAddButton(view)
@@ -74,12 +73,11 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
 
     override fun cardViewClickedShort(producto: Productos_Entity, view: View, position: Int) {
         model.setProductSelected(producto)
-        Toast.makeText(context, "Selected ${producto.nombre_producto}", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Selected ${producto.nombre_producto} ${position.toString()}", Toast.LENGTH_SHORT).show()
     }
 
     override fun cardViewClickedLong(producto: Productos_Entity) {
         model.deleteProduct(producto)
-        Toast.makeText(context, "Eliminado ${producto.nombre_producto}", Toast.LENGTH_SHORT).show()
     }
 
     private fun setUpAddButton(view: View) {

@@ -6,25 +6,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Clientes_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Productos_Entity
 import kotlinx.android.synthetic.main.item_agregar_a_ventas.view.*
 
 class FromListaToAgregados_Adapter(
-    private val productos: ArrayList<Productos_Entity>
+    private var productos: List<Productos_Entity>?
 ) : RecyclerView.Adapter<FromListaToAgregados_Adapter.AgregarViewHolder>() {
 
     inner class AgregarViewHolder(view_: View) :
         RecyclerView.ViewHolder(view_) {
 
-        var lbl_id_producto: TextView
-        var lbl_nombre_producto: TextView
-        var lbl_precio_producto: TextView
+        var idProducto: TextView
+        var nombreProducto: TextView
+        var precioProducto: TextView
 
         init {
-            lbl_id_producto = view_.lbl_agregar_id_inventario
-            lbl_nombre_producto = view_.lbl_agregar_item_inventario
-            lbl_precio_producto = view_.lbl_agregar_precio_item_inventario
-
+            idProducto = view_.lbl_agregar_id_inventario
+            nombreProducto = view_.lbl_agregar_item_inventario
+            precioProducto = view_.lbl_agregar_precio_item_inventario
         }
 
     }
@@ -44,13 +44,19 @@ class FromListaToAgregados_Adapter(
         holder: AgregarViewHolder,
         position: Int
     ) {
-        val data: Productos_Entity = productos[position]
-        holder.lbl_id_producto.text = data.id_producto.toString()
-        holder.lbl_nombre_producto.text = data.nombre_producto
-        holder.lbl_precio_producto.text = data.precio_producto.toString()
+        val data: Productos_Entity = productos!![position]
+        holder.idProducto.text = data.id_producto.toString()
+        holder.nombreProducto.text = data.nombre_producto
+        holder.precioProducto.text = data.precio_producto.toString()
     }
 
     override fun getItemCount(): Int {
-        return productos.size
+        return productos!!.size
     }
+
+    fun setProductos(productos: List<Productos_Entity>?) {
+        this.productos = productos
+        notifyDataSetChanged()
+    }
+
 }

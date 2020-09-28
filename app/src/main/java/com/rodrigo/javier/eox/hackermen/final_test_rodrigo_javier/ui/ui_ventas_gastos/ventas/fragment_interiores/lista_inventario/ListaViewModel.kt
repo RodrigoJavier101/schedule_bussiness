@@ -17,7 +17,6 @@ class ListaViewModel(application: Application) : AndroidViewModel(application) {
         allProducts = repository.allProductos_
     }
 
-
     fun setProductSelected(item: Productos_Entity) {
         selected.value = item
     }

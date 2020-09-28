@@ -37,7 +37,7 @@ class Lista_Inventario_Adapter(
         }
 
         fun initialize(
-//            item: Productos_Entity,
+            item: Productos_Entity,
             actionShort: CardViewListenerShortClick,
             actionLong: CardViewListenerLongClick
         ) {
@@ -80,7 +80,7 @@ class Lista_Inventario_Adapter(
         holder.textViewPrecioProducto.text = dataProductos.precio_producto.toString()
 
         holder.initialize(
-//            productos!!.get(position),
+            productos!!.get(position),
             listenerCardViewShort,
             listenerCardViewLong
         )
