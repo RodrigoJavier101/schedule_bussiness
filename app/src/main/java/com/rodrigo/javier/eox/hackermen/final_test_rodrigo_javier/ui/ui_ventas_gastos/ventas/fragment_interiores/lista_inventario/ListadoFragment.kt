@@ -20,6 +20,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Gesti
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.Productos_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerLongClick
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.CardViewListenerShortClick
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.ventas.fragment_interiores.lista_inventario.ListaViewModel
 import kotlinx.android.synthetic.main.add_producto_dialog.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
