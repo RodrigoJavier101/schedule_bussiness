@@ -80,14 +80,6 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
         }
     }
 
-    /* fun createProductListFromDatabase():
-             List<Productos_Entity> {
-
-         val registros_db = dao.getAllProductos_2()
-
-         return registros_db
-     }*/
-
     override fun cardViewClickedShort(producto: Productos_Entity, view: View, position: Int) {
         model.setProductSelected(producto)
     }
@@ -96,7 +88,6 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
         model.deleteProduct(producto)
         Toast.makeText(context, "Eliminado ${producto.nombre_producto}", Toast.LENGTH_SHORT).show()
     }
-
 
     private fun setUpAddButton(view: View) {
         var btn_agregar = view.findViewById<Button>(R.id.btn_agregar_producto)
