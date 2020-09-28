@@ -43,35 +43,27 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_listado_inventario, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
-//        dao = GestionDatabase.getInstance(requireContext())!!.setDao()
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        onViewAttached(view)
-    }
-
-    private fun onViewAttached(view: View) {
-        model =
-            ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
+//        model = ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
+        model = ViewModelProvider(this).get(ListaViewModel::class.java)
         recycler_inventario = view.findViewById(R.id.recycler_listado_inventario)
         recycler_inventario.hasFixedSize()
         recycler_inventario.layoutManager = LinearLayoutManager(requireContext())
-
+        var productos_ddbb = listOf<Productos_Entity>()
         adapter = Lista_Inventario_Adapter(
-//            productos_ddbb,
-//            this@ListadoFragment,
-//            this@ListadoFragment
+            productos_ddbb,
+            this@ListadoFragment,
+            this@ListadoFragment
         )
         recycler_inventario.adapter = adapter
-        model = ViewModelProvider(this).get(ListaViewModel::class.java)
         model!!.allProducts!!.observe(viewLifecycleOwner, { productos ->
             Log.d("-----------LOG------------->", productos.toString())
             adapter!!.setProductos(productos)
         })
         setUpAddButton(view)
+
+        return view
     }
+
 
     companion object {
         fun newInstance(): ListadoFragment {
@@ -82,6 +74,7 @@ class ListadoFragment : Fragment(), CardViewListenerShortClick, CardViewListener
 
     override fun cardViewClickedShort(producto: Productos_Entity, view: View, position: Int) {
         model.setProductSelected(producto)
+        Toast.makeText(context, "Selected ${producto.nombre_producto}", Toast.LENGTH_SHORT).show()
     }
 
     override fun cardViewClickedLong(producto: Productos_Entity) {

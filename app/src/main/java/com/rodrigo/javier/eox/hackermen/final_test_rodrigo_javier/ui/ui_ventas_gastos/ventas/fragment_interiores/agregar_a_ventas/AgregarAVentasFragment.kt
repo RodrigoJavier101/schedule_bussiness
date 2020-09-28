@@ -27,9 +27,9 @@ class AgregarAVentasFragment : Fragment() {
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: FromListaToAgregados_Adapter
     private lateinit var fabAg_: FloatingActionButton
-    private lateinit var dao: GestionDao
+//    private lateinit var dao: GestionDao
     private lateinit var lista_productos: ArrayList<Productos_Entity>
-
+    private lateinit var viewModel: ListaViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,9 +38,7 @@ class AgregarAVentasFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_agregar_a_ventas, container, false)
         fabAg_ = view.findViewById(R.id.fab_agregar)
-//        dataBase = RoomApplication.gestionDatabase!!
-        dao = GestionDatabase.getInstance(requireContext())!!.setDao()
-
+        viewModel = ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
 
         recycler = view.findViewById(R.id.recyclerview_agregados_a_ventas)
         recycler.hasFixedSize()
@@ -53,15 +51,13 @@ class AgregarAVentasFragment : Fragment() {
     companion object {
         fun newInstance(): AgregarAVentasFragment {
             var newAgregarAVentas_Fragment = AgregarAVentasFragment()
-
             return newAgregarAVentas_Fragment
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel: ListaViewModel =
-            ViewModelProvider(requireActivity()).get(ListaViewModel::class.java)
+
         var count: Int = 0
         viewModel.getProductSelected()?.observe(viewLifecycleOwner) { item ->
             lista_productos.add(item)
@@ -69,6 +65,7 @@ class AgregarAVentasFragment : Fragment() {
             recycler.adapter = adapter
         }
         setUpAddButton(lista_productos)
+
     }
 
     private fun setUpAddButton(lista: ArrayList<Productos_Entity>) {
@@ -83,7 +80,7 @@ class AgregarAVentasFragment : Fragment() {
                 CoroutineScope(Dispatchers.IO).launch {
                     var venta: Ventas_Entity = Ventas_Entity(counter)
                     try {
-                        dao.insertVenta(venta)
+//                        dao.insertVenta(venta)
                         Log.d("-----------LOG------------->", "inserted???? a ventas????")
                     } catch (e: Exception) {
                         Log.d("----------LOOOg------------->", e.message.toString())
