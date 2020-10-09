@@ -6,5 +6,5 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">5dp</dimen>
     <dimen name="btn_login_width">120dp</dimen>
-    <dimen name="btn_login_height">100dp</dimen>
+    <dimen name="btn_login_height">80dp</dimen>
 </resources>

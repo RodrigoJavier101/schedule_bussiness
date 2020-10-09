@@ -54,7 +54,7 @@ abstract class GestionDatabase : RoomDatabase() {
             /*se usa una sola instancia de la ddbb*/
             /*syn sig que una sola vez se use el metodo si es que instance es null*/
             if (instance == null) {
-                /*no se llama Note database porque es abstract*/
+                /*no se llama a la database porque es abstract*/
                 /*en su lugar se usa builder*/
                 instance = Room.databaseBuilder(
                     context.applicationContext, GestionDatabase::class.java,
