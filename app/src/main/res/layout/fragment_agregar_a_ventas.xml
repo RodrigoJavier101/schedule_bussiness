@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="4dp"
+    android:background="#F3F3D0"
     android:padding="4dp">
 
     <androidx.recyclerview.widget.RecyclerView

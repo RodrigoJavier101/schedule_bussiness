@@ -47,8 +47,8 @@ class HomeAdapter (
         val textViewPassUser: TextView
 
         init {
-            textViewNombreUser = itemView.findViewById(R.id.lbl_item_nombre_user)
-            textViewPassUser = itemView.findViewById(R.id.lbl_item_password_user)
+            textViewNombreUser = itemView.findViewById(R.id.text_view_item_nombre_user)
+            textViewPassUser = itemView.findViewById(R.id.text_view_item_password_user)
         }
     }
 

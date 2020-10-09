@@ -9,7 +9,7 @@
     tools:context="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.ventas_gastos.ventas.VentasFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
         android:gravity="center_horizontal"
@@ -25,17 +25,17 @@
             android:textAlignment="center" />
 
         <fragment
-            android:id="@+id/fragment_ingresos_listado_agregado"
-            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.ventas.fragment_interiores.agregar_a_ventas.AgregarAVentasFragment"
+            android:id="@+id/fragment_ingresos_listado_inventario"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.ventas.fragment_interiores.lista_inventario.ListadoFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="8"
+        android:layout_weight="10"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="5dp">
@@ -49,12 +49,11 @@
             android:textAlignment="center" />
 
         <fragment
-            android:id="@+id/fragment_ingresos_listado_inventario"
-            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.ventas.fragment_interiores.lista_inventario.ListadoFragment"
+            android:id="@+id/fragment_ingresos_listado_agregado"
+            android:name="com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_ventas_gastos.ventas.fragment_interiores.agregar_a_ventas.AgregarAVentasFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

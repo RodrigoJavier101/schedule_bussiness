@@ -27,8 +27,8 @@ class Adapter__(
 
         init {
 //            lbl_id = item_view.findViewById(R.id.lbl_item_id_user)
-            lbl_nombre = item_view.findViewById(R.id.lbl_item_nombre_user)
-            lbl_password = item_view.findViewById(R.id.lbl_item_password_user)
+            lbl_nombre = item_view.findViewById(R.id.text_view_item_nombre_user)
+            lbl_password = item_view.findViewById(R.id.text_view_item_password_user)
         }
 
         fun initialize(
@@ -57,8 +57,8 @@ class Adapter__(
 
         val data: User_Entity = lista[position]
 //        holder.item_view.lbl_item_id_user.setText(data.id_user.toString())
-        holder.item_view.lbl_item_nombre_user.setText(data.user_name)
-        holder.item_view.lbl_item_password_user.setText(data.password.toString())
+        holder.item_view.text_view_item_nombre_user.setText(data.user_name)
+        holder.item_view.text_view_item_password_user.setText(data.password.toString())
 
         holder.initialize(
             listenerUpdateUser

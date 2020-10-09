@@ -1,24 +1,18 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.home
 
-import android.app.Service
 import android.content.Context
-import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.ContextCompat.getSystemServiceName
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -85,14 +79,13 @@ class HomeFragment : Fragment(), ItemUserClickListener {
 
 //            users_ddbb = createUsersListFromDatabase()
         recyclerview.hasFixedSize()
-        val divider = DividerItemDecoration(recyclerview.context, 1)
-        recyclerview.addItemDecoration(divider)
+//        val divider = DividerItemDecoration(recyclerview.context, 1)
+//        recyclerview.addItemDecoration(divider)
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
         adapter = HomeAdapter()
         recyclerview.adapter = adapter
 
         homeViewModel!!.allUsers!!.observe(viewLifecycleOwner, { clientes ->
-            Log.d("-----------LOG------------->", clientes.toString())
             adapter!!.setUsers(clientes)
         })
 
@@ -111,8 +104,8 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         btnAdmin = root.findViewById(R.id.btn_admin_)
         btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
         recyclerview = root.findViewById(R.id.recycler_users)
-        nombreUser = root.findViewById(R.id.lbl_item_nombre_user);
-        domicilioPassUser = root.findViewById(R.id.lbl_item_password_user)
+        nombreUser = root.findViewById(R.id.text_view_item_nombre_user);
+        domicilioPassUser = root.findViewById(R.id.text_view_item_password_user)
 
 //        editTextNombreUser = root.findViewById(R.id.nombre_user_input)
 //        editTextPassUser = root.findViewById(R.id.password_input)
