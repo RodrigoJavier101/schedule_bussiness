@@ -58,8 +58,9 @@ class LoginActivity :
 
         CoroutineScope(Dispatchers.IO).launch {
             passResp = dao.getPasswordFromUserTable(username)
-            Log.d("-----------LOG------------->", username.toString() + " " + passResp.toString())
-            if (passResp.toString().equals(editloginpass.text.toString())) {
+            if (passResp.toString().equals(editloginpass.text.toString()) &&
+                !username.toString().equals("Selecciona un usuario")
+            ) {
                 Log.d(
                     "-----------LOG------------->",
                     username.toString() + " " + passResp.toString()
@@ -83,7 +84,6 @@ class LoginActivity :
 
     private fun fillSpinner() {
         var users_list: List<User_Entity> = dao.getAllUsers_2()
-//        Toast.makeText(this, users_list.toString(), Toast.LENGTH_SHORT).show()
         var usersName: ArrayList<String> = arrayListOf()
         users_list?.forEach {
             usersName.add(it!!.user_name)
@@ -103,7 +103,6 @@ class LoginActivity :
         val userAdmin = User_Entity("Admin", 9999)
         CoroutineScope(Dispatchers.IO).launch {
             if (dao.getAllUsers_2() === null || dao.getAllUsers_2().isEmpty()) {
-//                   Log.d("-----------LOG------------->", userAdmin.password.toString())
                 dao.insertUser(firstEntry)
                 dao.insertUser(userAdmin)
                 fillSpinner()
