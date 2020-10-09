@@ -102,4 +102,9 @@ dependencies {
     /*intento de implementar conexion a mongo por java*/
     def mongo_version = "3.4.2"
     implementation "org.mongodb:mongodb-driver:$mongo_version"
+
+    /*librerias para animaciones*/
+    implementation 'com.daimajia.easing:library:2.0@aar'
+    implementation 'com.daimajia.androidanimations:library:2.3@aar'
+
 }

@@ -1,21 +1,17 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_activities
 
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.annotation.MainThread
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asFlow
+import androidx.appcompat.app.AppCompatActivity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.*
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDao
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDatabase
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.User_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions.Companion.fileNameShPref
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,9 +19,13 @@ import kotlinx.coroutines.launch
 class LoginActivity :
     AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
-    lateinit var sharedPreferences: SharedPreferences
-    lateinit var spinner_login: Spinner
-    lateinit var edit_password_login: EditText
+    private lateinit var passwordText: TextView
+    private lateinit var usuarioText: TextView
+    private lateinit var loginText: TextView
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var spinnerLogin: Spinner
+    private lateinit var editPasswordLogin: EditText
+    private lateinit var btnLogin: Button
 
     //    val repository: GestionRepository
     lateinit var dao: GestionDao
@@ -44,7 +44,7 @@ class LoginActivity :
         initViews()
         startSpinner()
         sharedPreferences = getSharedPreferences(fileNameShPref, Context.MODE_PRIVATE)
-        btn_login.setOnClickListener {
+        btnLogin.setOnClickListener {
             saveInSharedPreferences(it)
             validateUser()
         }
@@ -52,7 +52,7 @@ class LoginActivity :
 
     private fun validateUser() {
         var passResp: Int? = 0
-        var username = spinner_login.selectedItem.toString()
+        var username = spinnerLogin.selectedItem.toString()
         var listaUsers: List<User_Entity> = listOf()
         var editloginpass = findViewById<EditText>(R.id.text_edit_password)
 
@@ -61,13 +61,9 @@ class LoginActivity :
             if (passResp.toString().equals(editloginpass.text.toString()) &&
                 !username.toString().equals("Selecciona un usuario")
             ) {
-                Log.d(
-                    "-----------LOG------------->",
-                    username.toString() + " " + passResp.toString()
-                )
                 fetchMainActivity(applicationContext)
-                finish()
             } else {
+//              el toast se debe llamar dentro del main thread
                 callToast()
             }
 
@@ -89,13 +85,17 @@ class LoginActivity :
             usersName.add(it!!.user_name)
         }
 
-        spinner_login.adapter =
+        spinnerLogin.adapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, usersName)
     }
 
     private fun initViews() {
-        spinner_login = findViewById<Spinner>(R.id.spinner_user_login)
-        edit_password_login = findViewById<EditText>(R.id.text_edit_password)
+        loginText = findViewById<TextView>(R.id.text_view_login)
+        usuarioText = findViewById<TextView>(R.id.text_view_usuario)
+        spinnerLogin = findViewById<Spinner>(R.id.spinner_user_login)
+        passwordText = findViewById<TextView>(R.id.text_view_password)
+        editPasswordLogin = findViewById<EditText>(R.id.text_edit_password)
+        btnLogin = findViewById(R.id.btn_login)
     }
 
     private fun startSpinner() {
@@ -116,7 +116,38 @@ class LoginActivity :
     private fun fetchMainActivity(context: Context) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+//Creo que debe ser en el main thread
+        brokeLayout()
         finish()
+    }
+
+    private fun brokeLayout() {
+/*        YoYo.with(Techniques.Hinge)
+            .duration(800) //.repeat(1)
+            .playOn(loginText)
+
+        YoYo.with(Techniques.Hinge)
+            .duration(800) //.repeat(1)
+            .playOn(
+                usuarioText
+            )
+
+        YoYo.with(Techniques.Hinge)
+            .duration(800) //.repeat(1)
+            .playOn(spinnerLogin)
+
+        YoYo.with(Techniques.Hinge)
+            .duration(800) //.repeat(1)
+            .playOn(passwordText)
+
+        YoYo.with(Techniques.Hinge)
+            .duration(800) //.repeat(1)
+            .playOn(editPasswordLogin)
+
+        YoYo.with(Techniques.Hinge)
+            .duration(800) //.repeat(1)
+            .playOn(btnLogin)
+        */
     }
 
     override fun onSharedPreferenceChanged(
@@ -136,10 +167,10 @@ class LoginActivity :
         if (this::sharedPreferences.isInitialized) {
 
             sharedPreferences.edit()
-                .putString("NombreUsuario", spinner_login.selectedItem.toString())
+                .putString("NombreUsuario", spinnerLogin.selectedItem.toString())
                 .apply()
             sharedPreferences.edit()
-                .putString("PasswordUsuario", edit_password_login.text.toString())
+                .putString("PasswordUsuario", editPasswordLogin.text.toString())
                 .apply()
 
             /*Borrar*/
