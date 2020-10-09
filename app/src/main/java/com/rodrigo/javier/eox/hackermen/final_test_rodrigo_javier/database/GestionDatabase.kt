@@ -60,7 +60,7 @@ abstract class GestionDatabase : RoomDatabase() {
                     context.applicationContext, GestionDatabase::class.java,
                     "note_database"
                 )
-                    .fallbackToDestructiveMigration()
+//                    .fallbackToDestructiveMigration()
                     .addCallback(roomcallback)
                     .build()
             }
