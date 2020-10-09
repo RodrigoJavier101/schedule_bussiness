@@ -124,7 +124,7 @@
             android:id="@+id/btn_login"
             android:layout_width="@dimen/btn_login_width"
             android:layout_height="@dimen/btn_login_height"
-            android:background="#ED9121"
+            android:background="@drawable/custom_button"
             android:text="Entrar" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
