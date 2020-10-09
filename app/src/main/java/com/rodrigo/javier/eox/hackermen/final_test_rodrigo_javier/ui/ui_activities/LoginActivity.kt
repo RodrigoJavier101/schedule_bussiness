@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asFlow
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
@@ -20,12 +21,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LoginActivity :
-    AppCompatActivity() , SharedPreferences.OnSharedPreferenceChangeListener {
+    AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     lateinit var sharedPreferences: SharedPreferences
     lateinit var spinner_login: Spinner
     lateinit var edit_password_login: EditText
-//    val repository: GestionRepository
+
+    //    val repository: GestionRepository
     lateinit var dao: GestionDao
 //    val allUsers: LiveData<List<User_Entity>?>?
 
@@ -54,13 +56,28 @@ class LoginActivity :
         var listaUsers: List<User_Entity> = listOf()
         var editloginpass = findViewById<EditText>(R.id.text_edit_password)
 
-           CoroutineScope(Dispatchers.IO).launch {
-               passResp = dao.getPasswordFromUserTable(username)
-               if (passResp.toString().equals(editloginpass.text.toString())) {
-                   fetchMainActivity(applicationContext)
-                   finish()
-               }
-           }
+        CoroutineScope(Dispatchers.IO).launch {
+            passResp = dao.getPasswordFromUserTable(username)
+            Log.d("-----------LOG------------->", username.toString() + " " + passResp.toString())
+            if (passResp.toString().equals(editloginpass.text.toString())) {
+                Log.d(
+                    "-----------LOG------------->",
+                    username.toString() + " " + passResp.toString()
+                )
+                fetchMainActivity(applicationContext)
+                finish()
+            } else {
+                callToast()
+            }
+
+        }
+
+    }
+
+    private fun callToast() {
+//        @MainThread
+//        Toast.makeText(this@LoginActivity, "el password no corresponde", Toast.LENGTH_SHORT)
+//            .show()
 
     }
 
@@ -76,21 +93,23 @@ class LoginActivity :
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, usersName)
     }
 
-    fun initViews() {
+    private fun initViews() {
         spinner_login = findViewById<Spinner>(R.id.spinner_user_login)
         edit_password_login = findViewById<EditText>(R.id.text_edit_password)
     }
 
     private fun startSpinner() {
+        val firstEntry = User_Entity("Selecciona un usuario")
         val userAdmin = User_Entity("Admin", 9999)
         CoroutineScope(Dispatchers.IO).launch {
-               if (dao.getAllUsers_2() === null || dao.getAllUsers_2().isEmpty()) {
-                   Log.d("-----------LOG------------->", userAdmin.password.toString())
-                   dao.insertUser(userAdmin)
-                   fillSpinner()
-               } else {
-                   fillSpinner()
-               }
+            if (dao.getAllUsers_2() === null || dao.getAllUsers_2().isEmpty()) {
+//                   Log.d("-----------LOG------------->", userAdmin.password.toString())
+                dao.insertUser(firstEntry)
+                dao.insertUser(userAdmin)
+                fillSpinner()
+            } else {
+                fillSpinner()
+            }
         }
 
     }

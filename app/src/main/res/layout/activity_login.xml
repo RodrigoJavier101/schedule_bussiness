@@ -23,11 +23,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
+            android:fontFamily="@font/abel_regular"
             android:gravity="center_horizontal"
             android:text="@string/text_titulo_login"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="25sp" />
+            android:textSize="45sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -54,6 +55,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
+            android:fontFamily="@font/abel_regular"
             android:gravity="center_horizontal"
             android:text="USUARIO"
             android:textAlignment="center"
@@ -64,8 +66,7 @@
             android:layout_width="200dp"
             android:layout_height="20dp"
             android:layout_margin="20dp"
-            android:entries="@array/spinner_login"
-            android:prompt="@string/encabezado_spinner_login"
+            android:background="#E8E8A2"
             android:textAlignment="center" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -87,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:fontFamily="@font/abel_regular"
             android:gravity="center_horizontal"
             android:text="PASSWORD"
             android:textAlignment="center"
@@ -124,6 +126,7 @@
             android:id="@+id/btn_login"
             android:layout_width="@dimen/btn_login_width"
             android:layout_height="@dimen/btn_login_height"
+            android:elevation="100dp"
             android:background="@drawable/custom_button"
             android:text="Entrar" />
 

@@ -34,7 +34,7 @@ data class Ruta_Entity(
 data class User_Entity(
     var user_name: String = "none",
     /*max 4 digitos*/
-    var password: Int = 9999
+    var password: Int = 0
 ) {
     @PrimaryKey(autoGenerate = true)
     var id_user: Int = 0
