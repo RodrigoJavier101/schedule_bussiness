@@ -1,19 +1,24 @@
 package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.fragmentos.home
 
+import android.app.Service
 import android.content.Context
+import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
+import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.getSystemServiceName
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -26,10 +31,9 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.Ite
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.ApiRetrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.RetrofitClient
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit.api_objects.Json4Kotlin_Base
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_admin.fragmentos_interiores.admin_clientes.AdminClientesViewModel
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeAdapter
-import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeViewModel
+import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
 import kotlinx.android.synthetic.main.add_agrega_user.view.*
 import kotlinx.android.synthetic.main.add_update_delete_user.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -306,15 +310,30 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun setUpBtnGestionar(view: View) {
-        btnAdmin.setOnClickListener {
-            setVisibilityView(view)
-        }
+         btnAdmin.setOnClickListener {
+             setVisibilityView(view)
+         }
+
+        /*checkearlo, parece que solo debe ir en una activity*/
+      /*  var layoutInflater: LayoutInflater
+        layoutInflater = LayoutInflater.from(this.requireContext())
+        layoutInflater =
+            getSystemServiceName(this.requireContext(), Service::class.java) as LayoutInflater
+        val viewPopupwindow: View = layoutInflater!!.inflate(R.layout.popupwindowlayout, null)
+        val popupWindow = PopupWindow(viewPopupwindow, 900, 500, true)
+        popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0)
+        viewPopupwindow.setOnTouchListener { v, event ->
+            popupWindow.dismiss()
+            true
+
+        }*/
+
     }
 
-    private fun setVisibilityView(view: View) {
-        btnAgregarUser.visibility = View.VISIBLE
-        recyclerview.visibility = View.VISIBLE
-    }
+     private fun setVisibilityView(view: View) {
+         btnAgregarUser.visibility = View.VISIBLE
+         recyclerview.visibility = View.VISIBLE
+     }
 
 }
 
