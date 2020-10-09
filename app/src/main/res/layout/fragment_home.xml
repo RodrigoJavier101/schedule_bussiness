@@ -273,9 +273,10 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_agregar_user"
             android:layout_width="90dp"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:background="@drawable/custom_button"
             android:fontFamily="@font/abel_regular"
+            android:text="agregar user"
             android:textSize="10sp"
             android:visibility="gone" />
 
