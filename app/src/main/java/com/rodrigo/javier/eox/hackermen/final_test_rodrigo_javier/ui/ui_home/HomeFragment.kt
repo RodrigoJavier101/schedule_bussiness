@@ -10,15 +10,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.User_Entity
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.interfaces.ItemUserClickListener
@@ -28,6 +33,7 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeViewModel
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.add_agrega_user.view.*
 import kotlinx.android.synthetic.main.add_update_delete_user.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -49,6 +55,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     /*vistas*/
     private lateinit var recyclerview: RecyclerView
     private lateinit var btnAdmin: Button
+    private lateinit var linearLay: LinearLayoutCompat
     private var nombreUser: TextView? = null
     private var domicilioPassUser: TextView? = null
 
@@ -100,7 +107,8 @@ class HomeFragment : Fragment(), ItemUserClickListener {
             CommonFunctions.fileNameShPref,
             Context.MODE_PRIVATE
         )
-
+//        linearLay = LinearLayout((this.requireContext()))
+        linearLay = root.findViewById<LinearLayoutCompat>(R.id.linear_layout_)
         btnAdmin = root.findViewById(R.id.btn_admin_)
         btnAgregarUser = root.findViewById<Button>(R.id.btn_agregar_user)
         recyclerview = root.findViewById(R.id.recycler_users)
@@ -303,36 +311,30 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun setUpBtnGestionar(view: View) {
-        var counter = 0
+
         btnAdmin.setOnClickListener {
-            counter++
+            var counter = 1
             if (counter % 2 != 0) {
-                setVisibilityView(it)
+                linearLay.visibility = View.VISIBLE
+//                YoYo.with(Techniques.RollIn)
+//                    .duration(1200) //.repeat(1)
+//                    .playOn(linearLay)
+                counter++
             } else {
                 btnAgregarUser.visibility = View.GONE
                 recyclerview.visibility = View.GONE
+                counter++
             }
         }
-
-        /*checkearlo, parece que solo debe ir en una activity*/
-        /*  var layoutInflater: LayoutInflater
-          layoutInflater = LayoutInflater.from(this.requireContext())
-          layoutInflater =
-              getSystemServiceName(this.requireContext(), Service::class.java) as LayoutInflater
-          val viewPopupwindow: View = layoutInflater!!.inflate(R.layout.popupwindowlayout, null)
-          val popupWindow = PopupWindow(viewPopupwindow, 900, 500, true)
-          popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0)
-          viewPopupwindow.setOnTouchListener { v, event ->
-              popupWindow.dismiss()
-              true
-
-          }*/
 
     }
 
     private fun setVisibilityView(view: View) {
-        btnAgregarUser.visibility = View.VISIBLE
-        recyclerview.visibility = View.VISIBLE
+
+
+//        btnAgregarUser.visibility = View.VISIBLE
+//        recyclerview.visibility = View.VISIBLE
+
     }
 
 }

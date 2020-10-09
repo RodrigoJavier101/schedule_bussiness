@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.R
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDao
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.database.GestionDatabase
@@ -122,32 +124,31 @@ class LoginActivity :
     }
 
     private fun brokeLayout() {
-/*        YoYo.with(Techniques.Hinge)
-            .duration(800) //.repeat(1)
+ /*       YoYo.with(Techniques.Hinge)
+            .duration(100) //.repeat(1)
             .playOn(loginText)
 
         YoYo.with(Techniques.Hinge)
-            .duration(800) //.repeat(1)
+            .duration(100) //.repeat(1)
             .playOn(
                 usuarioText
             )
 
         YoYo.with(Techniques.Hinge)
-            .duration(800) //.repeat(1)
+            .duration(100) //.repeat(1)
             .playOn(spinnerLogin)
 
         YoYo.with(Techniques.Hinge)
-            .duration(800) //.repeat(1)
+            .duration(100) //.repeat(1)
             .playOn(passwordText)
 
         YoYo.with(Techniques.Hinge)
-            .duration(800) //.repeat(1)
+            .duration(100) //.repeat(1)
             .playOn(editPasswordLogin)
 
         YoYo.with(Techniques.Hinge)
-            .duration(800) //.repeat(1)
-            .playOn(btnLogin)
-        */
+            .duration(100) //.repeat(1)
+            .playOn(btnLogin)*/
     }
 
     override fun onSharedPreferenceChanged(

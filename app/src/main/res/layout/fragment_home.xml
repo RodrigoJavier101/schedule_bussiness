@@ -7,10 +7,7 @@
     android:background="#F3F3D0"
     tools:context=".ui.fragmentos.home.HomeFragment">
 
-    <!--CABECERA-->
-
     <!--VALORES DIVISAS-->
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat"
         android:layout_width="match_parent"
@@ -322,45 +319,56 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat10"
+        android:id="@+id/linear_layout_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:padding="5dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat9">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_users"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat10"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#F3F3D0"
-            android:visibility="gone" />
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat9">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_users"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#F3F3D0" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat10">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_agregar_user"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/custom_button"
+                android:fontFamily="@font/abel_regular"
+                android:text="agregar user"
+                android:textSize="10sp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat10">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_agregar_user"
-            android:layout_width="90dp"
-            android:layout_height="50dp"
-            android:background="@drawable/custom_button"
-            android:fontFamily="@font/abel_regular"
-            android:text="agregar user"
-            android:textSize="10sp"
-            android:visibility="gone" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
