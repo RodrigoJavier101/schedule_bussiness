@@ -310,30 +310,37 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun setUpBtnGestionar(view: View) {
-         btnAdmin.setOnClickListener {
-             setVisibilityView(view)
-         }
+        var counter = 0
+        btnAdmin.setOnClickListener {
+            counter++
+            if (counter % 2 != 0) {
+                setVisibilityView(it)
+            } else {
+                btnAgregarUser.visibility = View.GONE
+                recyclerview.visibility = View.GONE
+            }
+        }
 
         /*checkearlo, parece que solo debe ir en una activity*/
-      /*  var layoutInflater: LayoutInflater
-        layoutInflater = LayoutInflater.from(this.requireContext())
-        layoutInflater =
-            getSystemServiceName(this.requireContext(), Service::class.java) as LayoutInflater
-        val viewPopupwindow: View = layoutInflater!!.inflate(R.layout.popupwindowlayout, null)
-        val popupWindow = PopupWindow(viewPopupwindow, 900, 500, true)
-        popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0)
-        viewPopupwindow.setOnTouchListener { v, event ->
-            popupWindow.dismiss()
-            true
+        /*  var layoutInflater: LayoutInflater
+          layoutInflater = LayoutInflater.from(this.requireContext())
+          layoutInflater =
+              getSystemServiceName(this.requireContext(), Service::class.java) as LayoutInflater
+          val viewPopupwindow: View = layoutInflater!!.inflate(R.layout.popupwindowlayout, null)
+          val popupWindow = PopupWindow(viewPopupwindow, 900, 500, true)
+          popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0)
+          viewPopupwindow.setOnTouchListener { v, event ->
+              popupWindow.dismiss()
+              true
 
-        }*/
+          }*/
 
     }
 
-     private fun setVisibilityView(view: View) {
-         btnAgregarUser.visibility = View.VISIBLE
-         recyclerview.visibility = View.VISIBLE
-     }
+    private fun setVisibilityView(view: View) {
+        btnAgregarUser.visibility = View.VISIBLE
+        recyclerview.visibility = View.VISIBLE
+    }
 
 }
 
