@@ -311,18 +311,22 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun setUpBtnGestionar(view: View) {
-
+        var counter = 1
         btnAdmin.setOnClickListener {
-            var counter = 1
+
             if (counter % 2 != 0) {
                 linearLay.visibility = View.VISIBLE
-//                YoYo.with(Techniques.RollIn)
-//                    .duration(1200) //.repeat(1)
-//                    .playOn(linearLay)
+                YoYo.with(Techniques.DropOut)
+                    .duration(1200) //.repeat(1)
+                    .playOn(linearLay)
                 counter++
             } else {
-                btnAgregarUser.visibility = View.GONE
-                recyclerview.visibility = View.GONE
+//                YoYo.with(Techniques.Pulse)
+//                    .duration(1200) //.repeat(1)
+//                    .playOn(linearLay)
+                linearLay.visibility = View.GONE
+//                btnAgregarUser.visibility = View.GONE
+//                recyclerview.visibility = View.GONE
                 counter++
             }
         }
@@ -330,8 +334,6 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
     private fun setVisibilityView(view: View) {
-
-
 //        btnAgregarUser.visibility = View.VISIBLE
 //        recyclerview.visibility = View.VISIBLE
 

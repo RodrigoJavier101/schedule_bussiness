@@ -66,7 +66,9 @@
             android:layout_width="200dp"
             android:layout_height="20dp"
             android:layout_margin="20dp"
-            android:background="#E8E8A2"
+            android:scrollbarSize="90dp"
+            android:outlineAmbientShadowColor="@color/back_color"
+            android:scrollbarStyle="outsideOverlay"
             android:textAlignment="center" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -99,7 +101,7 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/text_edit_password"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
             android:cursorVisible="true"

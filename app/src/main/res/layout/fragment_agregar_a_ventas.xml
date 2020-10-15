@@ -16,19 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/fab_agregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="40dp"
-        android:elevation="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/custom_button"
+        android:text="NONE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerview_agregados_a_ventas"
-        app:layout_constraintVertical_bias="0.185"
-        app:srcCompat="@android:drawable/arrow_up_float" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview_agregados_a_ventas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

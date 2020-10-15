@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/back_color"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -29,6 +30,7 @@
                 android:id="@+id/nombre_producto_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/abel_regular"
                 android:hint="agrega un producto" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -44,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/abel_regular"
                 android:hint="precio al que lo venderás"
                 android:inputType="number"
                 android:maxLength="9" />

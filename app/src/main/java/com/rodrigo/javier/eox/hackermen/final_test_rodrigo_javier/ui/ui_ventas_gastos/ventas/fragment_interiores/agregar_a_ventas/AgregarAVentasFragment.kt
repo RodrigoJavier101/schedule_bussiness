@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -26,7 +27,7 @@ class AgregarAVentasFragment : Fragment() {
 
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: FromListaToAgregados_Adapter
-    private lateinit var fabAg_: FloatingActionButton
+    private lateinit var fabAg_: Button
 
     //    private lateinit var dao: GestionDao
     private lateinit var lista_productos: ArrayList<Productos_Entity>
