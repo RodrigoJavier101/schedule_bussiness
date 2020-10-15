@@ -5,7 +5,7 @@ para el acceso a la app
 user = admin
 password = 9999
 
-LA RAMA MASTER 4 ES LA DEFINITIVA
+LA RAMA MASTER para revisar es la nunero 2
 /*********************************************/
 
 DETALLES:
