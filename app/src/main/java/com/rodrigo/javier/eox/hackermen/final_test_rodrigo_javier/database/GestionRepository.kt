@@ -419,6 +419,4 @@ class GestionRepository(application: Application?) {
         }
 
     }
-
-
 }

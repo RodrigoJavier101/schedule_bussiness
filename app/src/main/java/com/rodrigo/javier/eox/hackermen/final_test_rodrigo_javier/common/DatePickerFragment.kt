@@ -6,13 +6,13 @@ import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 
-class DatePickerFragment : DialogFragment(){//, DatePickerDialog.OnDateSetListener {
+class DatePickerFragment : DialogFragment() {//, DatePickerDialog.OnDateSetListener {
 
     private var listener: DatePickerDialog.OnDateSetListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Use the current date as the default date in the picker
-        //Importo Calendar de Android no de java.utils
+        //Import Calendar ---->>> de Android no de java.utils
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
