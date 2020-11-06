@@ -2,7 +2,9 @@ package com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.UNO_;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+
 import org.bson.Document;
+
 import com.mongodb.Block;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -48,8 +50,8 @@ public class ConexionMongo {
 
     // Insert a document in user collection
     private void insertUser() {
-        Document document = new Document("username","qpt")
-                            .append("email", "testemail@example.com");
+        Document document = new Document("username", "qpt")
+                .append("email", "testemail@example.com");
         getUserCollection().insertOne(document);
     }
 }

@@ -15,10 +15,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.internal.runner.junit4.statement.UiThreadStatement
@@ -33,7 +32,6 @@ import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.model.retrofit
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeAdapter
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.ui.ui_home.HomeViewModel
 import com.rodrigo.javier.eox.hackermen.final_test_rodrigo_javier.utilities.external.CommonFunctions
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.add_agrega_user.view.*
 import kotlinx.android.synthetic.main.add_update_delete_user.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -43,7 +41,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class HomeFragment : Fragment(), ItemUserClickListener {
 
@@ -174,11 +171,9 @@ class HomeFragment : Fragment(), ItemUserClickListener {
         dialogBuilder.create().show()
     }
 
-
     override fun itemUserUpdateClick(user: User_Entity) {
         optionsAdmin(user)
     }
-
 
     private fun optionsAdmin(user: User_Entity) {
         if (user.user_name.equals("Admin")) {
@@ -321,12 +316,7 @@ class HomeFragment : Fragment(), ItemUserClickListener {
                     .playOn(linearLay)
                 counter++
             } else {
-//                YoYo.with(Techniques.Pulse)
-//                    .duration(1200) //.repeat(1)
-//                    .playOn(linearLay)
                 linearLay.visibility = View.GONE
-//                btnAgregarUser.visibility = View.GONE
-//                recyclerview.visibility = View.GONE
                 counter++
             }
         }
@@ -340,4 +330,3 @@ class HomeFragment : Fragment(), ItemUserClickListener {
     }
 
 }
-

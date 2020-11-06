@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gestión/Negocios</string>
+    <string name="app_name">Gestión y Negocios</string>
     <string name="login_name">LOGIN</string>
     <string name="text_btn_verde">ingresos</string>
     <string name="text_btn_rojo">gastos</string>
@@ -40,11 +40,10 @@
     <string name="action_fab">Sincronizando con la Nube</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_ingresos">Ventas/Gastos</string>
+    <string name="menu_ingresos">Ventas y Gastos</string>
     <string name="menu_ruta">Ruta</string>
-    <string name="menu_agenda">Agenda</string>
-    <string name="menu_admin">Admin</string>
+<!--    <string name="menu_agenda">Agenda</string>-->
+    <string name="menu_admin">Client., prov. y estad.</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

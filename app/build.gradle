@@ -18,10 +18,44 @@ android {
     }
 
     buildTypes {
+        //    este item lo agrego ahora leyendo el tema de release
+//    revisar referencias DSL del tipo de compilacion en  FILE > ProjectStructure
+//        debug {
+//            debuggable true
+//            versionNameSuffix "-debug"
+//        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+//etapa de release
+      /*  flavorDimensions "version"
+        productFlavors {
+            demo {
+                dimension "version"
+                applicationIdSuffix ".demo"
+                versionNameSuffix "-demo"
+            }
+            full {
+                dimension "version"
+                applicationIdSuffix ".full"
+                versionNameSuffix "-full"
+            }
+
+            minApi24 {
+                dimension "api"
+                minSdkVersion 24
+                versionNameSuffix "-minApi24"
+//                ...
+            }
+            minApi21 {
+                dimension "api"
+                minSdkVersion 21
+                versionNameSuffix "-minApi21"
+//                ...
+            }
+
+        }*/
 
     }
 
@@ -38,6 +72,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
 //        jvmTarget = '1.8'
         jvmTarget = JavaVersion.VERSION_1_8.toString()
@@ -67,7 +102,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-
     implementation 'com.squareup.retrofit2:retrofit:2.2.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
 
@@ -88,7 +122,6 @@ dependencies {
 
 //    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
-
     def fragment_version = "1.2.5"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
@@ -106,5 +139,14 @@ dependencies {
     /*librerias para animaciones*/
     implementation 'com.daimajia.easing:library:2.0@aar'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
+
+
+    // Dependencia a módulo local llamado mylibrary
+//    implementation project(":mylibrary")
+// Dependencia de binarios alojados localmente en el directorio libs
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+// Dependencia a un binario remoto
+//    implementation 'cl.desafiolatam.android:cool-app:4.2'
+//    implementation group: 'cl.desafiolatam.android', name: 'cool-app', version: '4.2'
 
 }
